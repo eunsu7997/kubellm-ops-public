@@ -1,0 +1,14 @@
+{
+  "stage": "09-copilot-draft-gate",
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "started_at": "2026-10-22T12:16:55.823379+00:00",
+  "result": {
+    "eligible_draft": false,
+    "auto_actions_allowed": false,
+    "fallback": "<LOCAL_USER>\\Documents\\kubellm-ops\\evidence\\instructor-demo\\20261022T121552572662Z\\pipeline\\candidate-report\\REPORT.md",
+    "human_review_required": true
+  },
+  "status": "COMPLETED",
+  "finished_at": "2026-10-22T12:17:03.575187+00:00",
+  "elapsed_s": 7.75181089999387
+}

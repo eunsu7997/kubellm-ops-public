@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>집 GPU · LLM 채팅</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0c1321;color:#e7edf8;font:16px system-ui,sans-serif}
+main{max-width:880px;margin:32px auto;padding:24px}header{border-bottom:1px solid #2c3950;padding-bottom:22px}
+h1{font-size:30px;margin:10px 0}.eyebrow{color:#86dfb1;font-size:13px;letter-spacing:2px}.sub{color:#a6b5cc;line-height:1.7}
+#status{display:inline-block;padding:6px 12px;background:#20334a;border-radius:20px;font-size:13px}
+#messages{min-height:230px;margin:25px 0}.message{padding:18px 22px;border-radius:14px;margin:16px 0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;background:#182439}
+.user{background:#203d53;margin-left:60px}.label{display:block;font-size:12px;color:#94c8ea;margin-bottom:8px}
+textarea{width:100%;padding:16px;background:#111e31;color:#edf3ff;border:1px solid #405676;border-radius:12px;font:inherit;resize:vertical;min-height:100px}
+button{background:#9be7c4;color:#0b251d;border:0;border-radius:9px;padding:12px 20px;font:600 15px system-ui;cursor:pointer}button:disabled{opacity:.45;cursor:wait}button.secondary{background:#26374e;color:#e7edf8}
+.actions{display:flex;gap:10px;margin-top:12px;align-items:center}.hint{font-size:13px;color:#a6b5cc}footer{font-size:13px;color:#a6b5cc;margin-top:25px;line-height:1.7}
+</style></head><body><main>
+<header><div class="eyebrow">KUBELLM-OPS · LIVE GPU</div><h1>집 GPU에게 질문하기</h1><div id="status" role="status">연결 확인 중…</div><p class="sub">RTX 4060 · Qwen2.5 0.5B Instruct<br>질문을 보내면 집에서 실행 중인 모델의 답변이 실시간으로 표시됩니다.</p></header>
+<section id="messages" aria-live="polite"><p class="sub" id="welcome">예: “LLM의 토큰이 무엇인지 짧게 설명해줘.”</p></section>
+<form id="form"><label for="prompt">질문</label><textarea id="prompt" maxlength="500" placeholder="여기에 질문을 입력하세요" required></textarea><div class="actions"><button id="send" type="submit">질문 보내기</button><button class="secondary" id="stop" type="button" disabled>응답 중지</button><span class="hint" id="timing"></span></div></form>
+<footer>각 질문은 독립적으로 전달됩니다. 작은 시연용 모델이라 답이 부정확할 수 있습니다.<br>질문 최대 500자 · 답변 최대 128토큰 · localhost 전용 · 대화 파일 저장 없음</footer>
+</main><script>
+const $=id=>document.getElementById(id);let controller;
+function bubble(label,text,kind=''){const div=document.createElement('div');div.className='message '+kind;const title=document.createElement('span');title.className='label';title.textContent=label;const body=document.createElement('span');body.textContent=text;div.append(title,body);$('messages').append(div);return body;}
+async function health(){try{const r=await fetch('/readyz');const d=await r.json();$('status').textContent=d.ready?'● 모델 연결됨 · 실제 응답 가능':'모델 준비 안 됨';}catch{$('status').textContent='서버에 연결할 수 없습니다';}}
+$('stop').onclick=()=>controller?.abort();
+$('form').onsubmit=async e=>{e.preventDefault();const prompt=$('prompt').value.trim();if(!prompt)return;$('welcome')?.remove();bubble('나',prompt,'user');const answer=bubble('Qwen · 집 RTX 4060','생성 중…');$('send').disabled=true;$('stop').disabled=false;controller=new AbortController();const start=performance.now();let output='',done=false,pending='';$('timing').textContent='응답 대기 중';
+try{const response=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt}),signal:controller.signal});if(!response.ok){const err=await response.json();throw Error(err.error||'HTTP '+response.status);}const reader=response.body.getReader();const decoder=new TextDecoder();while(true){const chunk=await reader.read();if(chunk.done)break;pending+=decoder.decode(chunk.value,{stream:true});let index;while((index=pending.indexOf('\n'))>=0){const line=pending.slice(0,index).trim();pending=pending.slice(index+1);if(!line.startsWith('data:'))continue;const data=line.slice(5).trim();if(data==='[DONE]'){done=true;continue;}const event=JSON.parse(data);if(event.error)throw Error(event.error);const token=event.choices?.[0]?.delta?.content;if(token){output+=token;answer.textContent=output;$('timing').textContent=((performance.now()-start)/1000).toFixed(1)+'초 · 생성 중';}}}if(!done)throw Error('응답이 완료 전에 끊겼습니다');if(!output)throw Error('응답 내용이 비어 있습니다');$('timing').textContent=((performance.now()-start)/1000).toFixed(2)+'초 · 완료';$('prompt').value='';}
+catch(err){const message=err.name==='AbortError'?'응답을 중지했습니다.':err.message;answer.textContent=(output?output+'\n\n':'')+'['+message+']';$('timing').textContent='중지 또는 오류';}finally{$('send').disabled=false;$('stop').disabled=true;controller=null;}};
+health();
+</script></body></html>

@@ -1,0 +1,26 @@
+# Expected Pending: current WSL k3s advertises four time-sliced GPU slots.
+# This requests five scheduling slots, not five physical GPU cards.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubellm-gpu-shortage
+  namespace: kubellm-gpu-validation
+  labels:
+    app: kubellm-gpu-shortage
+spec:
+  restartPolicy: Never
+  activeDeadlineSeconds: 120
+  automountServiceAccountToken: false
+  runtimeClassName: nvidia
+  containers:
+    - name: never-scheduled
+      image: pytorch/pytorch@sha256:68c022c2f4627943a6f3e574cfd2c8ae4256210d5f66ae2b117942e0a8d4fa9d
+      imagePullPolicy: Never
+      command: [python, -c, "raise SystemExit('Unexpected scheduling: inspect GPU capacity')"]
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          nvidia.com/gpu: 5
+          memory: 256Mi

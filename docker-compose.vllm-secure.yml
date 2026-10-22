@@ -1,0 +1,56 @@
+# Standalone private profile; only gateway is replaced in the Oct 21 closure trial.
+# Standalone file. Do not merge with the mock Compose stack.
+name: kubellm-gpu-secure
+services:
+  vllm:
+    image: vllm/vllm-openai@sha256:8a69ffad015f138d7170c4ddc429e230a3bc1c1719f67e14324749df200a4b90
+    command: ["--model", "Qwen/Qwen2.5-0.5B-Instruct", "--gpu-memory-utilization", "0.4", "--max-model-len", "2048", "--revision", "7ae557604adf67be50417f59c2c2f167def9a775"]
+    ipc: host
+    # No host publication. Docker DNS exposes vllm:8000 on backend only.
+    networks: [backend]
+    volumes: ["model-cache:/root/.cache/huggingface"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+  gateway:
+    image: kubellm-ops-gateway:readiness-20261021
+    build: ./gateway
+    ports: ["127.0.0.1:18003:8000"]
+    networks: [backend]
+    environment:
+      VLLM_BASE_URL: http://vllm:8000
+      MODEL_NAME: Qwen/Qwen2.5-0.5B-Instruct
+      REQUEST_TIMEOUT: "30"
+      READINESS_MODE: inference
+      READINESS_TIMEOUT: "2"
+      READINESS_CACHE_SECONDS: "5"
+    depends_on: [vllm]
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    ports: ["127.0.0.1:19091:9090"]
+    networks: [backend]
+    volumes:
+      - ./monitoring/vllm-example/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on: [gateway, vllm]
+  grafana:
+    image: grafana/grafana:11.2.0
+    ports: ["127.0.0.1:13001:3000"]
+    networks: [backend]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "${KUBELLM_SECURE_GRAFANA_PASSWORD:?Set a session-local Grafana password}"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    volumes:
+      - ./monitoring/vllm-example/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on: [prometheus]
+networks:
+  backend:
+    driver: bridge
+volumes:
+  model-cache:
+  grafana-data:

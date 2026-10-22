@@ -1,0 +1,4 @@
+{
+  "raw": "```json\n{\n  \"suspected_cause\": \"제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다.\",\n  \"referenced_log_ids\": [\"RUN\", \"RECOVERY\"],\n  \"next_steps\": [\"통합 후속 실행 결과\"],\n  \"unknowns\": []\n}\n```",
+  "human_review_required": true
+}

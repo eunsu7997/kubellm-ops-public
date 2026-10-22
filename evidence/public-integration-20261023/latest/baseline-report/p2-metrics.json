@@ -1,0 +1,52 @@
+{
+  "token-budget": {
+    "scheduled": 40,
+    "success": 30,
+    "counts": {
+      "success": 30,
+      "rate_limited": 10
+    },
+    "success_rate": 0.75,
+    "429_rate": 0.25,
+    "http_attempts": 40,
+    "attempt_amplification": 1.0,
+    "attempt_429_count": 10,
+    "max_attempts_per_logical": 1,
+    "accepted_failure_rate": 0.0,
+    "successful_client_ttft_p99_s": 0.48147549998247996,
+    "failure_inclusive_p99": {
+      "kind": "unbounded",
+      "seconds": null
+    },
+    "slo_1s_attainment": 0.75,
+    "output_tokens_per_observed_second": 32.43838656713493,
+    "per_priority": {
+      "high": {
+        "scheduled": 20,
+        "success": 20,
+        "successful_ttft_p99_s": 0.48147549998247996
+      },
+      "low": {
+        "scheduled": 20,
+        "success": 10,
+        "successful_ttft_p99_s": 0.39902999997138977
+      }
+    },
+    "phase_client_p99_s": [
+      0.39902999997138977,
+      0.38642989995423704,
+      0.48147549998247996,
+      0.3809324000030756,
+      0.34890109999105334
+    ],
+    "adapter_arrival_p99_per_phase_s": [
+      0.39265470003010705,
+      0.37763720005750656,
+      0.4723305000225082,
+      0.36928089999128133,
+      0.3459034999832511
+    ],
+    "max_active": 1,
+    "max_reserved_tokens": 226
+  }
+}

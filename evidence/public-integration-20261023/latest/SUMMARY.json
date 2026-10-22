@@ -1,0 +1,505 @@
+{
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "status": "COMPLETED_WITH_LIMITATIONS",
+  "error": null,
+  "stages": [
+    {
+      "stage": "01-deploy-guard",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:15:56.084984+00:00",
+      "result": {
+        "allowed": true,
+        "checks": [
+          {
+            "check": "gpu_resource_limit",
+            "status": "PASS",
+            "evidence": "spec.template.spec.containers[0] (name='vllm').resources.limits['nvidia.com/gpu'] = 1; required numeric value >= 1",
+            "recommendation": "No change required for this GPU limit."
+          },
+          {
+            "check": "cpu_resources",
+            "status": "PASS",
+            "evidence": "spec.template.spec.containers[0] (name='vllm').resources: requests.cpu = '2'; limits.cpu = '4'",
+            "recommendation": "No change required for CPU resource presence and format."
+          },
+          {
+            "check": "memory_resources",
+            "status": "PASS",
+            "evidence": "spec.template.spec.containers[0] (name='vllm').resources: requests.memory = '4Gi'; limits.memory = '8Gi'",
+            "recommendation": "No change required for Memory resource presence and format."
+          },
+          {
+            "check": "startup_probe",
+            "status": "PASS",
+            "evidence": "spec.template.spec.containers[0] (name='vllm').startupProbe = {'httpGet': {'path': '/health', 'port': 8000}, 'periodSeconds': 10, 'timeoutSeconds': 5, 'failureThreshold': 60}",
+            "recommendation": "No change required for startupProbe handler structure."
+          },
+          {
+            "check": "readiness_probe",
+            "status": "PASS",
+            "evidence": "spec.template.spec.containers[0] (name='vllm').readinessProbe = {'httpGet': {'path': '/health', 'port': 8000}, 'periodSeconds': 10, 'timeoutSeconds': 5, 'failureThreshold': 3}",
+            "recommendation": "No change required for readinessProbe handler structure."
+          },
+          {
+            "check": "liveness_probe",
+            "status": "PASS",
+            "evidence": "spec.template.spec.containers[0] (name='vllm').livenessProbe = {'httpGet': {'path': '/health', 'port': 8000}, 'periodSeconds': 20, 'timeoutSeconds': 5, 'failureThreshold': 3}",
+            "recommendation": "No change required for livenessProbe handler structure."
+          }
+        ],
+        "source_sha256": "a375ab80b1bb9af9e91703f19a00337bfeac54e0461c2c0f84d9a5626b9177e2",
+        "mode": "static, no kubectl/apply"
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:15:56.653801+00:00",
+      "elapsed_s": 0.5688165999599732
+    },
+    {
+      "stage": "02-gpuq-state",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:15:56.655789+00:00",
+      "result": {
+        "reporter_sha256": "a1e85772ae8533697eedddd98b6bb56a61d4dc1bcf3607e35ed78e947788037f",
+        "command": [
+          "wsl",
+          "-d",
+          "Ubuntu-24.04",
+          "--",
+          "/usr/local/bin/k3s",
+          "kubectl",
+          "get",
+          "workloads",
+          "-A",
+          "-o",
+          "json"
+        ],
+        "rows": [
+          {
+            "job": "a-01",
+            "team": "team-a",
+            "priority": "low",
+            "gpus": 1,
+            "state": "Finished",
+            "cluster_queue": "team-a-cq",
+            "created": "2026-10-01 17:42:48",
+            "wait_s": 0.0,
+            "run_s": 240.0,
+            "evictions": 0
+          },
+          {
+            "job": "a-02",
+            "team": "team-a",
+            "priority": "low",
+            "gpus": 1,
+            "state": "Finished",
+            "cluster_queue": "team-a-cq",
+            "created": "2026-10-01 17:42:50",
+            "wait_s": 215.0,
+            "run_s": 92.0,
+            "evictions": 1
+          },
+          {
+            "job": "a-03",
+            "team": "team-a",
+            "priority": "low",
+            "gpus": 1,
+            "state": "Finished",
+            "cluster_queue": "team-a-cq",
+            "created": "2026-10-01 17:42:50",
+            "wait_s": 0.0,
+            "run_s": 238.0,
+            "evictions": 0
+          },
+          {
+            "job": "a-04",
+            "team": "team-a",
+            "priority": "low",
+            "gpus": 1,
+            "state": "Finished",
+            "cluster_queue": "team-a-cq",
+            "created": "2026-10-01 17:42:51",
+            "wait_s": 216.0,
+            "run_s": 91.0,
+            "evictions": 1
+          },
+          {
+            "job": "b-01",
+            "team": "team-b",
+            "priority": "low",
+            "gpus": 1,
+            "state": "Finished",
+            "cluster_queue": "team-b-cq",
+            "created": "2026-10-01 17:44:18",
+            "wait_s": 1.0,
+            "run_s": 125.0,
+            "evictions": 0
+          },
+          {
+            "job": "b-02",
+            "team": "team-b",
+            "priority": "low",
+            "gpus": 1,
+            "state": "Finished",
+            "cluster_queue": "team-b-cq",
+            "created": "2026-10-01 17:44:18",
+            "wait_s": 2.0,
+            "run_s": 126.0,
+            "evictions": 0
+          }
+        ],
+        "teams": {
+          "team-a": {
+            "jobs": 4,
+            "admitted": 4,
+            "evictions": 2,
+            "avg_wait_s": 107.8,
+            "max_wait_s": 216.0
+          },
+          "team-b": {
+            "jobs": 2,
+            "admitted": 2,
+            "evictions": 0,
+            "avg_wait_s": 1.5,
+            "max_wait_s": 2.0
+          }
+        },
+        "active_gpu_batches": 0,
+        "experiment_allowed": true,
+        "gpu_pods_clear": true,
+        "allowed": true
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:15:58.635566+00:00",
+      "elapsed_s": 1.9797809000010602
+    },
+    {
+      "stage": "03-baseline-serving",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:15:58.638191+00:00",
+      "result": {
+        "run": "baseline",
+        "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+        "policy": "token-budget"
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:16:23.893392+00:00",
+      "elapsed_s": 25.25520030001644
+    },
+    {
+      "stage": "04-llmslo-detect",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:16:23.894101+00:00",
+      "result": {
+        "upstream_slo_blob": "3caad8ed9923cb58f23cb611f7b6e187d96087a7",
+        "latency_semantics": "logical request to full SSE completion E2E, including retry waits; not TTFT",
+        "slo": {
+          "verdict": "FAIL",
+          "run_valid": true,
+          "reason": "",
+          "checks": [
+            {
+              "name": "min_requests",
+              "target": ">= 40",
+              "actual": 40,
+              "status": "PASS",
+              "reason": ""
+            },
+            {
+              "name": "p99_ms",
+              "target": "<= 2500",
+              "actual": 652.6288000168279,
+              "status": "PASS",
+              "reason": ""
+            },
+            {
+              "name": "error_rate_pct",
+              "target": "<= 0",
+              "actual": 25.0,
+              "status": "FAIL",
+              "reason": ""
+            }
+          ]
+        },
+        "summary": {
+          "total_requests": 40,
+          "successful_requests": 30,
+          "failed_requests": 10,
+          "error_rate_pct": 25.0,
+          "failures_by_outcome": {
+            "http_error": 10,
+            "invalid_response": 0,
+            "timeout": 0,
+            "connect_error": 0,
+            "transport_error": 0
+          },
+          "http_error_classes": {
+            "rate_limited_429": 10,
+            "request_invalid_4xx": 0,
+            "server_error_5xx": 0,
+            "other_status": 0
+          },
+          "http_error_status_counts": {
+            "429": 10
+          },
+          "latency_ms": {
+            "samples": 30,
+            "p50": 347.1102000330575,
+            "p95": 535.9112999867648,
+            "p99": 652.6288000168279,
+            "min": 149.8915000120178,
+            "max": 652.6288000168279,
+            "mean": 346.04790000788245
+          },
+          "duration_s": 14.080354800028726,
+          "rps": 2.8408375050263928,
+          "success_rps": 2.1306281287697946
+        },
+        "accounting": {
+          "planned": 40,
+          "failed": 10,
+          "final_429": 10,
+          "accepted_failures": 0
+        },
+        "trace_runtime_sha256": "887946b9159526f281a8a03ec82dd1dee25ff356f5fc07a68a6fc66535f35116"
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:16:23.991903+00:00",
+      "elapsed_s": 0.09780089999549091
+    },
+    {
+      "stage": "05-control-decision",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:16:23.992623+00:00",
+      "result": {
+        "action": "EXPERIMENT_ENABLE_BOUNDED_429_RETRY",
+        "production_mutation": false,
+        "reason": "Only explicit admission429 failures observed; never replay accepted streams"
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:16:23.992634+00:00",
+      "elapsed_s": 5.199981387704611e-06
+    },
+    {
+      "stage": "06-candidate-serving",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:16:23.993260+00:00",
+      "result": {
+        "run": "candidate",
+        "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+        "policy": "token-retry"
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:16:52.427394+00:00",
+      "elapsed_s": 28.434144800005015
+    },
+    {
+      "stage": "07-llmslo-verify",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:16:52.435476+00:00",
+      "result": {
+        "upstream_slo_blob": "3caad8ed9923cb58f23cb611f7b6e187d96087a7",
+        "latency_semantics": "logical request to full SSE completion E2E, including retry waits; not TTFT",
+        "slo": {
+          "verdict": "PASS",
+          "run_valid": true,
+          "reason": "",
+          "checks": [
+            {
+              "name": "min_requests",
+              "target": ">= 40",
+              "actual": 40,
+              "status": "PASS",
+              "reason": ""
+            },
+            {
+              "name": "p99_ms",
+              "target": "<= 2500",
+              "actual": 1343.272700032685,
+              "status": "PASS",
+              "reason": ""
+            },
+            {
+              "name": "error_rate_pct",
+              "target": "<= 0",
+              "actual": 0.0,
+              "status": "PASS",
+              "reason": ""
+            }
+          ]
+        },
+        "summary": {
+          "total_requests": 40,
+          "successful_requests": 40,
+          "failed_requests": 0,
+          "error_rate_pct": 0.0,
+          "failures_by_outcome": {
+            "http_error": 0,
+            "invalid_response": 0,
+            "timeout": 0,
+            "connect_error": 0,
+            "transport_error": 0
+          },
+          "http_error_classes": {
+            "rate_limited_429": 0,
+            "request_invalid_4xx": 0,
+            "server_error_5xx": 0,
+            "other_status": 0
+          },
+          "http_error_status_counts": {},
+          "latency_ms": {
+            "samples": 40,
+            "p50": 462.25819998653606,
+            "p95": 1294.795299996622,
+            "p99": 1343.272700032685,
+            "min": 144.1678999690339,
+            "max": 1343.272700032685,
+            "mean": 607.4184924989822
+          },
+          "duration_s": 18.055795000097714,
+          "rps": 2.2153552363539535,
+          "success_rps": 2.2153552363539535
+        },
+        "accounting": {
+          "planned": 40,
+          "failed": 0,
+          "final_429": 0,
+          "accepted_failures": 0
+        },
+        "trace_runtime_sha256": "887946b9159526f281a8a03ec82dd1dee25ff356f5fc07a68a6fc66535f35116"
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:16:52.655380+00:00",
+      "elapsed_s": 0.21990670001832768
+    },
+    {
+      "stage": "08-copilot-evidence",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:16:52.658702+00:00",
+      "result": {
+        "selected_evidence_report": "candidate-report/REPORT.md",
+        "llm_generation": false
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:16:55.822105+00:00",
+      "elapsed_s": 3.1634016999742016
+    },
+    {
+      "stage": "09-copilot-draft-gate",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:16:55.823379+00:00",
+      "result": {
+        "eligible_draft": false,
+        "auto_actions_allowed": false,
+        "fallback": "<LOCAL_USER>\\Documents\\kubellm-ops\\evidence\\instructor-demo\\20261022T121552572662Z\\pipeline\\candidate-report\\REPORT.md",
+        "human_review_required": true
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:17:03.575187+00:00",
+      "elapsed_s": 7.75181089999387
+    },
+    {
+      "stage": "10-scale-capacity-preview",
+      "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+      "started_at": "2026-10-22T12:17:03.576338+00:00",
+      "result": {
+        "actual_metric": {
+          "observed": 277630.9481928,
+          "kv_fraction": 0.0,
+          "raw": "vllm:num_requests_running{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\nvllm:num_requests_waiting{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\nvllm:kv_cache_usage_perc{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\nvllm:num_preemptions_total{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\n"
+        },
+        "actual_preview": {
+          "mode": "offline preview only",
+          "apply_allowed": false,
+          "current": 1,
+          "physical_gpus": 1,
+          "controller_path": "single KEDA-managed HPA (design)",
+          "status": "STEADY",
+          "desired": 1,
+          "deployable_without_new_gpu": 1,
+          "warning": "Kueue/time-slicing logical slots are not extra physical GPUs; loading/warmup not estimated"
+        },
+        "capacity_branch": {
+          "synthetic": true,
+          "result": {
+            "mode": "offline preview only",
+            "apply_allowed": false,
+            "current": 1,
+            "physical_gpus": 1,
+            "controller_path": "single KEDA-managed HPA (design)",
+            "status": "CAPACITY_BLOCKED",
+            "desired": 2,
+            "deployable_without_new_gpu": 1,
+            "warning": "Kueue/time-slicing logical slots are not extra physical GPUs; loading/warmup not estimated"
+          }
+        }
+      },
+      "status": "COMPLETED",
+      "finished_at": "2026-10-22T12:17:04.033408+00:00",
+      "elapsed_s": 0.4570714000146836
+    }
+  ],
+  "baseline_slo": {
+    "verdict": "FAIL",
+    "run_valid": true,
+    "reason": "",
+    "checks": [
+      {
+        "name": "min_requests",
+        "target": ">= 40",
+        "actual": 40,
+        "status": "PASS",
+        "reason": ""
+      },
+      {
+        "name": "p99_ms",
+        "target": "<= 2500",
+        "actual": 652.6288000168279,
+        "status": "PASS",
+        "reason": ""
+      },
+      {
+        "name": "error_rate_pct",
+        "target": "<= 0",
+        "actual": 25.0,
+        "status": "FAIL",
+        "reason": ""
+      }
+    ]
+  },
+  "candidate_slo": {
+    "verdict": "PASS",
+    "run_valid": true,
+    "reason": "",
+    "checks": [
+      {
+        "name": "min_requests",
+        "target": ">= 40",
+        "actual": 40,
+        "status": "PASS",
+        "reason": ""
+      },
+      {
+        "name": "p99_ms",
+        "target": "<= 2500",
+        "actual": 1343.272700032685,
+        "status": "PASS",
+        "reason": ""
+      },
+      {
+        "name": "error_rate_pct",
+        "target": "<= 0",
+        "actual": 0.0,
+        "status": "PASS",
+        "reason": ""
+      }
+    ]
+  },
+  "llm_draft_eligible": false,
+  "production_changed": false,
+  "scale_out_executed": false,
+  "limitations": [
+    "one GPU, bounded trace, no proven GPU-overload protection or production five-service deployment",
+    "SLO is full-SSE logical E2E, separate from1s TTFT scenario",
+    "LLM draft is advisory and gated; whole llm-slo-project QA not executed"
+  ]
+}

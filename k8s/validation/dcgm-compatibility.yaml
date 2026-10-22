@@ -1,0 +1,33 @@
+# Bounded compatibility probe, not a claim of WSL/DCGM support.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubellm-dcgm-compatibility
+  namespace: kubellm-gpu-validation
+  labels:
+    app: kubellm-dcgm-compatibility
+spec:
+  restartPolicy: Never
+  activeDeadlineSeconds: 180
+  automountServiceAccountToken: false
+  runtimeClassName: nvidia
+  containers:
+    - name: exporter
+      image: nvcr.io/nvidia/k8s/dcgm-exporter:3.3.5-3.4.1-ubuntu22.04
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: DCGM_EXPORTER_KUBERNETES
+          value: "false"
+      ports:
+        - containerPort: 9400
+      securityContext:
+        capabilities:
+          add: [SYS_ADMIN]
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 500m
+          memory: 512Mi
+          nvidia.com/gpu: 1

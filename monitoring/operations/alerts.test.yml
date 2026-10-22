@@ -1,0 +1,50 @@
+rule_files:
+  - alerts.yml
+evaluation_interval: 5s
+tests:
+  - interval: 5s
+    input_series:
+      - series: gateway_backend_readiness_enabled{job="gateway",instance="gateway:8000"}
+        values: 1+0x6
+      - series: gateway_backend_ready{job="gateway",instance="gateway:8000"}
+        values: 0+0x6
+    alert_rule_test:
+      - eval_time: 15s
+        alertname: GatewayInferenceNotReady
+        exp_alerts:
+          - exp_labels:
+              job: gateway
+              instance: gateway:8000
+              severity: warning
+            exp_annotations:
+              summary: Actual backend readiness checks have failed; investigate before restarting.
+  - interval: 5s
+    input_series:
+      - series: gateway_backend_readiness_enabled{job="gateway",instance="gateway:8000"}
+        values: 0+0x6
+      - series: gateway_backend_ready{job="gateway",instance="gateway:8000"}
+        values: 0+0x6
+    alert_rule_test:
+      - eval_time: 15s
+        alertname: GatewayInferenceNotReady
+        exp_alerts: []
+  - interval: 5s
+    input_series:
+      - series: gateway_backend_readiness_enabled{job="gateway",instance="gateway:8000"}
+        values: 1+0x6
+      - series: gateway_backend_ready{job="gateway",instance="gateway:8000"}
+        values: -1+0x6
+    alert_rule_test:
+      - eval_time: 15s
+        alertname: GatewayInferenceNotReady
+        exp_alerts: []
+  - interval: 5s
+    input_series:
+      - series: gateway_backend_readiness_enabled{job="gateway",instance="gateway:8000"}
+        values: 1+0x6
+      - series: gateway_backend_ready{job="gateway",instance="gateway:8000"}
+        values: 0 0 0 1 1 1 1
+    alert_rule_test:
+      - eval_time: 25s
+        alertname: GatewayInferenceNotReady
+        exp_alerts: []

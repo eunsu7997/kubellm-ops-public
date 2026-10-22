@@ -1,0 +1,30 @@
+# NOT VERIFIED: 실제 Prometheus 서버를 이 설정으로 띄워서 scrape를 확인하지는 못했다
+# (Docker가 이 PC에 없다). 형식은 Prometheus 공식 문서 기준으로 작성했다.
+# This base/mock stack supplies only gateway. The other jobs below are optional
+# placeholders, NOT VERIFIED in this stack; DOWN does not prove an exporter fault.
+# For Docker vLLM + Gateway use monitoring/vllm-example/prometheus.yml instead.
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "gateway"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["gateway:8000"]
+
+  - job_name: "vllm"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["vllm:8000"]
+
+  - job_name: "dcgm-exporter"
+    static_configs:
+      - targets: ["dcgm-exporter:9400"]
+
+  # Kubernetes 자체 상태(Pod Ready, Restart Count 등)는 kube-state-metrics를 통해
+  # 수집하는 것이 표준적인 방법이다. 이 프로젝트 범위에는 kube-state-metrics 배포까지는
+  # 포함하지 않았다 — README 한계 섹션에 명시함.
+  - job_name: "kube-state-metrics"
+    static_configs:
+      - targets: ["kube-state-metrics:8080"]

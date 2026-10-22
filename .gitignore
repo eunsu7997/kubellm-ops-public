@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.env
+.env.*
+!.env*.example
+.coverage
+htmlcov/
+build/
+dist/
+results/offline-harness-test-*/
+.runtime/
+# Generated captures can contain local paths and private access details.
+/evidence/instructor-demo/
+/slo-guard/capacity/

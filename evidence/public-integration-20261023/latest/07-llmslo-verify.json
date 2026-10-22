@@ -1,0 +1,79 @@
+{
+  "stage": "07-llmslo-verify",
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "started_at": "2026-10-22T12:16:52.435476+00:00",
+  "result": {
+    "upstream_slo_blob": "3caad8ed9923cb58f23cb611f7b6e187d96087a7",
+    "latency_semantics": "logical request to full SSE completion E2E, including retry waits; not TTFT",
+    "slo": {
+      "verdict": "PASS",
+      "run_valid": true,
+      "reason": "",
+      "checks": [
+        {
+          "name": "min_requests",
+          "target": ">= 40",
+          "actual": 40,
+          "status": "PASS",
+          "reason": ""
+        },
+        {
+          "name": "p99_ms",
+          "target": "<= 2500",
+          "actual": 1343.272700032685,
+          "status": "PASS",
+          "reason": ""
+        },
+        {
+          "name": "error_rate_pct",
+          "target": "<= 0",
+          "actual": 0.0,
+          "status": "PASS",
+          "reason": ""
+        }
+      ]
+    },
+    "summary": {
+      "total_requests": 40,
+      "successful_requests": 40,
+      "failed_requests": 0,
+      "error_rate_pct": 0.0,
+      "failures_by_outcome": {
+        "http_error": 0,
+        "invalid_response": 0,
+        "timeout": 0,
+        "connect_error": 0,
+        "transport_error": 0
+      },
+      "http_error_classes": {
+        "rate_limited_429": 0,
+        "request_invalid_4xx": 0,
+        "server_error_5xx": 0,
+        "other_status": 0
+      },
+      "http_error_status_counts": {},
+      "latency_ms": {
+        "samples": 40,
+        "p50": 462.25819998653606,
+        "p95": 1294.795299996622,
+        "p99": 1343.272700032685,
+        "min": 144.1678999690339,
+        "max": 1343.272700032685,
+        "mean": 607.4184924989822
+      },
+      "duration_s": 18.055795000097714,
+      "rps": 2.2153552363539535,
+      "success_rps": 2.2153552363539535
+    },
+    "accounting": {
+      "planned": 40,
+      "failed": 0,
+      "final_429": 0,
+      "accepted_failures": 0
+    },
+    "trace_runtime_sha256": "887946b9159526f281a8a03ec82dd1dee25ff356f5fc07a68a6fc66535f35116"
+  },
+  "status": "COMPLETED",
+  "finished_at": "2026-10-22T12:16:52.655380+00:00",
+  "elapsed_s": 0.21990670001832768
+}

@@ -1,0 +1,41 @@
+{
+  "policy": "token-retry",
+  "scheduled": 8,
+  "sent": 8,
+  "unsent": 0,
+  "counts": {
+    "success": 8
+  },
+  "success_rate": 1.0,
+  "accepted_failure_rate": 0.0,
+  "client_ttft_p99_s": 1.083368799998425,
+  "adapter_arrival_ttft_p99_s": 0.5613539000041783,
+  "high_ttft_p99_s": 0.27321860002120957,
+  "low_ttft_p99_s": 1.083368799998425,
+  "slo_1s_attainment_all_scheduled": 0.75,
+  "elapsed_including_drain_s": 3.468545100011397,
+  "output_tokens": 116,
+  "output_tokens_per_observed_second": 33.44341695300973,
+  "token_count_error_samples": 8,
+  "token_count_errors": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "retries": 2,
+  "http_attempts": 10,
+  "final_gate": {
+    "active": 0,
+    "queued": 0,
+    "reserved_tokens": 0,
+    "active_long": 0
+  },
+  "max_active": 1,
+  "max_queued": 2,
+  "max_reserved_tokens": 226
+}

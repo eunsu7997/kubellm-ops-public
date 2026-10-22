@@ -1,0 +1,44 @@
+name: kubellm-gpu-example
+services:
+  vllm:
+    # Recorded pull digest; Docker vLLM 0.30.0 evidence, not K8s verification.
+    image: vllm/vllm-openai@sha256:8a69ffad015f138d7170c4ddc429e230a3bc1c1719f67e14324749df200a4b90
+    command: ["--model", "Qwen/Qwen2.5-0.5B-Instruct", "--gpu-memory-utilization", "0.4", "--max-model-len", "2048"]
+    shm_size: "1gb"
+    ports: ["127.0.0.1:18002:8000"]
+    volumes: ["model-cache:/root/.cache/huggingface"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  gateway:
+    build: ./gateway
+    ports: ["127.0.0.1:18003:8000"]
+    environment:
+      VLLM_BASE_URL: http://vllm:8000
+      MODEL_NAME: Qwen/Qwen2.5-0.5B-Instruct
+      REQUEST_TIMEOUT: "60"
+    depends_on: [vllm]
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    ports: ["127.0.0.1:19091:9090"]
+    volumes:
+      - ./monitoring/vllm-example/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on: [gateway, vllm]
+  grafana:
+    image: grafana/grafana:11.2.0
+    ports: ["127.0.0.1:13001:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "${KUBELLM_EXAMPLE_GRAFANA_PASSWORD:?Set a local example password}"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    volumes:
+      - ./monitoring/vllm-example/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on: [prometheus]
+volumes:
+  model-cache:
+  grafana-data:

@@ -1,0 +1,27 @@
+groups:
+  - name: kubellm-local-operations
+    rules:
+      - alert: GatewayInferenceNotReady
+        expr: (gateway_backend_readiness_enabled == 1) and (gateway_backend_ready == 0)
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: Actual backend readiness checks have failed; investigate before restarting.
+      - alert: GatewayScrapeMissing
+        expr: up{job="gateway"} == 0
+        for: 30s
+        labels:
+          severity: warning
+      - alert: VllmScrapeMissing
+        expr: up{job="vllm"} == 0
+        for: 30s
+        labels:
+          severity: warning
+      - alert: VllmQueuePersisting
+        expr: vllm:num_requests_waiting > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: Queue persisted for one minute; this is not a calibrated capacity or SLO threshold.

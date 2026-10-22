@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mock-backend
+  namespace: kubellm-ops
+  labels:
+    app: mock-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mock-backend
+  template:
+    metadata:
+      labels:
+        app: mock-backend
+    spec:
+      containers:
+        - name: mock-backend
+          # gateway/deployment.yaml과 동일한 이유로 :local 태그 + IfNotPresent를 쓴다.
+          # 빌드: docker build -t kubellm-ops-mock-backend:local ./mock-backend
+          image: kubellm-ops-mock-backend:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8001
+          env:
+            - name: MOCK_SLOW_DELAY_SECONDS
+              value: "5"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8001
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8001
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "250m"
+              memory: "128Mi"

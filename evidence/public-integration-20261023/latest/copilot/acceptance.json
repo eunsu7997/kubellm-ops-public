@@ -1,0 +1,6 @@
+{
+  "eligible_draft": false,
+  "auto_actions_allowed": false,
+  "fallback": "<LOCAL_USER>\\Documents\\kubellm-ops\\evidence\\instructor-demo\\20261022T121552572662Z\\pipeline\\candidate-report\\REPORT.md",
+  "human_review_required": true
+}

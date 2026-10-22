@@ -1,0 +1,40 @@
+{
+  "stage": "10-scale-capacity-preview",
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "started_at": "2026-10-22T12:17:03.576338+00:00",
+  "result": {
+    "actual_metric": {
+      "observed": 277630.9481928,
+      "kv_fraction": 0.0,
+      "raw": "vllm:num_requests_running{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\nvllm:num_requests_waiting{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\nvllm:kv_cache_usage_perc{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\nvllm:num_preemptions_total{engine=\"0\",model_name=\"Qwen/Qwen2.5-0.5B-Instruct\"} 0.0\n"
+    },
+    "actual_preview": {
+      "mode": "offline preview only",
+      "apply_allowed": false,
+      "current": 1,
+      "physical_gpus": 1,
+      "controller_path": "single KEDA-managed HPA (design)",
+      "status": "STEADY",
+      "desired": 1,
+      "deployable_without_new_gpu": 1,
+      "warning": "Kueue/time-slicing logical slots are not extra physical GPUs; loading/warmup not estimated"
+    },
+    "capacity_branch": {
+      "synthetic": true,
+      "result": {
+        "mode": "offline preview only",
+        "apply_allowed": false,
+        "current": 1,
+        "physical_gpus": 1,
+        "controller_path": "single KEDA-managed HPA (design)",
+        "status": "CAPACITY_BLOCKED",
+        "desired": 2,
+        "deployable_without_new_gpu": 1,
+        "warning": "Kueue/time-slicing logical slots are not extra physical GPUs; loading/warmup not estimated"
+      }
+    }
+  },
+  "status": "COMPLETED",
+  "finished_at": "2026-10-22T12:17:04.033408+00:00",
+  "elapsed_s": 0.4570714000146836
+}

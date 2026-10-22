@@ -1,0 +1,51 @@
+{
+  "stage": "01-deploy-guard",
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "started_at": "2026-10-22T12:15:56.084984+00:00",
+  "result": {
+    "allowed": true,
+    "checks": [
+      {
+        "check": "gpu_resource_limit",
+        "status": "PASS",
+        "evidence": "spec.template.spec.containers[0] (name='vllm').resources.limits['nvidia.com/gpu'] = 1; required numeric value >= 1",
+        "recommendation": "No change required for this GPU limit."
+      },
+      {
+        "check": "cpu_resources",
+        "status": "PASS",
+        "evidence": "spec.template.spec.containers[0] (name='vllm').resources: requests.cpu = '2'; limits.cpu = '4'",
+        "recommendation": "No change required for CPU resource presence and format."
+      },
+      {
+        "check": "memory_resources",
+        "status": "PASS",
+        "evidence": "spec.template.spec.containers[0] (name='vllm').resources: requests.memory = '4Gi'; limits.memory = '8Gi'",
+        "recommendation": "No change required for Memory resource presence and format."
+      },
+      {
+        "check": "startup_probe",
+        "status": "PASS",
+        "evidence": "spec.template.spec.containers[0] (name='vllm').startupProbe = {'httpGet': {'path': '/health', 'port': 8000}, 'periodSeconds': 10, 'timeoutSeconds': 5, 'failureThreshold': 60}",
+        "recommendation": "No change required for startupProbe handler structure."
+      },
+      {
+        "check": "readiness_probe",
+        "status": "PASS",
+        "evidence": "spec.template.spec.containers[0] (name='vllm').readinessProbe = {'httpGet': {'path': '/health', 'port': 8000}, 'periodSeconds': 10, 'timeoutSeconds': 5, 'failureThreshold': 3}",
+        "recommendation": "No change required for readinessProbe handler structure."
+      },
+      {
+        "check": "liveness_probe",
+        "status": "PASS",
+        "evidence": "spec.template.spec.containers[0] (name='vllm').livenessProbe = {'httpGet': {'path': '/health', 'port': 8000}, 'periodSeconds': 20, 'timeoutSeconds': 5, 'failureThreshold': 3}",
+        "recommendation": "No change required for livenessProbe handler structure."
+      }
+    ],
+    "source_sha256": "a375ab80b1bb9af9e91703f19a00337bfeac54e0461c2c0f84d9a5626b9177e2",
+    "mode": "static, no kubectl/apply"
+  },
+  "status": "COMPLETED",
+  "finished_at": "2026-10-22T12:15:56.653801+00:00",
+  "elapsed_s": 0.5688165999599732
+}

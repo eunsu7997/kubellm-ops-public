@@ -1,0 +1,4 @@
+# Optional debugging access; never publish vLLM on 0.0.0.0 or [::].
+services:
+  vllm:
+    ports: ["127.0.0.1:18002:8000"]

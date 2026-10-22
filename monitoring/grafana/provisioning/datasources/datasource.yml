@@ -1,0 +1,10 @@
+# NOT VERIFIED: 실제 Grafana를 이 설정으로 띄워서 확인하지는 못했다.
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    uid: prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true

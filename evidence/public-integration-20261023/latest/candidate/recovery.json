@@ -1,0 +1,28 @@
+{
+  "ready": {
+    "status": 200,
+    "seconds": 0.041,
+    "text": "{\"status\":\"ready\"}"
+  },
+  "chat": {
+    "status": 200,
+    "seconds": 0.177,
+    "text": "{\"id\":\"chatcmpl-84203bdbc1afdd37\",\"object\":\"chat.completion\",\"created\":1792671412,\"model\":\"Qwen/Qwen2.5-0.5B-Instruct\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"OK! How can I assist you today\",\"refusal\":null,\"annotations\":null,\"audio\":null,\"function_call\":null,\"reasoning\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"stop_reason\":null,\"token_ids\":null,\"routed_experts\":null}],\"service_tier\":null,\"system_fingerprint\":\"vllm-0.30.0-nohash\",\"usage\":{\"prompt_tokens\":31,\"total_tokens\":39,\"completion_tokens\":8,\"prompt_tokens_details\":null,\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}",
+    "ok": true
+  },
+  "sse": {
+    "ok": true,
+    "status": 200,
+    "chunks": 18,
+    "ttft_s": 0.072,
+    "seconds": 0.344,
+    "done": true
+  },
+  "runtime_stock": true,
+  "gpu": {
+    "temp_c": 55.0,
+    "used_mib": 7139.0,
+    "free_mib": 1049.0,
+    "util": 17.0
+  }
+}

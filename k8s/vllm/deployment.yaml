@@ -1,0 +1,86 @@
+# 주의(NOT VERIFIED): 이 YAML은 실제 GPU가 달린 Kubernetes 클러스터에 배포해서 확인하지
+# 못했다. 현재 kind 노드의 GPU Allocatable은 확인하지 않았다. NVIDIA device plugin이
+# 설치돼 있고 nvidia.com/gpu 리소스를 스케줄링할 수 있는 클러스터를 전제로 작성했다.
+# Source-only sizing, prerequisites and approval-gated rollback: docs/kubernetes-gpu-readiness.md
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm
+  namespace: kubellm-ops
+  labels:
+    app: vllm
+spec:
+  replicas: 1
+  # Avoid a second Pod competing for the only GPU during a future approved update.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: vllm
+  template:
+    metadata:
+      labels:
+        app: vllm
+    spec:
+      terminationGracePeriodSeconds: 60
+      volumes:
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 1Gi
+      containers:
+        - name: vllm
+          image: vllm/vllm-openai@sha256:8a69ffad015f138d7170c4ddc429e230a3bc1c1719f67e14324749df200a4b90
+          # 저장된 시작 실패: cuda>=13.0 요구. CUDA 13을 지원하는 호스트 드라이버와
+          # NVIDIA 컨테이너 런타임/device plugin 필요. 드라이버 설치·변경은 수행하지 않음.
+          # Qwen 및 메모리 옵션은 Docker 증거와 일치하지만 Kubernetes 실행은 NOT VERIFIED.
+          # 모델 revision은 미고정이며 저장된 증거에서 정확한 revision을 확인할 수 없음.
+          args:
+            - "--model"
+            - "Qwen/Qwen2.5-0.5B-Instruct"
+            - "--gpu-memory-utilization"
+            - "0.4"
+            - "--max-model-len"
+            - "2048"
+            - "--port"
+            - "8000"
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: shm
+              mountPath: /dev/shm
+          resources:
+            limits:
+              cpu: "4"
+              memory: 8Gi
+              ephemeral-storage: 16Gi
+              nvidia.com/gpu: 1
+            requests:
+              cpu: "2"
+              memory: 4Gi
+              ephemeral-storage: 8Gi
+              nvidia.com/gpu: 1
+          # 모델을 GPU 메모리에 올리는 데 수십 초~수 분이 걸릴 수 있다. Startup Probe를 너무
+          # 빡빡하게 잡으면 모델 로딩 중에 컨테이너가 계속 재시작당하는 문제가 생긴다.
+          # 최대 10분(60회 * 10초)까지 기다리도록 여유 있게 잡았다.
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3

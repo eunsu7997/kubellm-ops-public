@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: kubellm-ops
+  labels:
+    app: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          # :latest 태그는 Kubernetes 기본 imagePullPolicy를 Always로 만들어서, 로컬에만
+          # 있는 이미지를 레지스트리에서 다시 받으려다 실패한다(ErrImagePull). Docker
+          # Desktop의 Kubernetes는 로컬 docker build로 만든 이미지를 그대로 쓸 수 있으므로
+          # :local 태그 + imagePullPolicy: IfNotPresent로 레지스트리 접근 자체를 막는다.
+          # 빌드: docker build -t kubellm-ops-gateway:local ./gateway
+          image: kubellm-ops-gateway:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: gateway-config
+          # --- Probe 3종 (README "Kubernetes Health Probe" 절에 각각의 이유를 설명함) ---
+          # Startup Probe: Gateway는 모델을 직접 로딩하지 않아 기동이 빠르다.
+          # 최대 30초(6회 * 5초)면 충분하다고 보고, 그 안에 못 뜨면 컨테이너를 재시작한다.
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 6
+          # Readiness Probe: /readyz는 내부 HTTP 클라이언트가 초기화된 뒤에만 200을 준다.
+          # 실패해도 Pod를 재시작하지 않고, 이 Pod로 트래픽만 안 보낸다.
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8000
+            initialDelaySeconds: 2
+            periodSeconds: 5
+            failureThreshold: 3
+          # Liveness Probe: 프로세스가 응답 불능(deadlock 등) 상태에 빠졌는지만 본다.
+          # 백엔드(vLLM) 장애는 여기서 실패로 취급하지 않는다 — 그건 Gateway 자체의 문제가
+          # 아니라서, Liveness가 실패해 Gateway를 재시작해도 해결되지 않기 때문이다.
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"

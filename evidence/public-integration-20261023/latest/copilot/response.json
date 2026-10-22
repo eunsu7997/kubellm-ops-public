@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-a83513e702cdf0c4",
+  "object": "chat.completion",
+  "created": 1792671421,
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"suspected_cause\": \"제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다.\",\n  \"referenced_log_ids\": [\"RUN\", \"RECOVERY\"],\n  \"next_steps\": [\"통합 후속 실행 결과\"],\n  \"unknowns\": []\n}\n```",
+        "refusal": null,
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "reasoning": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "token_ids": null,
+      "routed_experts": null
+    }
+  ],
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.30.0-nohash",
+  "usage": {
+    "prompt_tokens": 745,
+    "total_tokens": 819,
+    "completion_tokens": 74,
+    "prompt_tokens_details": null,
+    "completion_tokens_details": null
+  },
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "prompt_text": null,
+  "kv_transfer_params": null,
+  "ec_transfer_params": null,
+  "metrics": null
+}

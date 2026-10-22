@@ -1,0 +1,17 @@
+{
+  "selected_files_scanned": 301,
+  "pattern_candidates": [],
+  "old_history_copied": false,
+  "commit_identity": "GitHub noreply",
+  "local_tests": {
+    "passed": 318,
+    "skipped": 1
+  },
+  "ruff": "PASS",
+  "offline_replay": "PASS",
+  "limitations": [
+    "Limited pattern checks, not a security certification",
+    "Historical evidence referenced outside export remains private",
+    "Some public Markdown wording/links differ; public hash is separate"
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "path": "docs/INTEGRATION-FOLLOWUP-20261022.md",
+    "line": 25,
+    "text": "| basic | 24/24 | 0/24 | 0 | 237.9 | 46.76 | 284 |\n| token budget250 | 18/24 | 6/24 | 0 | 389.0 | 33.03 | 226 |\n| token budget250 + direct KV | 18/24 | 6/24 | 0 | 359.5 | 32.95 | 226 |\n\n**96건 처리 = 성공84 + queue_full 429거절12**이며 미전송/transport failure0이다. supervisor의 정상 terminal96을 모델 성공96이라고 해석하면 안 된다. 정책별 성공-only P99의 표본은 off/basic24, token18이고 각각의 phase는8건뿐이다. nearest rank P99는 사실상 최대값이다.\n\n- 토큰 정책의 전체 예정 대비 성공률과 예시1초 attainment는75%. 실패 포함 P99는 `unbounded`, JSON seconds=null이다. 429를 성공 분모에서 빼지 않았다.\n- client TTFT는 로컬 HTTP 전송부터 첫 content까지이며 어댑터 큐 대기를 포함한다. 서버 도착→content의 별도 phase별 P99도 `report-03/p2-metrics.json`에 보존했다.\n- 출력 tokens/s는 phase completion usage 합계 / 해당 phase의 첫 예정 도착부터 drain 종료+50",
+    "file_sha256": "a54723f2c99d740eba8ea798fa6048bfefc819be53cc9e37160ee2dabeb3dc2f",
+    "score": 2,
+    "evidence_id": "RB-01"
+  },
+  {
+    "path": "docs/INTEGRATION-FOLLOWUP-20261022.md",
+    "line": 1,
+    "text": "# 통합 후속 실행 결과 — 2026-10-22\n\n**현재 판정:** 제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다. 과부하 보호/성능 개선, 안정적인 모집단 P99, 완성된5모듈 통합 또는 자동 복구는 검증하지 않았다.\n\n이 문서는 [P0 조사](INTEGRATION-P0-20261022.md)와 [첫 P1 비교](INTEGRATION-P1-20261022.md)의 후속이다. 기존 결과는 수정하지 않았다. 원격 후속6개 커밋은 문서 변경이며 실행 코드 기준선은14e2488, 추가 실험 코드는 현재 미커밋 작업으로 보존한다.\n\n## 추가한 연결과 경계\n\n1. **gpuq → 사전 검사:** 기존 `gpuq.report.summarize/team_stats`에 실제 k3s Kueue Workload 조회 결과를 전달했다. 완료6개·실행 중 GPU 배치0개를 확인했다. 다른 k3s GPU Pod도 별도 조회해 중복 점유를 차단한다. Kubernetes 변경 없이 조회만 수행한다. Kueue가 HTTP 요청을 스케줄링하는 것은 아니다.\n2. **vLLM KV → admission:** 기존 컨테이너의 `/metrics`를 직접 읽어 `kv_cache_usage_perc`의0~1 fraction을 사용한다. 임계85%, 허용 age4초. 누락/NaN/범위 오류/오래된 값은 신규 수락 보류 후429. GP",
+    "file_sha256": "a54723f2c99d740eba8ea798fa6048bfefc819be53cc9e37160ee2dabeb3dc2f",
+    "score": 1,
+    "evidence_id": "RB-02"
+  }
+]

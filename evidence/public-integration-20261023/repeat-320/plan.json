@@ -1,0 +1,172 @@
+{
+  "created": "2026-10-22T11:02:39.954+00:00",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "prompts": {
+    "Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly.": {
+      "long": false,
+      "input_tokens": 42,
+      "max_tokens": 16
+    },
+    "Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly.": {
+      "long": true,
+      "input_tokens": 162,
+      "max_tokens": 64
+    }
+  },
+  "worker_event_loop": "SelectorEventLoop",
+  "trace": [
+    {
+      "request_id": 0,
+      "offset": 0.0,
+      "priority": "high",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 1,
+      "offset": 0.02,
+      "priority": "high",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 2,
+      "offset": 0.04,
+      "priority": "low",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 3,
+      "offset": 0.06,
+      "priority": "low",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 4,
+      "offset": 2.0,
+      "priority": "high",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 5,
+      "offset": 2.02,
+      "priority": "high",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 6,
+      "offset": 2.04,
+      "priority": "low",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    },
+    {
+      "request_id": 7,
+      "offset": 2.06,
+      "priority": "low",
+      "prompt": "Explain Explain Explain Explain Explain Explain Explain Explain. Reply briefly."
+    }
+  ],
+  "order": [
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget",
+    "token-budget",
+    "token-retry",
+    "token-retry",
+    "token-budget"
+  ],
+  "followup": true,
+  "gate": {
+    "inflight": 2,
+    "queue": 2,
+    "wait_s": 0.6,
+    "tokens": 250,
+    "long_limit": 4,
+    "aging_s": 0.2
+  },
+  "slo": {
+    "exploratory_ttft_s": 1,
+    "minimum_success": 1,
+    "recovery": "ready200 + actual chat success + SSE DONE + zero adapter leases"
+  },
+  "warmup": "preflight chat and SSE excluded; existing model warm, no restart",
+  "retry": {
+    "token-retry": "429-only,2 attempts,2.5s total, Retry-After+jitter0..50ms",
+    "token-budget": "none",
+    "logical_arrivals": "identical fixed trace",
+    "rounds": 20
+  },
+  "limitations": "small fixed synthetic trace; no saturation/OOM or policy superiority claim",
+  "runtime": {
+    "image": "sha256:8a69ffad015f138d7170c4ddc429e230a3bc1c1719f67e14324749df200a4b90",
+    "args": [
+      "serve",
+      "--model",
+      "Qwen/Qwen2.5-0.5B-Instruct",
+      "--gpu-memory-utilization",
+      "0.4",
+      "--max-model-len",
+      "2048",
+      "--revision",
+      "7ae557604adf67be50417f59c2c2f167def9a775"
+    ],
+    "devices": [
+      {
+        "Driver": "nvidia",
+        "Count": -1,
+        "DeviceIDs": null,
+        "Capabilities": [
+          [
+            "gpu"
+          ]
+        ],
+        "Options": null
+      }
+    ]
+  },
+  "source_sha256": {
+    "scripts\\ops\\compare_admission.py": "78058be65369ad5f564a0cbe9c6e21ccf8d541931543798e4b36052cd9a78a37",
+    "scripts\\ops\\http_admission.py": "10b690ff93243685977159796a2c772558cc280229368ca75410ce05f053b963",
+    "scripts\\load-test\\open_loop.py": "ab71bc49252aadac188e3ce996ba5601a7fe9971b506b28de60832b61e724d5e",
+    "scripts\\ops\\safety_harness.py": "fc040c9c88d1d2f333089f61c3e88412e0ffe9014c6856f90d5dc6871eb118d2",
+    "scripts\\ops\\integration_bridge.py": "6fe1292c1984e94ef046e8b05a6d297ac9550b746713af3bead98cff72699ec0",
+    "scripts\\ops\\bounded_retry.py": "6861c26deaebddd37722a2102ad7219ef42005ce1e9e4927baf7909531d13010"
+  },
+  "cache": {
+    "source": "direct vLLM /metrics via existing docker exec",
+    "max_age_s": 4,
+    "pressure_fraction": 0.85,
+    "failure_action": "hold admission then 429"
+  }
+}

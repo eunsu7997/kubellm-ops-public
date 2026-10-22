@@ -1,0 +1,17 @@
+# Isolated rehearsal of the Prometheus TSDB migration failure branch. Never touches the live kubellm-gpu-secure project.
+name: kubellm-rehearsal
+services:
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    ports: ["127.0.0.1:19096:9090"]
+    volumes:
+      - data:/prometheus
+      - ../../../monitoring/operations/restore-prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+volumes:
+  data:
+    external: true
+    name: ${REHEARSAL_DATA_VOLUME:?set the rehearsal volume}

@@ -1,0 +1,54 @@
+# Observed limited WSL metrics; power/profiling support not assumed.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubellm-dcgm-trial
+  namespace: kubellm-gpu-validation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubellm-dcgm-trial
+  template:
+    metadata:
+      labels:
+        app: kubellm-dcgm-trial
+    spec:
+      automountServiceAccountToken: false
+      runtimeClassName: nvidia
+      containers:
+      - name: exporter
+        image: nvcr.io/nvidia/k8s/dcgm-exporter@sha256:ec962b59c8440427ddc2901fdb2616070d91a29da089a6d68c03ab1abdcf8870
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DCGM_EXPORTER_KUBERNETES
+          value: 'false'
+        - name: DCGM_EXPORTER_INTERVAL
+          value: '5000'
+        ports:
+        - containerPort: 9400
+        securityContext:
+          capabilities:
+            add:
+            - SYS_ADMIN
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+            nvidia.com/gpu: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubellm-dcgm-trial
+  namespace: kubellm-gpu-validation
+spec:
+  selector:
+    app: kubellm-dcgm-trial
+  ports:
+  - name: metrics
+    port: 9400
+    targetPort: 9400

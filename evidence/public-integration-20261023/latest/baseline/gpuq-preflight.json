@@ -1,0 +1,108 @@
+{
+  "reporter_sha256": "a1e85772ae8533697eedddd98b6bb56a61d4dc1bcf3607e35ed78e947788037f",
+  "command": [
+    "wsl",
+    "-d",
+    "Ubuntu-24.04",
+    "--",
+    "/usr/local/bin/k3s",
+    "kubectl",
+    "get",
+    "workloads",
+    "-A",
+    "-o",
+    "json"
+  ],
+  "rows": [
+    {
+      "job": "a-01",
+      "team": "team-a",
+      "priority": "low",
+      "gpus": 1,
+      "state": "Finished",
+      "cluster_queue": "team-a-cq",
+      "created": "2026-10-01 17:42:48",
+      "wait_s": 0.0,
+      "run_s": 240.0,
+      "evictions": 0
+    },
+    {
+      "job": "a-02",
+      "team": "team-a",
+      "priority": "low",
+      "gpus": 1,
+      "state": "Finished",
+      "cluster_queue": "team-a-cq",
+      "created": "2026-10-01 17:42:50",
+      "wait_s": 215.0,
+      "run_s": 92.0,
+      "evictions": 1
+    },
+    {
+      "job": "a-03",
+      "team": "team-a",
+      "priority": "low",
+      "gpus": 1,
+      "state": "Finished",
+      "cluster_queue": "team-a-cq",
+      "created": "2026-10-01 17:42:50",
+      "wait_s": 0.0,
+      "run_s": 238.0,
+      "evictions": 0
+    },
+    {
+      "job": "a-04",
+      "team": "team-a",
+      "priority": "low",
+      "gpus": 1,
+      "state": "Finished",
+      "cluster_queue": "team-a-cq",
+      "created": "2026-10-01 17:42:51",
+      "wait_s": 216.0,
+      "run_s": 91.0,
+      "evictions": 1
+    },
+    {
+      "job": "b-01",
+      "team": "team-b",
+      "priority": "low",
+      "gpus": 1,
+      "state": "Finished",
+      "cluster_queue": "team-b-cq",
+      "created": "2026-10-01 17:44:18",
+      "wait_s": 1.0,
+      "run_s": 125.0,
+      "evictions": 0
+    },
+    {
+      "job": "b-02",
+      "team": "team-b",
+      "priority": "low",
+      "gpus": 1,
+      "state": "Finished",
+      "cluster_queue": "team-b-cq",
+      "created": "2026-10-01 17:44:18",
+      "wait_s": 2.0,
+      "run_s": 126.0,
+      "evictions": 0
+    }
+  ],
+  "teams": {
+    "team-a": {
+      "jobs": 4,
+      "admitted": 4,
+      "evictions": 2,
+      "avg_wait_s": 107.8,
+      "max_wait_s": 216.0
+    },
+    "team-b": {
+      "jobs": 2,
+      "admitted": 2,
+      "evictions": 0,
+      "avg_wait_s": 1.5,
+      "max_wait_s": 2.0
+    }
+  },
+  "active_gpu_batches": 0,
+  "experiment_allowed": true
+}

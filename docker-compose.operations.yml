@@ -1,0 +1,42 @@
+# Apply with docker-compose.vllm-secure.yml, after the TSDB migration rehearsal.
+# Do not run a whole-stack up with a placeholder Grafana password.
+services:
+  gateway:
+    image: kubellm-ops-gateway:operations-20261021
+  prometheus:
+    volumes:
+      - ./monitoring/operations/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/operations/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+  alertmanager:
+    image: prom/alertmanager@sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a
+    networks: [backend]
+    ports: ["127.0.0.1:19093:9093"]
+    volumes:
+      - ./monitoring/operations/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - alertmanager-data:/alertmanager
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+      - --storage.path=/alertmanager
+      - --cluster.listen-address=
+  alert-receiver:
+    image: kubellm-alert-receiver:operations-20261021
+    build: ./monitoring/alert-receiver
+    networks: [backend]
+    ports: ["127.0.0.1:19094:8000"]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    volumes:
+      - alert-receiver-data:/data
+volumes:
+  prometheus-data:
+    name: kubellm-gpu-secure_prometheus-data
+  alertmanager-data:
+    name: kubellm-gpu-secure_alertmanager-data
+  alert-receiver-data:
+    name: kubellm-gpu-secure_alert-receiver-data

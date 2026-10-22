@@ -1,0 +1,756 @@
+{
+  "RUN": {
+    "path": "<LOCAL_USER>\\Documents\\kubellm-ops\\evidence\\instructor-demo\\20261022T121552572662Z\\pipeline\\candidate\\comparison.json",
+    "metrics": {
+      "token-retry": {
+        "scheduled": 40,
+        "success": 40,
+        "counts": {
+          "success": 40
+        },
+        "success_rate": 1.0,
+        "429_rate": 0.0,
+        "http_attempts": 50,
+        "attempt_amplification": 1.25,
+        "attempt_429_count": 10,
+        "max_attempts_per_logical": 2,
+        "accepted_failure_rate": 0.0,
+        "successful_client_ttft_p99_s": 1.0968089000089094,
+        "failure_inclusive_p99": {
+          "kind": "finite",
+          "seconds": 1.0968089000089094
+        },
+        "slo_1s_attainment": 0.75,
+        "output_tokens_per_observed_second": 34.25749906680052,
+        "per_priority": {
+          "high": {
+            "scheduled": 20,
+            "success": 20,
+            "successful_ttft_p99_s": 0.540607100003399
+          },
+          "low": {
+            "scheduled": 20,
+            "success": 20,
+            "successful_ttft_p99_s": 1.0968089000089094
+          }
+        },
+        "phase_client_p99_s": [
+          1.0741293000173755,
+          1.072765699995216,
+          1.08306580001954,
+          1.0968089000089094,
+          1.083368799998425
+        ],
+        "adapter_arrival_p99_per_phase_s": [
+          0.5317947000148706,
+          0.33248560002539307,
+          0.3878279000055045,
+          0.5375131999608129,
+          0.5613539000041783
+        ],
+        "max_active": 1,
+        "max_reserved_tokens": 226
+      }
+    }
+  },
+  "PLAN": {
+    "path": "<LOCAL_USER>\\Documents\\kubellm-ops\\evidence\\instructor-demo\\20261022T121552572662Z\\pipeline\\candidate\\plan.json",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "order": [
+      "token-retry",
+      "token-retry",
+      "token-retry",
+      "token-retry",
+      "token-retry"
+    ]
+  },
+  "GPUQ": {
+    "reporter_sha256": "a1e85772ae8533697eedddd98b6bb56a61d4dc1bcf3607e35ed78e947788037f",
+    "command": [
+      "wsl",
+      "-d",
+      "Ubuntu-24.04",
+      "--",
+      "/usr/local/bin/k3s",
+      "kubectl",
+      "get",
+      "workloads",
+      "-A",
+      "-o",
+      "json"
+    ],
+    "rows": [
+      {
+        "job": "a-01",
+        "team": "team-a",
+        "priority": "low",
+        "gpus": 1,
+        "state": "Finished",
+        "cluster_queue": "team-a-cq",
+        "created": "2026-10-01 17:42:48",
+        "wait_s": 0.0,
+        "run_s": 240.0,
+        "evictions": 0
+      },
+      {
+        "job": "a-02",
+        "team": "team-a",
+        "priority": "low",
+        "gpus": 1,
+        "state": "Finished",
+        "cluster_queue": "team-a-cq",
+        "created": "2026-10-01 17:42:50",
+        "wait_s": 215.0,
+        "run_s": 92.0,
+        "evictions": 1
+      },
+      {
+        "job": "a-03",
+        "team": "team-a",
+        "priority": "low",
+        "gpus": 1,
+        "state": "Finished",
+        "cluster_queue": "team-a-cq",
+        "created": "2026-10-01 17:42:50",
+        "wait_s": 0.0,
+        "run_s": 238.0,
+        "evictions": 0
+      },
+      {
+        "job": "a-04",
+        "team": "team-a",
+        "priority": "low",
+        "gpus": 1,
+        "state": "Finished",
+        "cluster_queue": "team-a-cq",
+        "created": "2026-10-01 17:42:51",
+        "wait_s": 216.0,
+        "run_s": 91.0,
+        "evictions": 1
+      },
+      {
+        "job": "b-01",
+        "team": "team-b",
+        "priority": "low",
+        "gpus": 1,
+        "state": "Finished",
+        "cluster_queue": "team-b-cq",
+        "created": "2026-10-01 17:44:18",
+        "wait_s": 1.0,
+        "run_s": 125.0,
+        "evictions": 0
+      },
+      {
+        "job": "b-02",
+        "team": "team-b",
+        "priority": "low",
+        "gpus": 1,
+        "state": "Finished",
+        "cluster_queue": "team-b-cq",
+        "created": "2026-10-01 17:44:18",
+        "wait_s": 2.0,
+        "run_s": 126.0,
+        "evictions": 0
+      }
+    ],
+    "teams": {
+      "team-a": {
+        "jobs": 4,
+        "admitted": 4,
+        "evictions": 2,
+        "avg_wait_s": 107.8,
+        "max_wait_s": 216.0
+      },
+      "team-b": {
+        "jobs": 2,
+        "admitted": 2,
+        "evictions": 0,
+        "avg_wait_s": 1.5,
+        "max_wait_s": 2.0
+      }
+    },
+    "active_gpu_batches": 0,
+    "experiment_allowed": true
+  },
+  "RECOVERY": {
+    "ready": {
+      "status": 200,
+      "seconds": 0.041,
+      "text": "{\"status\":\"ready\"}"
+    },
+    "chat": {
+      "status": 200,
+      "seconds": 0.177,
+      "text": "{\"id\":\"chatcmpl-84203bdbc1afdd37\",\"object\":\"chat.completion\",\"created\":1792671412,\"model\":\"Qwen/Qwen2.5-0.5B-Instruct\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"OK! How can I assist you today\",\"refusal\":null,\"annotations\":null,\"audio\":null,\"function_call\":null,\"reasoning\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"stop_reason\":null,\"token_ids\":null,\"routed_experts\":null}],\"service_tier\":null,\"system_fingerprint\":\"vllm-0.30.0-nohash\",\"usage\":{\"prompt_tokens\":31,\"total_tokens\":39,\"completion_tokens\":8,\"prompt_tokens_details\":null,\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}",
+      "ok": true
+    },
+    "sse": {
+      "ok": true,
+      "status": 200,
+      "chunks": 18,
+      "ttft_s": 0.072,
+      "seconds": 0.344,
+      "done": true
+    },
+    "runtime_stock": true,
+    "gpu": {
+      "temp_c": 55.0,
+      "used_mib": 7139.0,
+      "free_mib": 1049.0,
+      "util": 17.0
+    }
+  },
+  "ACCESS": {
+    "kubellm-gpu-secure-gateway-1": [
+      {
+        "timestamp": "2026-10-22T12:16:31.895217296Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:32.212164002Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:32.344206397Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:32.843386347Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.000720726Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.648722353Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.777039352Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.920631779Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:34.634436990Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.318692671Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.460496565Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.620748042Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:36.296654119Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:37.116377095Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:37.250219356Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:37.410755797Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:38.000584137Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:38.079771515Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:38.871761345Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.042414381Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.214414546Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.855641287Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.958530106Z",
+        "method": "GET",
+        "path": "/readyz",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.670860710Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.813630441Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.993837877Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:41.654014393Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:42.420085387Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:42.616241602Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:42.862691659Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:43.001199258Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:43.392029973Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:44.206009229Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:44.369425538Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:44.547637070Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:45.204962814Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:45.952858310Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:47.141827993Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:49.416837744Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:49.981726382Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:50.810727564Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.021171346Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.070598587Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.306331187Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.797676317Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      }
+    ],
+    "kubellm-gpu-secure-vllm-1": [
+      {
+        "timestamp": "2026-10-22T12:16:30.981968069Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:31.893917860Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:32.211183410Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:32.342835267Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:32.842471616Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.647684420Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.776028433Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:33.919444478Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:34.633350148Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.317594157Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.459347717Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.619471091Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:35.980859833Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:36.295326242Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:37.115410833Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:37.248893780Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:37.409699866Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:38.078459852Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:38.870669157Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.041589221Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.213293529Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.854274644Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:39.957498879Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.669653868Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.812566281Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.983073022Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:40.992716476Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:41.652969291Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:42.418858553Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:42.614918045Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:42.861389014Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:43.394666948Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:44.204869923Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:44.368119601Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:44.546415687Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:45.203500879Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:45.951573561Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:45.983326946Z",
+        "method": "GET",
+        "path": "/metrics",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:47.140558623Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:49.415481306Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:49.980472978Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:50.809775506Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.019914385Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.304902502Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      },
+      {
+        "timestamp": "2026-10-22T12:16:51.796336143Z",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "status": 200
+      }
+    ],
+    "capture_window": {
+      "since": "2026-10-22T12:16:29.615+00:00",
+      "until": "2026-10-22T12:16:52.143085+00:00",
+      "until_basis": "recovery receipt filesystem write timestamp (upper bound)",
+      "tail_limit_per_container": 2000,
+      "complete_raw_log_coverage_claimed": false
+    }
+  }
+}

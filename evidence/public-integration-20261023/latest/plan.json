@@ -1,0 +1,51 @@
+{
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "created": "2026-10-22T12:15:56.071275+00:00",
+  "rounds": 5,
+  "objectives": {
+    "p99_ms_max": 2500,
+    "error_rate_pct_max": 0,
+    "min_requests": 40,
+    "min_latency_samples": 20
+  },
+  "objective_semantics": "exploratory full-SSE E2E <=2.5s and logical errors0; not service SLA",
+  "scope": "local experiment only; no Kubernetes writes, production mutation, paid API or external sends",
+  "action_allowlist": [
+    "EXPERIMENT_ENABLE_BOUNDED_429_RETRY"
+  ],
+  "source_sha256": {
+    "scripts\\ops\\analyze_exp02.py": "4c093bb57b99a215e41542e702553cf05f32ad0307624a90534b1f92ecf3c5cb",
+    "scripts\\ops\\analyze_exp07_ramp.py": "1662b3b23d42ed2e277b5b8976409cb10b4b21c56b6be2bd1b760217311e35a6",
+    "scripts\\ops\\bounded_retry.py": "6861c26deaebddd37722a2102ad7219ef42005ce1e9e4927baf7909531d13010",
+    "scripts\\ops\\build_instructor_packet.py": "786615751a418b82c67140353b8063016ee7e0b4a48c937c11d6bbadebcd5c19",
+    "scripts\\ops\\check_demo_endpoint.py": "6323f231c6501c10c5334613b023b4a413d76e904a6cce1d1a2c37bdd4f8160e",
+    "scripts\\ops\\compare_admission.py": "0bddf2c9c29e7629a9933038b6a654b7b06216c0352694d9e4dd82f557745792",
+    "scripts\\ops\\copilot_local_probe.py": "d7a2d7d67ad4b044b083788bd69fe9b74c107aaf12f9b4246164cde5f75fe88f",
+    "scripts\\ops\\crosscheck_llmslo.py": "814a27eb1ccd0551c7615feb99061158c452ecce73b9207f41f416426459abd5",
+    "scripts\\ops\\demo.py": "89f56a172b5dc584929741a52b8375649e928bb31f000d86d11e50961d4d9b4a",
+    "scripts\\ops\\exp01_revision.py": "32fcba52386d6acddd902a2c03f0d64e4e64361533cec541ac821d44457c776b",
+    "scripts\\ops\\exp02_readiness503.py": "804937b6c3325c10b2f078ad15c2b4425c287580e85ead207554903953111a8f",
+    "scripts\\ops\\exp03a_prometheus_rollback.py": "d298ad50a92b42c7ccc30b92d550f635ab9ba7a719df9b6fff1fd5ad63a4e7b5",
+    "scripts\\ops\\exp03b_receiver.py": "f7f12e8f34ea0e411db73560f2cc448ceab0075883333fec1b88e4e48bfcd27d",
+    "scripts\\ops\\exp03c_am_graceful.py": "b79b46664e4439b87c2e99f085d423b83204b585bd453191b0d1a76d938fb461",
+    "scripts\\ops\\exp04b_queue_alert.py": "4ed623fad425f329691f25fcb98c5a41c5d08f6ba462a252bc595854a24dafdd",
+    "scripts\\ops\\exp04_alert_rules.py": "5117ecc6027adbf3649d364bfd6b6b4a4be5c1019e88d592f3674d827b5fb9a1",
+    "scripts\\ops\\exp06a_container_restarts.py": "17be9a986501c48f41de9c627e8c43d96088a7b5dd03b685fe6e3b56fd743a18",
+    "scripts\\ops\\exp06b_wsl_restart.py": "d2555d66d12bfff6c13ad6317095d4ec4a3a766de5b670d9c0979b8d11960639",
+    "scripts\\ops\\exp06c_docker_desktop_restart.py": "4c0251f09e10a3a2c58389db53f73761ce73df4c89ff11d92fb5ba5a91d7fdbf",
+    "scripts\\ops\\exp07_load.py": "b29dfdfb71097393b6e232b766ca0df4c67cf48fad103952582f32ccd9cfc2bb",
+    "scripts\\ops\\exp08_jit_readiness.py": "322bf9b61337b5af88eb81fd8d8da77439c43ca092e0474dfabd759be8b4b16b",
+    "scripts\\ops\\five_module_pipeline.py": "6aa8ee6cf18c6e714be3ea374ba8e5381aa93c009784429c14e8a502c2b7b6f5",
+    "scripts\\ops\\http_admission.py": "10b690ff93243685977159796a2c772558cc280229368ca75410ce05f053b963",
+    "scripts\\ops\\integration_bridge.py": "6fe1292c1984e94ef046e8b05a6d297ac9550b746713af3bead98cff72699ec0",
+    "scripts\\ops\\integration_report.py": "f6a59828278e50eb1edac1a6381ac62840f6fadab5a06c22dc889f60a71fd60c",
+    "scripts\\ops\\local_runbooks.py": "323dfcd1b78f64b0e22383a3eb5f74d938537bb3bbc02c3af76f66bbcaaeb302",
+    "scripts\\ops\\oplib.py": "d7c0195a11bfc986212a9f3c2e21908204a5e8b24fa4b8146dab078838f0d2da",
+    "scripts\\ops\\probe_gpu_cancel.py": "a5709b71e3c33ba12329a6c5c63a1aec2821279b24590a4eea75fd836b391923",
+    "scripts\\ops\\reanalyze_load.py": "815b5c7f6b9e2450d2ec546218d440b9363ae42728b713617a1053cabdaca529",
+    "scripts\\ops\\restore_stack.py": "b02636402d248b84a612537ca2ee03c17404d39731b29f75455bd06ea3454372",
+    "scripts\\ops\\safety_harness.py": "fc040c9c88d1d2f333089f61c3e88412e0ffe9014c6856f90d5dc6871eb118d2",
+    "scripts\\ops\\scale_preview.py": "47332af4e12a2b19a0fabe425f3518749d883978fc9930dccbc6c8a8ea777551",
+    "scripts\\ops\\verify_safety_harness.py": "a83bc34613e04098ce2a5d270f8648069cb1fceb3c35a0cff5bd7b70776a037f"
+  }
+}

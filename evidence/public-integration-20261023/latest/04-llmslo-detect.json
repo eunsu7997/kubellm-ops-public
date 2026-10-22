@@ -1,0 +1,81 @@
+{
+  "stage": "04-llmslo-detect",
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "started_at": "2026-10-22T12:16:23.894101+00:00",
+  "result": {
+    "upstream_slo_blob": "3caad8ed9923cb58f23cb611f7b6e187d96087a7",
+    "latency_semantics": "logical request to full SSE completion E2E, including retry waits; not TTFT",
+    "slo": {
+      "verdict": "FAIL",
+      "run_valid": true,
+      "reason": "",
+      "checks": [
+        {
+          "name": "min_requests",
+          "target": ">= 40",
+          "actual": 40,
+          "status": "PASS",
+          "reason": ""
+        },
+        {
+          "name": "p99_ms",
+          "target": "<= 2500",
+          "actual": 652.6288000168279,
+          "status": "PASS",
+          "reason": ""
+        },
+        {
+          "name": "error_rate_pct",
+          "target": "<= 0",
+          "actual": 25.0,
+          "status": "FAIL",
+          "reason": ""
+        }
+      ]
+    },
+    "summary": {
+      "total_requests": 40,
+      "successful_requests": 30,
+      "failed_requests": 10,
+      "error_rate_pct": 25.0,
+      "failures_by_outcome": {
+        "http_error": 10,
+        "invalid_response": 0,
+        "timeout": 0,
+        "connect_error": 0,
+        "transport_error": 0
+      },
+      "http_error_classes": {
+        "rate_limited_429": 10,
+        "request_invalid_4xx": 0,
+        "server_error_5xx": 0,
+        "other_status": 0
+      },
+      "http_error_status_counts": {
+        "429": 10
+      },
+      "latency_ms": {
+        "samples": 30,
+        "p50": 347.1102000330575,
+        "p95": 535.9112999867648,
+        "p99": 652.6288000168279,
+        "min": 149.8915000120178,
+        "max": 652.6288000168279,
+        "mean": 346.04790000788245
+      },
+      "duration_s": 14.080354800028726,
+      "rps": 2.8408375050263928,
+      "success_rps": 2.1306281287697946
+    },
+    "accounting": {
+      "planned": 40,
+      "failed": 10,
+      "final_429": 10,
+      "accepted_failures": 0
+    },
+    "trace_runtime_sha256": "887946b9159526f281a8a03ec82dd1dee25ff356f5fc07a68a6fc66535f35116"
+  },
+  "status": "COMPLETED",
+  "finished_at": "2026-10-22T12:16:23.991903+00:00",
+  "elapsed_s": 0.09780089999549091
+}

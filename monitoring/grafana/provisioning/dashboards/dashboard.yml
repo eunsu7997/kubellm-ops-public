@@ -1,0 +1,12 @@
+# NOT VERIFIED. Grafana가 시작할 때 dashboards 폴더의 JSON을 자동으로 불러오게 하는 설정.
+apiVersion: 1
+
+providers:
+  - name: "kubellm-ops"
+    orgId: 1
+    folder: ""
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    options:
+      path: /var/lib/grafana/dashboards

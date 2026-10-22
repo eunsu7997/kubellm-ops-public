@@ -1,0 +1,15 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [".git", ".venv", ".runtime", "evidence", "dist"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+# Historical evidence includes archived one-off scripts; preserve their original bytes.
+extend-exclude = ["evidence"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/ops/*" = ["E501", "E741", "UP017", "UP027"]

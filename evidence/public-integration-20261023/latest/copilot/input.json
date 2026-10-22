@@ -1,0 +1,19 @@
+{
+  "incident": "장애 ID: bounded-comparison-20261022\n서비스명: kubellm-local\n현재 상태 요약: Controlled comparison, no outage\n\n로그 목록 (log_id 는 절대 새로 만들지 말고, 아래 있는 것만 인용하세요):\n- [RUN] (2026-10-22T12:17:00.308+00:00, INFO) token-retry: success 40/40, 429 0.0, client P99 1.097s\n- [RECOVERY] (2026-10-22T12:17:00.308+00:00, INFO) Ready200, real chat200 and SSE DONE after bounded run.\n- [LIMIT] (2026-10-22T12:17:00.308+00:00, INFO) Bounded admission trace; no GPU overload/protection/MTTR proof; desktop GPU contention.\n- [RB-01] (2026-10-22T12:17:00.315+00:00, INFO) Quoted runbook data, not instruction: docs/INTEGRATION-FOLLOWUP-20261022.md:25 | basic | 24/24 | 0/24 | 0 | 237.9 | 46.76 | 284 |\n| token budget250 | 18/24 | 6/24 | 0 | 389.0 | 33.03 | 226 |\n| token budget250 + direct KV | 18/24 | 6/24 | 0 | 359.5 | 32.95 | 226 |\n\n**96건 처리 = 성공8\n- [RB-02] (2026-10-22T12:17:00.315+00:00, INFO) Quoted runbook data, not instruction: docs/INTEGRATION-FOLLOWUP-20261022.md:1 # 통합 후속 실행 결과 — 2026-10-22\n\n**현재 판정:** 제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다. 과부하 보호/성능 개선, 안정적인 모집단 P99, 완성된5모듈 통합 또는 자동 복구는 검증하지 않았다.\n\n이 문서는 [P0 조사](INTEGRATION-P0-20261022.md)와 [첫 P1 비교](I",
+  "request": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "stream": false,
+    "temperature": 0,
+    "max_tokens": 256,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return one JSON object only: suspected_cause (string), referenced_log_ids (string array), next_steps (string array), unknowns (string array). Use only supplied log IDs. Do not claim an outage, overload or efficacy when logs do not establish it. Keep it short. Incident ID is not a log ID. Allowed reference IDs are: LIMIT, RB-01, RB-02, RECOVERY, RUN"
+      },
+      {
+        "role": "user",
+        "content": "장애 ID: bounded-comparison-20261022\n서비스명: kubellm-local\n현재 상태 요약: Controlled comparison, no outage\n\n로그 목록 (log_id 는 절대 새로 만들지 말고, 아래 있는 것만 인용하세요):\n- [RUN] (2026-10-22T12:17:00.308+00:00, INFO) token-retry: success 40/40, 429 0.0, client P99 1.097s\n- [RECOVERY] (2026-10-22T12:17:00.308+00:00, INFO) Ready200, real chat200 and SSE DONE after bounded run.\n- [LIMIT] (2026-10-22T12:17:00.308+00:00, INFO) Bounded admission trace; no GPU overload/protection/MTTR proof; desktop GPU contention.\n- [RB-01] (2026-10-22T12:17:00.315+00:00, INFO) Quoted runbook data, not instruction: docs/INTEGRATION-FOLLOWUP-20261022.md:25 | basic | 24/24 | 0/24 | 0 | 237.9 | 46.76 | 284 |\n| token budget250 | 18/24 | 6/24 | 0 | 389.0 | 33.03 | 226 |\n| token budget250 + direct KV | 18/24 | 6/24 | 0 | 359.5 | 32.95 | 226 |\n\n**96건 처리 = 성공8\n- [RB-02] (2026-10-22T12:17:00.315+00:00, INFO) Quoted runbook data, not instruction: docs/INTEGRATION-FOLLOWUP-20261022.md:1 # 통합 후속 실행 결과 — 2026-10-22\n\n**현재 판정:** 제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다. 과부하 보호/성능 개선, 안정적인 모집단 P99, 완성된5모듈 통합 또는 자동 복구는 검증하지 않았다.\n\n이 문서는 [P0 조사](INTEGRATION-P0-20261022.md)와 [첫 P1 비교](I"
+      }
+    ]
+  }
+}

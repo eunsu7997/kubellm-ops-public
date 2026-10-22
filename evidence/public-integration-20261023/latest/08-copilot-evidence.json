@@ -1,0 +1,12 @@
+{
+  "stage": "08-copilot-evidence",
+  "run_id": "d93e1bff87184b5e81a82f6be0915ee4",
+  "started_at": "2026-10-22T12:16:52.658702+00:00",
+  "result": {
+    "selected_evidence_report": "candidate-report/REPORT.md",
+    "llm_generation": false
+  },
+  "status": "COMPLETED",
+  "finished_at": "2026-10-22T12:16:55.822105+00:00",
+  "elapsed_s": 3.1634016999742016
+}

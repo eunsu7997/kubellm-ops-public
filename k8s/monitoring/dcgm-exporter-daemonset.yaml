@@ -1,0 +1,48 @@
+# NOT VERIFIED: GPU가 있는 실제 Kubernetes 클러스터에서 배포/확인하지 못했다.
+# NVIDIA DCGM(Data Center GPU Manager) Exporter — GPU 사용률/메모리/온도/전력 같은 지표를
+# Prometheus가 긁어갈 수 있는 형식으로 노출해주는 공식 컨테이너다.
+# DaemonSet으로 배포하는 이유: GPU가 달린 노드마다 하나씩 떠서 그 노드의 GPU를 관측해야
+# 하기 때문이다(Deployment처럼 아무 노드에나 뜨면 안 된다).
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dcgm-exporter
+  namespace: kubellm-ops
+  labels:
+    app: dcgm-exporter
+spec:
+  selector:
+    matchLabels:
+      app: dcgm-exporter
+  template:
+    metadata:
+      labels:
+        app: dcgm-exporter
+    spec:
+      # GPU가 달린 노드에서만 뜨도록 제한한다 (클러스터에 맞게 라벨을 조정해야 한다).
+      nodeSelector:
+        nvidia.com/gpu.present: "true"
+      containers:
+        - name: dcgm-exporter
+          image: nvcr.io/nvidia/k8s/dcgm-exporter:3.3.5-3.4.1-ubuntu22.04
+          ports:
+            - name: metrics
+              containerPort: 9400
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+          securityContext:
+            runAsNonRoot: false  # DCGM은 GPU 장치 접근을 위해 privileged에 가까운 권한이 필요하다
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dcgm-exporter
+  namespace: kubellm-ops
+spec:
+  selector:
+    app: dcgm-exporter
+  ports:
+    - name: metrics
+      port: 9400
+      targetPort: 9400

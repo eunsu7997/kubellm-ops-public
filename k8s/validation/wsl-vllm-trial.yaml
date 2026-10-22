@@ -1,0 +1,105 @@
+# Isolated WSL k3s trial. Explicit approval obtained 2026-10-21.
+# Existing model snapshot pinned; source cache remains unchanged.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubellm-vllm-trial
+  namespace: kubellm-gpu-validation
+  labels:
+    app: kubellm-vllm-trial
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: kubellm-vllm-trial
+  template:
+    metadata:
+      labels:
+        app: kubellm-vllm-trial
+    spec:
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 1Gi
+      - name: model-cache
+        hostPath:
+          path: /var/lib/kubellm-validation/model-cache
+          type: Directory
+      containers:
+      - name: vllm
+        image: vllm/vllm-openai@sha256:8a69ffad015f138d7170c4ddc429e230a3bc1c1719f67e14324749df200a4b90
+        args:
+        - --model
+        - Qwen/Qwen2.5-0.5B-Instruct
+        - --gpu-memory-utilization
+        - '0.4'
+        - --max-model-len
+        - '2048'
+        - --port
+        - '8000'
+        - --revision
+        - 7ae557604adf67be50417f59c2c2f167def9a775
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: shm
+          mountPath: /dev/shm
+        - name: model-cache
+          mountPath: /root/.cache/huggingface
+          readOnly: true
+        resources:
+          limits:
+            cpu: '4'
+            memory: 8Gi
+            ephemeral-storage: 16Gi
+            nvidia.com/gpu: 1
+          requests:
+            cpu: '2'
+            memory: 4Gi
+            ephemeral-storage: 8Gi
+            nvidia.com/gpu: 1
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 60
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 20
+          timeoutSeconds: 5
+          failureThreshold: 3
+        env:
+        - name: HF_HUB_OFFLINE
+          value: '1'
+        - name: TRANSFORMERS_OFFLINE
+          value: '1'
+      runtimeClassName: nvidia
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubellm-vllm-trial
+  namespace: kubellm-gpu-validation
+spec:
+  type: ClusterIP
+  selector:
+    app: kubellm-vllm-trial
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000

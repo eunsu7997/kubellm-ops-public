@@ -1,0 +1,212 @@
+[
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 0.09413549996679649,
+    "e2e_s": 0.3939626999781467,
+    "chunks": 12,
+    "completion_tokens": 13,
+    "tpot_s": 0.024982891666392486,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 7.00005330145359e-07,
+        "finished_after_s": 0.3939626999781467,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 0,
+    "priority": "high",
+    "send_lag_s": 0.011151800048537552,
+    "offset": 0.0
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 0.540607100003399,
+    "e2e_s": 0.6854244000278413,
+    "chunks": 16,
+    "completion_tokens": 16,
+    "tpot_s": 0.009652393334545196,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 8.00006091594696e-07,
+        "finished_after_s": 0.6854244000278413,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 1,
+    "priority": "high",
+    "send_lag_s": 0.023893499998375773,
+    "offset": 0.02
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 0.3900521000032313,
+    "e2e_s": 0.5072910999879241,
+    "chunks": 12,
+    "completion_tokens": 13,
+    "tpot_s": 0.009767866664333269,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 7.00005330145359e-07,
+        "finished_after_s": 0.5072910999879241,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 2,
+    "priority": "low",
+    "send_lag_s": 0.004586600037291645,
+    "offset": 0.04
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 1.0741293000173755,
+    "e2e_s": 1.2017341000027955,
+    "chunks": 16,
+    "completion_tokens": 16,
+    "tpot_s": 0.008504606666974723,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 429,
+        "category": "rate_limited",
+        "started_after_s": 6.00004568696022e-07,
+        "finished_after_s": 0.009220300009474158,
+        "retry_after": "1",
+        "sleep_s": 1.03
+      },
+      {
+        "attempt": 2,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 1.043637500028126,
+        "finished_after_s": 1.2017341000027955,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 3,
+    "priority": "low",
+    "send_lag_s": 0.0025787000171840213,
+    "offset": 0.06
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 0.03213700000196695,
+    "e2e_s": 0.1441678999690339,
+    "chunks": 12,
+    "completion_tokens": 13,
+    "tpot_s": 0.00933308333333116,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 2.00001522898674e-06,
+        "finished_after_s": 0.1441678999690339,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 4,
+    "priority": "high",
+    "send_lag_s": 0.0006535000284202397,
+    "offset": 2.0
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 0.13860100001329556,
+    "e2e_s": 0.27249070000834763,
+    "chunks": 16,
+    "completion_tokens": 16,
+    "tpot_s": 0.00892442666615049,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 7.00005330145359e-07,
+        "finished_after_s": 0.27249070000834763,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 5,
+    "priority": "high",
+    "send_lag_s": 0.011384000030811858,
+    "offset": 2.02
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 0.28922849998343736,
+    "e2e_s": 0.39691000001039356,
+    "chunks": 12,
+    "completion_tokens": 13,
+    "tpot_s": 0.008971166666015051,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 8.00006091594696e-07,
+        "finished_after_s": 0.39691000001039356,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 6,
+    "priority": "low",
+    "send_lag_s": 0.005562600018456543,
+    "offset": 2.04
+  },
+  {
+    "status_code": 200,
+    "category": "success",
+    "ttft_s": 1.0677867999766022,
+    "e2e_s": 1.2165429000160657,
+    "chunks": 16,
+    "completion_tokens": 16,
+    "tpot_s": 0.00991481333427752,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": 429,
+        "category": "rate_limited",
+        "started_after_s": 1.00000761449337e-06,
+        "finished_after_s": 0.009406300028786063,
+        "retry_after": "1",
+        "sleep_s": 1.01
+      },
+      {
+        "attempt": 2,
+        "status": 200,
+        "category": "success",
+        "started_after_s": 1.032946199993603,
+        "finished_after_s": 1.2165429000160657,
+        "retry_after": null,
+        "sleep_s": null
+      }
+    ],
+    "request_id": 7,
+    "priority": "low",
+    "send_lag_s": 0.0016155000170692269,
+    "offset": 2.06
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "mode": "actual existing local Qwen inference; Copilot input/validator reused; Ollama transport not used",
+  "result": {
+    "parsed": {
+      "raw_response": "```json\n{\n  \"suspected_cause\": \"제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다.\",\n  \"referenced_log_ids\": [\"RUN\", \"RECOVERY\"],\n  \"next_steps\": [\"통합 후속 실행 결과\"],\n  \"unknowns\": []\n}\n```",
+      "json_parsed": true,
+      "schema_valid": true,
+      "format_errors": [],
+      "analysis": {
+        "suspected_cause": "제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다.",
+        "referenced_log_ids": [
+          "RUN",
+          "RECOVERY"
+        ],
+        "next_steps": [
+          "통합 후속 실행 결과"
+        ],
+        "unknowns": [],
+        "raw_response": "```json\n{\n  \"suspected_cause\": \"제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다.\",\n  \"referenced_log_ids\": [\"RUN\", \"RECOVERY\"],\n  \"next_steps\": [\"통합 후속 실행 결과\"],\n  \"unknowns\": []\n}\n```"
+      }
+    },
+    "warnings": [
+      "⚠ '아직 모르는 것'을 하나도 제시하지 않았습니다. AI가 불확실성을 숨기고 있을 수 있습니다."
+    ],
+    "format_valid": true,
+    "existing_ids": [
+      "RUN",
+      "RECOVERY"
+    ],
+    "missing_ids": []
+  },
+  "validator_sha256": "9b44bcea3bab04bec32a4efdf72d76f74feca05c4b1df5a19718ff3a4e016b8b",
+  "generated_content_truth_verified": false
+}

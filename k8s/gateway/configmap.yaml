@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+  namespace: kubellm-ops
+data:
+  # 현재 단계(GPU/vLLM 없이 Kubernetes 배포 자체를 검증하는 단계)에서는 mock-backend를
+  # 가리킨다 — docker-compose.yml에서 VERIFIED된 것과 동일한 값이다. 실제 vLLM을
+  # 붙이는 다음 단계에서는 이 값을 vLLM Service 주소(예: "http://vllm:8000")와
+  # MODEL_NAME(실제 모델 이름), REQUEST_TIMEOUT(더 긴 값)으로 바꾸면 된다.
+  VLLM_BASE_URL: "http://mock-backend:8001"
+  MODEL_NAME: "mock-model"
+  REQUEST_TIMEOUT: "30"

@@ -1,0 +1,389 @@
+{
+  "events": [
+    {
+      "kind": "enqueue",
+      "cost": 226,
+      "priority": "high",
+      "observed": 277609.9885728,
+      "wait_s": 5.00003807246685e-06,
+      "active": 0,
+      "queued": 1,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 226,
+      "priority": "high",
+      "observed": 277609.9885853,
+      "wait_s": 1.7400016076862812e-05,
+      "active": 1,
+      "queued": 0,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "enqueue",
+      "cost": 58,
+      "priority": "high",
+      "observed": 277609.9886017,
+      "wait_s": 1.800013706088066e-06,
+      "active": 1,
+      "queued": 1,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "enqueue",
+      "cost": 226,
+      "priority": "low",
+      "observed": 277610.0031983,
+      "wait_s": 5.600042641162872e-06,
+      "active": 1,
+      "queued": 2,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "queue_full",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277610.0278825,
+      "wait_s": 6.099988240748644e-06,
+      "active": 1,
+      "queued": 2,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "release",
+      "cost": 226,
+      "priority": "high",
+      "observed": 277610.2097595,
+      "wait_s": 0.22119160002330318,
+      "active": 0,
+      "queued": 2,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 58,
+      "priority": "high",
+      "observed": 277610.210321,
+      "wait_s": 0.22172110003884882,
+      "active": 1,
+      "queued": 1,
+      "reserved_tokens": 58,
+      "active_long": 0
+    },
+    {
+      "kind": "release",
+      "cost": 58,
+      "priority": "high",
+      "observed": 277610.478678,
+      "wait_s": 0.4900781000033021,
+      "active": 0,
+      "queued": 1,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 226,
+      "priority": "low",
+      "observed": 277610.4789728,
+      "wait_s": 0.47577990003628656,
+      "active": 1,
+      "queued": 0,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "release",
+      "cost": 226,
+      "priority": "low",
+      "observed": 277610.7370065,
+      "wait_s": 0.7338137000333518,
+      "active": 0,
+      "queued": 0,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "enqueue",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277611.0671185,
+      "wait_s": 5.799985956400633e-06,
+      "active": 0,
+      "queued": 1,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277611.0671321,
+      "wait_s": 1.939997309818864e-05,
+      "active": 1,
+      "queued": 0,
+      "reserved_tokens": 58,
+      "active_long": 0
+    },
+    {
+      "kind": "release",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277611.3329866,
+      "wait_s": 0.2658738999743946,
+      "active": 0,
+      "queued": 0,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "enqueue",
+      "cost": 226,
+      "priority": "high",
+      "observed": 277611.9605992,
+      "wait_s": 4.8999791033566e-06,
+      "active": 0,
+      "queued": 1,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 226,
+      "priority": "high",
+      "observed": 277611.9606131,
+      "wait_s": 1.8899969290941954e-05,
+      "active": 1,
+      "queued": 0,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "enqueue",
+      "cost": 58,
+      "priority": "high",
+      "observed": 277611.9756839,
+      "wait_s": 6.299989763647318e-06,
+      "active": 1,
+      "queued": 1,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "enqueue",
+      "cost": 226,
+      "priority": "low",
+      "observed": 277611.9963496,
+      "wait_s": 5.200039595365524e-06,
+      "active": 1,
+      "queued": 2,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "queue_full",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277612.026527,
+      "wait_s": 4.800036549568176e-06,
+      "active": 1,
+      "queued": 2,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "release",
+      "cost": 226,
+      "priority": "high",
+      "observed": 277612.1341677,
+      "wait_s": 0.17357350001111627,
+      "active": 0,
+      "queued": 2,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 58,
+      "priority": "high",
+      "observed": 277612.1361023,
+      "wait_s": 0.1604247000068426,
+      "active": 1,
+      "queued": 1,
+      "reserved_tokens": 58,
+      "active_long": 0
+    },
+    {
+      "kind": "release",
+      "cost": 58,
+      "priority": "high",
+      "observed": 277612.3327893,
+      "wait_s": 0.3571116999955848,
+      "active": 0,
+      "queued": 1,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 226,
+      "priority": "low",
+      "observed": 277612.3329931,
+      "wait_s": 0.33664860000135377,
+      "active": 1,
+      "queued": 0,
+      "reserved_tokens": 226,
+      "active_long": 1
+    },
+    {
+      "kind": "release",
+      "cost": 226,
+      "priority": "low",
+      "observed": 277612.5226242,
+      "wait_s": 0.5262797999894246,
+      "active": 0,
+      "queued": 0,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "enqueue",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277613.055705,
+      "wait_s": 6.699992809444666e-06,
+      "active": 0,
+      "queued": 1,
+      "reserved_tokens": 0,
+      "active_long": 0
+    },
+    {
+      "kind": "admit",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277613.0557209,
+      "wait_s": 2.2499996703118086e-05,
+      "active": 1,
+      "queued": 0,
+      "reserved_tokens": 58,
+      "active_long": 0
+    },
+    {
+      "kind": "release",
+      "cost": 58,
+      "priority": "low",
+      "observed": 277613.2677991,
+      "wait_s": 0.21210070000961423,
+      "active": 0,
+      "queued": 0,
+      "reserved_tokens": 0,
+      "active_long": 0
+    }
+  ],
+  "requests": [
+    {
+      "arrival": 277609.9881928,
+      "priority": "high",
+      "cost": 226,
+      "first_content": 0.0671528999810107,
+      "prompt_tokens_actual": 162,
+      "queue_wait_s": 1.6900012269616127e-05,
+      "status": 200
+    },
+    {
+      "arrival": 277609.9884634,
+      "priority": "high",
+      "cost": 58,
+      "first_content": 0.27978550002444535,
+      "prompt_tokens_actual": 42,
+      "queue_wait_s": 0.22172000003047287,
+      "status": 200
+    },
+    {
+      "arrival": 277610.0025479,
+      "priority": "low",
+      "cost": 226,
+      "first_content": 0.5375131999608129,
+      "prompt_tokens_actual": 162,
+      "queue_wait_s": 0.4757783000241034,
+      "status": 200
+    },
+    {
+      "arrival": 277610.0276856,
+      "priority": "low",
+      "cost": 58,
+      "first_content": null,
+      "prompt_tokens_actual": null,
+      "status": 429,
+      "reason": "queue_full"
+    },
+    {
+      "arrival": 277611.0667401,
+      "priority": "low",
+      "cost": 58,
+      "first_content": 0.05043810000643134,
+      "prompt_tokens_actual": 42,
+      "queue_wait_s": 1.899997005239129e-05,
+      "status": 200
+    },
+    {
+      "arrival": 277611.9604425,
+      "priority": "high",
+      "cost": 226,
+      "first_content": 0.042715399991720915,
+      "prompt_tokens_actual": 162,
+      "queue_wait_s": 1.8300022929906845e-05,
+      "status": 200
+    },
+    {
+      "arrival": 277611.9753149,
+      "priority": "high",
+      "cost": 58,
+      "first_content": 0.20825239998521283,
+      "prompt_tokens_actual": 42,
+      "queue_wait_s": 0.16042369999922812,
+      "status": 200
+    },
+    {
+      "arrival": 277611.9962042,
+      "priority": "low",
+      "cost": 226,
+      "first_content": 0.37676179996924475,
+      "prompt_tokens_actual": 162,
+      "queue_wait_s": 0.33664729999145493,
+      "status": 200
+    },
+    {
+      "arrival": 277612.0261321,
+      "priority": "low",
+      "cost": 58,
+      "first_content": null,
+      "prompt_tokens_actual": null,
+      "status": 429,
+      "reason": "queue_full"
+    },
+    {
+      "arrival": 277613.055285,
+      "priority": "low",
+      "cost": 58,
+      "first_content": 0.042017599975224584,
+      "prompt_tokens_actual": 42,
+      "queue_wait_s": 2.19999928958714e-05,
+      "status": 200
+    }
+  ],
+  "final": {
+    "active": 0,
+    "queued": 0,
+    "reserved_tokens": 0,
+    "active_long": 0
+  },
+  "direct_cache": []
+}

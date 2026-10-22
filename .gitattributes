@@ -1,0 +1,15 @@
+# Preserve original command-output bytes in the new live validation captures.
+/evidence/kubernetes-cuda-smoke-20261021/** -text
+/evidence/kubernetes-gpu-discovery-20261021/** -text
+/evidence/kubernetes-vllm-live/20261021/** -text
+/evidence/final-review-20261021/** -text
+/evidence/operational-closure-20261021/** -text
+/evidence/extended-operations-20261021/** -text
+/evidence/local-ops-experiments-20261021/** -text
+# Raw Windows captures keep their bytes; CR at line end is valid for these evidence files.
+/evidence/ops-safety-closure-20261021/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# New SLO accounting captures preserve the original command-output bytes too.
+/evidence/slo-foundation-20261022/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Derived evidence has separate byte hashes; do not normalize either export or pinned source.
+/evidence/public-integration-20261023/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/evidence/integration-final-20261022/llm-slo-source/metrics.py -text

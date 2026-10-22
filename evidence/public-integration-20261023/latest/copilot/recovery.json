@@ -1,0 +1,22 @@
+{
+  "ready": {
+    "status": 200,
+    "seconds": 0.036,
+    "text": "{\"status\":\"ready\"}"
+  },
+  "chat": {
+    "status": 200,
+    "seconds": 0.138,
+    "text": "{\"id\":\"chatcmpl-a7645729a43a5258\",\"object\":\"chat.completion\",\"created\":1792671423,\"model\":\"Qwen/Qwen2.5-0.5B-Instruct\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"OK, I'll do my best to\",\"refusal\":null,\"annotations\":null,\"audio\":null,\"function_call\":null,\"reasoning\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"stop_reason\":null,\"token_ids\":null,\"routed_experts\":null}],\"service_tier\":null,\"system_fingerprint\":\"vllm-0.30.0-nohash\",\"usage\":{\"prompt_tokens\":31,\"total_tokens\":39,\"completion_tokens\":8,\"prompt_tokens_details\":null,\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}",
+    "ok": true
+  },
+  "sse": {
+    "ok": true,
+    "status": 200,
+    "chunks": 18,
+    "ttft_s": 0.068,
+    "seconds": 0.266,
+    "done": true
+  },
+  "stock": true
+}

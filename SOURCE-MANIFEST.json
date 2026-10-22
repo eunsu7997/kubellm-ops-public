@@ -2,22 +2,22 @@
   {
     "path": ".gitattributes",
     "source_sha256": "12896ced930e33f2d83c53bcaac29b62cda53489bf071b43163b214d6a7481ef",
-    "public_sha256": "12896ced930e33f2d83c53bcaac29b62cda53489bf071b43163b214d6a7481ef"
+    "public_sha256": "b44d8dc7730bf2f928a23dd3d7e536b29e4ea1fb6a3e60881e4c9847c6dbaf12"
   },
   {
     "path": ".github/workflows/ci.yml",
     "source_sha256": "40bf1f7e91177b99506326dbba7cd237e3845c2c645b9b6479b7bee739114bec",
-    "public_sha256": "40bf1f7e91177b99506326dbba7cd237e3845c2c645b9b6479b7bee739114bec"
+    "public_sha256": "fd1b6ad705f529cb1406f8ae3a3a374df33bfe266569029bb322bbe6c3d349b2"
   },
   {
     "path": ".gitignore",
     "source_sha256": "6847f0b4be740db870516e80dacc576249ee19651effa44236d812a2e9808115",
-    "public_sha256": "1b2394cc7f8d4dd36a1e645059eaf86a4cd8d41c1fb9884a5ad83cacce8c669d"
+    "public_sha256": "a5c733701669312b443afff176c6b61b4b75580417b36c86304aa65da2448022"
   },
   {
     "path": "README.md",
     "source_sha256": "d5f11d1c49c203e5f780a0b4e134d2c8f538c14dab42c6d471c277da1efa0db9",
-    "public_sha256": "79abe5cc24e47107dbb0f7044dbe7d0fd14b8428c87f997c0f7b7a1ae081d247"
+    "public_sha256": "1ae512fa8612f6912ef79615b1214c33eb50bac40ab51cc655d776cfba3740e2"
   },
   {
     "path": "START-CHAT.ps1",
@@ -32,72 +32,72 @@
   {
     "path": "docker-compose.operations.yml",
     "source_sha256": "ba83046669880e27b714b19841e2e0ea8d0bda1ef1f9402b5fe2575d2513ea7d",
-    "public_sha256": "ba83046669880e27b714b19841e2e0ea8d0bda1ef1f9402b5fe2575d2513ea7d"
+    "public_sha256": "b512874ed899b3f5cf632beec2e262bc62b929eba354ee37c7daa2b3c350bf8b"
   },
   {
     "path": "docker-compose.vllm-example.yml",
     "source_sha256": "2bd4291ad842723e14e9896707308d6305d4d01703f8baf233bb4febb5bfd8de",
-    "public_sha256": "2bd4291ad842723e14e9896707308d6305d4d01703f8baf233bb4febb5bfd8de"
+    "public_sha256": "c733a15c664fcf75dfa7b8ec555a471e48c641979a49521780fac84a746a5f2f"
   },
   {
     "path": "docker-compose.vllm-secure-localhost.yml",
     "source_sha256": "12d9ce45463c070a7df34e4ba87427b1ac0e362261e862b6084f317bdd78797c",
-    "public_sha256": "12d9ce45463c070a7df34e4ba87427b1ac0e362261e862b6084f317bdd78797c"
+    "public_sha256": "134a5d9f9ee6099572d209c410e37cc9bedcc0750ce655ffdb3d839b777e4d3e"
   },
   {
     "path": "docker-compose.vllm-secure.yml",
     "source_sha256": "02bed6ec217eb18223414440563005241de00671fb5f920826df82395a087a9b",
-    "public_sha256": "02bed6ec217eb18223414440563005241de00671fb5f920826df82395a087a9b"
+    "public_sha256": "34f0345673b6e80e5678919c14c1b50f759357ebfbf433aefaa59575d4f4e119"
   },
   {
     "path": "docker-compose.yml",
     "source_sha256": "73e9292a21cae519f968b093fd532afba231620ed90958584b345ef17b89c9d5",
-    "public_sha256": "73e9292a21cae519f968b093fd532afba231620ed90958584b345ef17b89c9d5"
+    "public_sha256": "d9bd39a2833239dcc9ce9958f4e47c38da208a70c8777587a53bd98da0c3d700"
   },
   {
     "path": "docs/DEMO-TOMORROW.md",
     "source_sha256": "2213b60532f2c27dc488082a919a178e1095c5eb5d281d92be4b3ebfced1f9e5",
-    "public_sha256": "c709d66c510a2e17f7eb23715781782dc424b746e77bd829b6f2ff5c9a0b8a9a"
+    "public_sha256": "2213b60532f2c27dc488082a919a178e1095c5eb5d281d92be4b3ebfced1f9e5"
   },
   {
     "path": "docs/INSTRUCTOR-TALK.md",
     "source_sha256": "9690fefa28b726747fba8697ba4cc239daf09d1b817efe72407a8d50cec2d0df",
-    "public_sha256": "80e05b843538137885f4df45a7ed19a52d60e7e99f6b7436fb8d5c4875c5c231"
+    "public_sha256": "9690fefa28b726747fba8697ba4cc239daf09d1b817efe72407a8d50cec2d0df"
   },
   {
     "path": "docs/INTEGRATION-FOLLOWUP-20261022.md",
     "source_sha256": "a54723f2c99d740eba8ea798fa6048bfefc819be53cc9e37160ee2dabeb3dc2f",
-    "public_sha256": "82eaa60710055568b4a7c281fde72a1e09b2494149d18615a59ff792828b7624"
+    "public_sha256": "3850bc02f4018dba98f25b4d3ccfd3aadb472f34793d70e05cfac010afc362b0"
   },
   {
     "path": "docs/KUBERNETES-LIVE-VALIDATION.md",
     "source_sha256": "e3b5e0695e856c904d23319b6654f4a709a84d38d828f1b732d963a27ff6418e",
-    "public_sha256": "da3d4b92cddb3eaf4758e7cac1f43ef08154d9945043639e0cb2cd6dd2c0840d"
+    "public_sha256": "aeaf2fff45e25b86be934de816baa0aaa6e6bea87eb96abe7001da012c9bed38"
   },
   {
     "path": "docs/OPERATIONAL-CLOSURE.md",
     "source_sha256": "78629082cbd9b8df388ebba4f9b3810b34886650b3020bfd5c24abc33bb61013",
-    "public_sha256": "abce1bdd0d4e6e5ba0bf5849c4920e0f583d54beb991ba4cae64ce279385b74c"
+    "public_sha256": "6e0d86f93d9323af559a3c4dad59a25b8d78c4b75a91b805982bc0ed7a51391f"
   },
   {
     "path": "docs/OVERNIGHT-REPORT-20261022.md",
     "source_sha256": "95b0d05580867cee42d7136bd9b23ecec9a4061869f812fe6df7fa205f42abff",
-    "public_sha256": "8d7662f8ccf79ae0121877750337a66199409c93a25617f6843c6769180189eb"
+    "public_sha256": "877cfe6ebf60b1b4640e9639d2d2f5af86163c72b4f857b349d38d99dfd05c13"
   },
   {
     "path": "docs/PORTFOLIO-20261023.md",
     "source_sha256": "eab978501287e2a1f1f0751a8c409b1bdc2ec1a8a668509f8d3b0283d5eb0ab5",
-    "public_sha256": "560cd3c81b78cb32c2a39084931876b50443b7c16869eb0a7ed5e3c137d0486f"
+    "public_sha256": "57dc4bd7fdfdfc5fcd6a9bd0607dab8593bcf8a658a4a9695e3393c8639c04a5"
   },
   {
     "path": "docs/SAFETY-HARNESS-CLOSURE.md",
     "source_sha256": "a193d37f9658196d30326384f642b5425084964f55c3bc58bfe7c9d5a6c201d9",
-    "public_sha256": "1e77b7753fb91ffc5fb92e3c833e6d8c3c07bcec915f1dd7821e2d79e48d6b19"
+    "public_sha256": "88782cba4973ed3f454f19029c6d2ba6546c551ad3b1aae4ecd6f78812138583"
   },
   {
     "path": "docs/docker-gpu-security-migration.md",
     "source_sha256": "bc93990f92835a84ba57e29cdba4b4be757473483a196568fb48d7ddd691ea2e",
-    "public_sha256": "62bf00eca31247dd39dff8791981ccf6ba220f00971dda75bd28655566abfde6"
+    "public_sha256": "3dc063fa20e9643bd52269404cd42e05ecaae5979c3eec25cb80b3fd15b48a2f"
   },
   {
     "path": "evidence/gpu-vllm-local/retry-20261011/06_vllm-metrics.txt",
@@ -117,7 +117,7 @@
   {
     "path": "evidence/public-integration-20261023/QUALITY.json",
     "source_sha256": "c17aa9010b94eba9af8c4a5f47b28b51e97d221444ba968979a9267a3f22f3fd",
-    "public_sha256": "5213441fba2e303b238f42fd299f1b8478964b6d7ba8def21f7759b18c8324e5"
+    "public_sha256": "3bde2d642cb5f0ce25540cc7d9d1e34dd01a4848192877d91dc508926609a36c"
   },
   {
     "path": "evidence/public-integration-20261023/README.md",
@@ -707,12 +707,12 @@
   {
     "path": "gateway/.dockerignore",
     "source_sha256": "5a1c9b991d322b23420090da0dd8af5360f21765cf24a6307cb749f12f6a5645",
-    "public_sha256": "5a1c9b991d322b23420090da0dd8af5360f21765cf24a6307cb749f12f6a5645"
+    "public_sha256": "1a0fa59ab0056fc5833336b01d35960e1e7694cdbbd9e431d60866e41a73c22c"
   },
   {
     "path": "gateway/Dockerfile",
     "source_sha256": "eb77dbfb77aecfa0b44511b369937ebb850a5246e2ce53df1c8ee8b44ec84ab0",
-    "public_sha256": "eb77dbfb77aecfa0b44511b369937ebb850a5246e2ce53df1c8ee8b44ec84ab0"
+    "public_sha256": "eac89f462b5f3d9d3f5d9e2976177917a6967f3f7d833c9cf9457001433199ce"
   },
   {
     "path": "gateway/__init__.py",
@@ -727,122 +727,122 @@
   {
     "path": "gateway/app/config.py",
     "source_sha256": "debb2154eaf4c703f41f3a919c4d95332d5f81f091e35df99bc1d6f90b506819",
-    "public_sha256": "debb2154eaf4c703f41f3a919c4d95332d5f81f091e35df99bc1d6f90b506819"
+    "public_sha256": "3092f8c58bcd867ed1441a16f40b8dcad82f8a2b7ca7daa8544ea07867f07210"
   },
   {
     "path": "gateway/app/main.py",
     "source_sha256": "0098072e0c9f3d8b0c5b909b526c0cfeeef32b18e7625de713358aa825b0bebc",
-    "public_sha256": "0098072e0c9f3d8b0c5b909b526c0cfeeef32b18e7625de713358aa825b0bebc"
+    "public_sha256": "af3cf4c79e29473fc8beb349d19988fb5bf097ebb0a77c82bc8bfb1afea19936"
   },
   {
     "path": "gateway/app/metrics.py",
     "source_sha256": "3ace62d827c48ad3ff232b1dd0868d7074419205b6e5b0915f1c0632481b017b",
-    "public_sha256": "3ace62d827c48ad3ff232b1dd0868d7074419205b6e5b0915f1c0632481b017b"
+    "public_sha256": "42600e4f236b5a835b82a201d0fd55b4ffd9d41174409627a5531176c548b5be"
   },
   {
     "path": "gateway/requirements.lock.txt",
     "source_sha256": "2aea429bc5b34ac4cc3ddc6e9f06660f0ab9e2241f8f354d9f4ff386fa8b1dcd",
-    "public_sha256": "2aea429bc5b34ac4cc3ddc6e9f06660f0ab9e2241f8f354d9f4ff386fa8b1dcd"
+    "public_sha256": "02b2c8730da5a2abdcc0440eb2a2403a32add47cae3ed55eb6e5dfe06f44c91b"
   },
   {
     "path": "gateway/requirements.txt",
     "source_sha256": "8178f653e20e1de03bae36e2322bcccd22a594d56b5cf5b4966c7ed49a31fa63",
-    "public_sha256": "8178f653e20e1de03bae36e2322bcccd22a594d56b5cf5b4966c7ed49a31fa63"
+    "public_sha256": "203a8e559c83b4870b917bc40b96182ac6188b5e97cb67b7c8a0cdfbdd29db7a"
   },
   {
     "path": "k8s/base/namespace.yaml",
     "source_sha256": "e3d57e08b6a4213d9d72324b7f577eb62d22059cc05e890fda5b74d58092dd96",
-    "public_sha256": "e3d57e08b6a4213d9d72324b7f577eb62d22059cc05e890fda5b74d58092dd96"
+    "public_sha256": "65dc8af19e07dbde2581768ed30005f761277d0370bc91998198c690d8a85af9"
   },
   {
     "path": "k8s/gateway/configmap.yaml",
     "source_sha256": "b946e9b6e20949dfcf11ea26b8b756fee71b6bf31d4ca71246e2a51873d3b7a8",
-    "public_sha256": "b946e9b6e20949dfcf11ea26b8b756fee71b6bf31d4ca71246e2a51873d3b7a8"
+    "public_sha256": "039bce828f338cae40227f5b944cbacecc7681cc2de4b9c9489da2a1498799c6"
   },
   {
     "path": "k8s/gateway/deployment.yaml",
     "source_sha256": "7433d50b375149a18490f970321f09718ce473e37db0e2392b38e32c979d2921",
-    "public_sha256": "7433d50b375149a18490f970321f09718ce473e37db0e2392b38e32c979d2921"
+    "public_sha256": "77fc388d7fc068ed79c410f9d0de9597587a42207010e7f8cbb9a8f14bfae6ea"
   },
   {
     "path": "k8s/gateway/service.yaml",
     "source_sha256": "898ee4b2ba9e179ab9f1e9ce2f3aed8909c11a38bf6c8b8ab2435e9fc934b664",
-    "public_sha256": "898ee4b2ba9e179ab9f1e9ce2f3aed8909c11a38bf6c8b8ab2435e9fc934b664"
+    "public_sha256": "6a301f3e40bb1fcacf380bad603fa6911eb65f4d61f5cc231d8d7224daaeb7df"
   },
   {
     "path": "k8s/mock/deployment.yaml",
     "source_sha256": "daf8f3160ca785fe49921ae84435ed73263ab2df203db35e2e784d03efc3f5aa",
-    "public_sha256": "daf8f3160ca785fe49921ae84435ed73263ab2df203db35e2e784d03efc3f5aa"
+    "public_sha256": "bfca57fcac52f549636d1b50cbf377be513f73d7f34afdaaa503b8075d7bc902"
   },
   {
     "path": "k8s/mock/service.yaml",
     "source_sha256": "35c0f9d618c43a14546c706b014ea3de572ee3dc67ea4ebae7b76e4525af557c",
-    "public_sha256": "35c0f9d618c43a14546c706b014ea3de572ee3dc67ea4ebae7b76e4525af557c"
+    "public_sha256": "98ad4ec9839eee9d1619ad6aed46c417aa30326eed2b8879ab84b7faeebf8b85"
   },
   {
     "path": "k8s/monitoring/dcgm-exporter-daemonset.yaml",
     "source_sha256": "5071c896e52e099f9251c754aa24f38c3570cd9e2012ca84c4ef2536cf96975e",
-    "public_sha256": "5071c896e52e099f9251c754aa24f38c3570cd9e2012ca84c4ef2536cf96975e"
+    "public_sha256": "10481ebe6d5e8854afa7174346ee5fd5b01cd205918033f7e0b4e5a4ee67bf47"
   },
   {
     "path": "k8s/validation/dcgm-compatibility.yaml",
     "source_sha256": "3da13d2dc1516c74009f9904d8048baafe09af82fe220134198ff2eaed6e90e9",
-    "public_sha256": "3da13d2dc1516c74009f9904d8048baafe09af82fe220134198ff2eaed6e90e9"
+    "public_sha256": "d20c78caa3815890197e04342a60554fddb8c2b68deff104b146f9ce4fbf9a32"
   },
   {
     "path": "k8s/validation/gpu-shortage.yaml",
     "source_sha256": "d0fb6a716c04fc163b764fa1cb584ce1b1c877b96184789b7811810fd9bfe8c6",
-    "public_sha256": "d0fb6a716c04fc163b764fa1cb584ce1b1c877b96184789b7811810fd9bfe8c6"
+    "public_sha256": "920eabe72abc51584f429aa41a94bc09109c4ae189df4f13711cd63cdf2e9d0f"
   },
   {
     "path": "k8s/validation/wsl-cuda-smoke.yaml",
     "source_sha256": "41f8be00f8712265fb61c0f942c4625b7410b6ca8606767a26645bafbbbb8397",
-    "public_sha256": "41f8be00f8712265fb61c0f942c4625b7410b6ca8606767a26645bafbbbb8397"
+    "public_sha256": "3e9020f15ac194ad617f69ca11f0c2b71c81ca8b1d69db20c2b8f3c06d58e535"
   },
   {
     "path": "k8s/validation/wsl-dcgm-trial.yaml",
     "source_sha256": "b216079a670292ed00ac3a41979d1cd8a28765c6821383b0552adfaee4d10f01",
-    "public_sha256": "b216079a670292ed00ac3a41979d1cd8a28765c6821383b0552adfaee4d10f01"
+    "public_sha256": "813aae6d088596a640d55776646065ebc3c8d5b7a09d9de9aad37d5b33681038"
   },
   {
     "path": "k8s/validation/wsl-gateway-trial-metrics.yaml",
     "source_sha256": "29f72ab16d0953ade4b7aa90b460640107da84691f6bd7f5ff019be5fefb1068",
-    "public_sha256": "29f72ab16d0953ade4b7aa90b460640107da84691f6bd7f5ff019be5fefb1068"
+    "public_sha256": "79d4c258a23eab991068f8104654d1102c155e21982c172207915742ce9816eb"
   },
   {
     "path": "k8s/validation/wsl-gateway-trial.yaml",
     "source_sha256": "182eb6eda65a69f66753754d5f5bc1d8ce9820cd43839e39feb1247024c3ff4d",
-    "public_sha256": "182eb6eda65a69f66753754d5f5bc1d8ce9820cd43839e39feb1247024c3ff4d"
+    "public_sha256": "ded41d23714ca35ab92d33640951740e3a7a01973ba2535a4f2c9d5b805b0f6f"
   },
   {
     "path": "k8s/validation/wsl-monitoring-trial.yaml",
     "source_sha256": "6bc57b87e0b35f0f34cecc6dd958aaab55b6d9f5610e0cc306d5e621652eecd9",
-    "public_sha256": "6bc57b87e0b35f0f34cecc6dd958aaab55b6d9f5610e0cc306d5e621652eecd9"
+    "public_sha256": "d288e8dc74842ff59a27b8441d13e0ea497207cb0513a8e38e51383a42879cc5"
   },
   {
     "path": "k8s/validation/wsl-vllm-trial.yaml",
     "source_sha256": "6a619c23cb338f65088a80d764daec27e44ab9d700e156ac72989f0692d6c53b",
-    "public_sha256": "6a619c23cb338f65088a80d764daec27e44ab9d700e156ac72989f0692d6c53b"
+    "public_sha256": "e73960fbf19d2c670560924129a16835d7979b3274d7be6dfe0dbdce31d7f42e"
   },
   {
     "path": "k8s/vllm/deployment.yaml",
     "source_sha256": "5a07c4b3f66b32bb9001fbb839a0759aebc7523df955f627127a76f689918c7b",
-    "public_sha256": "5a07c4b3f66b32bb9001fbb839a0759aebc7523df955f627127a76f689918c7b"
+    "public_sha256": "6ccf5913e7ec933c26ae1a726e990941c08388a1da3eb7bcfd72395424f310bd"
   },
   {
     "path": "k8s/vllm/service.yaml",
     "source_sha256": "129b95e490f9a241ee5cb09028d2cf3b87e983635771d92f1a9204225472a42d",
-    "public_sha256": "129b95e490f9a241ee5cb09028d2cf3b87e983635771d92f1a9204225472a42d"
+    "public_sha256": "3603c173313a5119569afa9a22802b37ee26804a9ec700b600950d58c0dd2aab"
   },
   {
     "path": "mock-backend/.dockerignore",
     "source_sha256": "9de042c58be7dbdfb1888bea80144bde46d5a1dc0bcc285787ceda7f9188db65",
-    "public_sha256": "9de042c58be7dbdfb1888bea80144bde46d5a1dc0bcc285787ceda7f9188db65"
+    "public_sha256": "c5747135c48b5a3f6c0a1476158e00f089421beee4211e6286cf30b5efa00baf"
   },
   {
     "path": "mock-backend/Dockerfile",
     "source_sha256": "749929d5e31db8a5d599976d5be9485bad064f5e48542354fc2653a511fb6e5c",
-    "public_sha256": "749929d5e31db8a5d599976d5be9485bad064f5e48542354fc2653a511fb6e5c"
+    "public_sha256": "277a9a899d53ba54fd868d59deb5799e690995e4b9641477d6ffbd8a75271e0e"
   },
   {
     "path": "mock-backend/app/__init__.py",
@@ -852,87 +852,87 @@
   {
     "path": "mock-backend/app/main.py",
     "source_sha256": "630e0e391effebdf39ae3052004043f100e83a88c55770af72e67ce29489ee40",
-    "public_sha256": "630e0e391effebdf39ae3052004043f100e83a88c55770af72e67ce29489ee40"
+    "public_sha256": "41e01fdff9abc333e768fe395fd4e9d8cda47e178cff2d66cfc822cdeea31c3e"
   },
   {
     "path": "mock-backend/requirements.txt",
     "source_sha256": "e9b637ba2d8345a266b27433501ba0cf3df6d2df70f8cbaeb97d34a15bf14fc8",
-    "public_sha256": "e9b637ba2d8345a266b27433501ba0cf3df6d2df70f8cbaeb97d34a15bf14fc8"
+    "public_sha256": "2fb50322608f11d20a3726cc5fa95bcb481aab1425f369eabd9486a7aa4fe9a7"
   },
   {
     "path": "monitoring/alert-receiver/Dockerfile",
     "source_sha256": "de9d16c08ec4acdc9439f907660c8bf015549bf120b3cf56ff938aa548b31137",
-    "public_sha256": "de9d16c08ec4acdc9439f907660c8bf015549bf120b3cf56ff938aa548b31137"
+    "public_sha256": "2290ef568182e652c726b5d7fb8f593addfe98933af138eb49cf1916bdbe2041"
   },
   {
     "path": "monitoring/alert-receiver/app.py",
     "source_sha256": "a9ef74e1a3405c882af16aed68c71f83e8e1aebe38699cfb4496331e42b3dc38",
-    "public_sha256": "a9ef74e1a3405c882af16aed68c71f83e8e1aebe38699cfb4496331e42b3dc38"
+    "public_sha256": "5366f6606616355980c2b7603dfffe141d559058440050677c617664334da975"
   },
   {
     "path": "monitoring/grafana/dashboards/kubellm-ops.json",
     "source_sha256": "e995beb57e3ad29bdfa25810eb38fb29fe9233206fe0ff07b2208e01d23054d9",
-    "public_sha256": "e995beb57e3ad29bdfa25810eb38fb29fe9233206fe0ff07b2208e01d23054d9"
+    "public_sha256": "0d54e53cb849fb618e4344ab2b91b318371c6f5c202cd924172ed1656e3be2e3"
   },
   {
     "path": "monitoring/grafana/provisioning/dashboards/dashboard.yml",
     "source_sha256": "c2f15fe410a226254482397c6db77032cf8c573711f375da7ee4f13254e94dae",
-    "public_sha256": "c2f15fe410a226254482397c6db77032cf8c573711f375da7ee4f13254e94dae"
+    "public_sha256": "b334d46ac54cc9c2e1f9342e7e68f763199eb6e6abd5e118d7d5f44e40c2a536"
   },
   {
     "path": "monitoring/grafana/provisioning/datasources/datasource.yml",
     "source_sha256": "70ef75adb8785794561281f879f49a5621fbef001c21454a6bafbdd6467dd8e6",
-    "public_sha256": "70ef75adb8785794561281f879f49a5621fbef001c21454a6bafbdd6467dd8e6"
+    "public_sha256": "5f21d2148af47fe2d21726027b7e7246aa0d826ac737eccb1138394f3040f198"
   },
   {
     "path": "monitoring/grafana/validation/kubellm-wsl-gpu-observed.json",
     "source_sha256": "bac915fae420f070e78cfb851014b91b2b21b867cc0ff34ad9a837ac522a825c",
-    "public_sha256": "bac915fae420f070e78cfb851014b91b2b21b867cc0ff34ad9a837ac522a825c"
+    "public_sha256": "df75f7f031c99d35f28ac71737b24f0cdeccf29a9759634a683de6411635fff7"
   },
   {
     "path": "monitoring/operations/alertmanager.yml",
     "source_sha256": "572824fb4b609784d0f9060fb6dafc3fca10374be1dbe25bb8a5e5c54cfa961b",
-    "public_sha256": "572824fb4b609784d0f9060fb6dafc3fca10374be1dbe25bb8a5e5c54cfa961b"
+    "public_sha256": "5ed69e874f9b0713faf7243ca48d31a37d3098723bf8e4f8180ec4e25f7051d7"
   },
   {
     "path": "monitoring/operations/alerts.test.yml",
     "source_sha256": "00d840a63e1bc91eebf17375f99e483c678f28631179c75163a24cdd84354b18",
-    "public_sha256": "00d840a63e1bc91eebf17375f99e483c678f28631179c75163a24cdd84354b18"
+    "public_sha256": "7e9a2112dca49ad57306ffc5adf63e1a6212dc593e1d04c96ae0c5de316d1d9f"
   },
   {
     "path": "monitoring/operations/alerts.yml",
     "source_sha256": "c19682f7cdf83638876b4ac4795efee5d456ba958870da9fc0cdd7c4c46b6afb",
-    "public_sha256": "c19682f7cdf83638876b4ac4795efee5d456ba958870da9fc0cdd7c4c46b6afb"
+    "public_sha256": "98757ac6beab79689e6c8f56154ab949f3878178478021066cf70bb2c01d321d"
   },
   {
     "path": "monitoring/operations/prometheus.yml",
     "source_sha256": "74a7593f63ac566f82ea229f9def6f6b7c64fd2d1c8b582ccc0726ce235350bc",
-    "public_sha256": "74a7593f63ac566f82ea229f9def6f6b7c64fd2d1c8b582ccc0726ce235350bc"
+    "public_sha256": "705832cfe20c540df22747282430310a3e813fcc0c7753cebc41829d9a37ca51"
   },
   {
     "path": "monitoring/operations/restore-prometheus.yml",
     "source_sha256": "48e8813eee1262259cbd0d66a76dfcb1f45893e39e11c0f94ad832c1e02a88e1",
-    "public_sha256": "48e8813eee1262259cbd0d66a76dfcb1f45893e39e11c0f94ad832c1e02a88e1"
+    "public_sha256": "8637a29861165d21f429843838f841a176c3e83a86a98b3ae02ab1fbfb343642"
   },
   {
     "path": "monitoring/prometheus/prometheus.yml",
     "source_sha256": "9f22796d09664de9dec05bc92020abaca1b283304ca04d5ce3b939eafade1a9d",
-    "public_sha256": "9f22796d09664de9dec05bc92020abaca1b283304ca04d5ce3b939eafade1a9d"
+    "public_sha256": "5429c933b0d2516d2e18fd1abbb24a5f45705f74cc6ab8f7fa3f7c26bc55e8ed"
   },
   {
     "path": "monitoring/vllm-example/prometheus.yml",
     "source_sha256": "0d397006f3ac69356c9fa405c2cf1080afd757ba43f8f1f9f292b944925fb020",
-    "public_sha256": "0d397006f3ac69356c9fa405c2cf1080afd757ba43f8f1f9f292b944925fb020"
+    "public_sha256": "f7f1bb33878808b1da303602686070f145669b314eb2af8c2d4c5a56f4c82d92"
   },
   {
     "path": "monitoring/vllm-example/provisioning/dashboards/dashboard.yml",
     "source_sha256": "548f7f1290a65e349705a510cb34e9f7a338ef6222becd7bb16e14718d5c371f",
-    "public_sha256": "548f7f1290a65e349705a510cb34e9f7a338ef6222becd7bb16e14718d5c371f"
+    "public_sha256": "8b49b896788ae117b14cad3c29b84ef994071950fe18f7b20cda3249b1a87158"
   },
   {
     "path": "monitoring/vllm-example/provisioning/datasources/prometheus.yml",
     "source_sha256": "09f4cfaf2c8fcbfed8e644b8d24a1db09bbbab16a89fa017c40a0e08f2b0441d",
-    "public_sha256": "09f4cfaf2c8fcbfed8e644b8d24a1db09bbbab16a89fa017c40a0e08f2b0441d"
+    "public_sha256": "19d98cca02290926efd3e8b622d97213f3c19ed9b561898225d8e149ff48d9d6"
   },
   {
     "path": "pyproject.toml",
@@ -942,162 +942,162 @@
   {
     "path": "requirements-dev.txt",
     "source_sha256": "a3f93b061fa2b968203dea3969adb02a8723be072b8c4f66a6f4004da132a356",
-    "public_sha256": "a3f93b061fa2b968203dea3969adb02a8723be072b8c4f66a6f4004da132a356"
+    "public_sha256": "7aad8b4a9990470a47302492386a0c2c57afdb5ff30597db328ef159be15d9f5"
   },
   {
     "path": "scripts/ai_infra_publication_dry_run.py",
     "source_sha256": "c4a9d17ac2faa7553bc1a17b8f0317384db78bc73668e46654d4769304fc9b37",
-    "public_sha256": "c4a9d17ac2faa7553bc1a17b8f0317384db78bc73668e46654d4769304fc9b37"
+    "public_sha256": "0013ad3597bffe27f8d145b86f1907de4f2625330ba9e08f6be75605a6f5370a"
   },
   {
     "path": "scripts/build-review-packet.py",
     "source_sha256": "28f936435d55a6c3433cf4d63465f4047df0c37f95f34ee77dc3b2d969595336",
-    "public_sha256": "28f936435d55a6c3433cf4d63465f4047df0c37f95f34ee77dc3b2d969595336"
+    "public_sha256": "2c4e157e62a9cbf5afbc8e8af9641a21c461a1a81fd33c741d524e13c08868ef"
   },
   {
     "path": "scripts/failure-tests/local_stack.py",
     "source_sha256": "8529267f9748bb756de382473558507f83b6e633472902241a793fa2f2189438",
-    "public_sha256": "8529267f9748bb756de382473558507f83b6e633472902241a793fa2f2189438"
+    "public_sha256": "ed937169391e03e765d5295e883861b51427b80b9f358b58037df5b1dada22ce"
   },
   {
     "path": "scripts/failure-tests/scenario1_gateway_pod_delete.sh",
     "source_sha256": "e9003b6637eb045b12db6e3e17d547a02e9a0ead867f602f28803f27ceada67d",
-    "public_sha256": "e9003b6637eb045b12db6e3e17d547a02e9a0ead867f602f28803f27ceada67d"
+    "public_sha256": "99d543bf7ccc3d2070c2cdcb3b0a38b629260a827e1def8f2d516a9c5a4173c2"
   },
   {
     "path": "scripts/failure-tests/scenario2_backend_unavailable.py",
     "source_sha256": "30b5dfe1129dbe0323fd6e6f0b79caca9df837ff9415c845f8e709f6eae32f08",
-    "public_sha256": "30b5dfe1129dbe0323fd6e6f0b79caca9df837ff9415c845f8e709f6eae32f08"
+    "public_sha256": "d9ce4c5e042ecc5cd105f65bf2fd48a619eb035a1b4b52b691d12cf9aa06a8d0"
   },
   {
     "path": "scripts/failure-tests/scenario3_gpu_resource_pending.sh",
     "source_sha256": "5293cac47a00813881dfe1031b3b9ca7ba219be0f5e764366c072282b7faa1c3",
-    "public_sha256": "5293cac47a00813881dfe1031b3b9ca7ba219be0f5e764366c072282b7faa1c3"
+    "public_sha256": "0155933363d0a1fd5970e323bdb55ec4e9e3e4e1cdf23e18f62b8f995f03a7b6"
   },
   {
     "path": "scripts/failure-tests/scenario4_model_load_failure.sh",
     "source_sha256": "60f5c9872357f3ec05f93f417196ed37c9e0501cdaa2ab367e43dfacb09bc226",
-    "public_sha256": "60f5c9872357f3ec05f93f417196ed37c9e0501cdaa2ab367e43dfacb09bc226"
+    "public_sha256": "d4191d0c0df50893436d744c4cdf07ab46396d450e97bdc756dab882b3d1a543"
   },
   {
     "path": "scripts/failure-tests/scenario5_overload.py",
     "source_sha256": "312155d0158d71b5085c25f3da468d10373c57890bc64b3697b85b6229941de4",
-    "public_sha256": "312155d0158d71b5085c25f3da468d10373c57890bc64b3697b85b6229941de4"
+    "public_sha256": "c9386e851472a75552e60f04d1939989e9454dd3d4f8e364aa2791091d0fe7e5"
   },
   {
     "path": "scripts/gpu-docker-check.ps1",
     "source_sha256": "ed83b419a7023bfb5ddff066266a6f39d9b95dee0c2fc264455d03130326d8ad",
-    "public_sha256": "1647228605170bebbdc8a66dd6aeffa16203a23fbaa66544fee83cbda4ea8370"
+    "public_sha256": "a576e315d472fa91e56d81f902ae6f3a8c887dac1e6732ecb01a9d6cb6bdba66"
   },
   {
     "path": "scripts/k8s-local-verify.ps1",
     "source_sha256": "cf1e4953193907bb0489b7062ddec0f1e9bb7de226421dc110ad8a940ba21ab5",
-    "public_sha256": "a85c5568f4f1208ed05f0ea97867dd48165a54e1ed7243cb279e0d8649a5d232"
+    "public_sha256": "3ca2fd6c9948e967739d45ee902c909abef0253753139035e6e79308908c9939"
   },
   {
     "path": "scripts/kubernetes/close-docker-gap.py",
     "source_sha256": "bdaf7f0c588ab18952c446b174430f3162c8ae2429eb24d29a3998347b276032",
-    "public_sha256": "bdaf7f0c588ab18952c446b174430f3162c8ae2429eb24d29a3998347b276032"
+    "public_sha256": "83e69d0cfd5e12dde0b1eaec7f27574cce2379120f505471764ffde917aef15a"
   },
   {
     "path": "scripts/kubernetes/close-kubernetes-gap.py",
     "source_sha256": "55f1797a501fb8192a40803d5d5c478499b677aab19bacda711e07d11e98af6a",
-    "public_sha256": "55f1797a501fb8192a40803d5d5c478499b677aab19bacda711e07d11e98af6a"
+    "public_sha256": "185e32b45dc3296b2855c6b14bc87525fda69ea00879c94d3f34904ffb4abd11"
   },
   {
     "path": "scripts/kubernetes/collect-trial-metrics.py",
     "source_sha256": "ef4e97edb667591fda198781c4f7b2abf0684e0523fdbfd06e64d76bc6930a0e",
-    "public_sha256": "ef4e97edb667591fda198781c4f7b2abf0684e0523fdbfd06e64d76bc6930a0e"
+    "public_sha256": "1967ff732a8d4729f66dba751934c3d230ad46af2d72201836ba3505abfdf7e7"
   },
   {
     "path": "scripts/kubernetes/create-trial-grafana-secret.py",
     "source_sha256": "ff18b3e7bb8c0d25c054b76a02600780f7fa4e71cece7111c0a04bead95151f3",
-    "public_sha256": "ff18b3e7bb8c0d25c054b76a02600780f7fa4e71cece7111c0a04bead95151f3"
+    "public_sha256": "890e3d01a69e90bc36436ba4330a8cefe2b0fa8599a0332369c542834c8a3212"
   },
   {
     "path": "scripts/kubernetes/docker-readiness-trial.py",
     "source_sha256": "9483485aa8a0899fa594aad9dc72cbc21f5a6da76195235a53c1c19010a8b776",
-    "public_sha256": "9483485aa8a0899fa594aad9dc72cbc21f5a6da76195235a53c1c19010a8b776"
+    "public_sha256": "675a7e82a900cd43fa8fe15bc4634ad01724c7e8ff440f3c188d4286f5d57da7"
   },
   {
     "path": "scripts/kubernetes/harden-shared-kubeconfig.py",
     "source_sha256": "409e519c75e0bd3779f4a8bf112ca461420e7593049e61d5c8c1deb1be88ff41",
-    "public_sha256": "409e519c75e0bd3779f4a8bf112ca461420e7593049e61d5c8c1deb1be88ff41"
+    "public_sha256": "7ffde4643986b3bac839acd2755765241d633555ceaceef4855c9c86f1913371"
   },
   {
     "path": "scripts/kubernetes/model-load-failure.py",
     "source_sha256": "2d5f01d723591b40605805ad90ab54ddc5163e32698360c5a0e51a9e06d13e55",
-    "public_sha256": "2d5f01d723591b40605805ad90ab54ddc5163e32698360c5a0e51a9e06d13e55"
+    "public_sha256": "2fb8b63075d77f3354c85cd78bf400e46dc603730964fa6561373a65472ffe15"
   },
   {
     "path": "scripts/kubernetes/persist-monitoring.py",
     "source_sha256": "a6b6287f71805d7bfb8eac707fff0887e9287df21f8a9c5873479d105ffd372e",
-    "public_sha256": "a6b6287f71805d7bfb8eac707fff0887e9287df21f8a9c5873479d105ffd372e"
+    "public_sha256": "25062ff90adaddb366a1443ba9ede9a4deb97ee5a32e76152fde2206ea4ddd47"
   },
   {
     "path": "scripts/kubernetes/pod-recovery.py",
     "source_sha256": "a763df70e50b82c4c5f078bdd44042906bedaced19ac991225f5d15866fab7d4",
-    "public_sha256": "a763df70e50b82c4c5f078bdd44042906bedaced19ac991225f5d15866fab7d4"
+    "public_sha256": "5f8b9dee9557d120eef1a542b9bbb1c8877f943f83623e6426e15bcaa7d9ba66"
   },
   {
     "path": "scripts/kubernetes/restore-grafana-config.py",
     "source_sha256": "80f7b71f33d0af4b6b85e6d2bf591f1779cc8b64bc49cb7b77bcf7bc875eec33",
-    "public_sha256": "80f7b71f33d0af4b6b85e6d2bf591f1779cc8b64bc49cb7b77bcf7bc875eec33"
+    "public_sha256": "32d7f13145da5e3a2bab7d75f7eb99efddcb5edac80b59d930bd4945db8d3736"
   },
   {
     "path": "scripts/kubernetes/verify-gateway-metrics-image.py",
     "source_sha256": "3f4bbe1d0a459f9b316ae0d2a08c3c19dbc520f631c99bf31682bee4b89ec3bd",
-    "public_sha256": "3f4bbe1d0a459f9b316ae0d2a08c3c19dbc520f631c99bf31682bee4b89ec3bd"
+    "public_sha256": "0751a7679a0af1b1ad313b33c5f69ad7cc0851e9b58cf495b67dc059e6065d00"
   },
   {
     "path": "scripts/kubernetes/verify-local-alert.py",
     "source_sha256": "e924c18f00b7830d4c0d1a31dbf861e39d02deb042cd387dac03c4fbb6ae37d0",
-    "public_sha256": "e924c18f00b7830d4c0d1a31dbf861e39d02deb042cd387dac03c4fbb6ae37d0"
+    "public_sha256": "0cc0b010711669e76fca1bf66fd2654e75040a25ecfe71f43988424eaf1eaa31"
   },
   {
     "path": "scripts/load-test/analyze-soak.py",
     "source_sha256": "b2c032dd8e3e8480cca3a3db7c4f432170d2193692b0a839bf28b50420f622f3",
-    "public_sha256": "b2c032dd8e3e8480cca3a3db7c4f432170d2193692b0a839bf28b50420f622f3"
+    "public_sha256": "b7b520297d7e58373ed609a96fb9f6dfa63aa72d2254e75b771cbc3b41744a95"
   },
   {
     "path": "scripts/load-test/evaluate_slo.py",
     "source_sha256": "2bff3974499f28a7445659026e0cb795be1e1567c8e14af6978a0224153d121c",
-    "public_sha256": "2bff3974499f28a7445659026e0cb795be1e1567c8e14af6978a0224153d121c"
+    "public_sha256": "b3d246fc2ce2c7b7227e82849ae47f9e3e898591341c79358577587a47dfdf64"
   },
   {
     "path": "scripts/load-test/load_test.py",
     "source_sha256": "92a7de25ec5bbb8ba0694446425634afb5917d5ccc0d96c9ed5144065fefd3f9",
-    "public_sha256": "92a7de25ec5bbb8ba0694446425634afb5917d5ccc0d96c9ed5144065fefd3f9"
+    "public_sha256": "94ae322fb33a40d5eec24a70ad4f70822f1b15374d7939de2e501044a075f6ca"
   },
   {
     "path": "scripts/load-test/open_loop.py",
     "source_sha256": "ab71bc49252aadac188e3ce996ba5601a7fe9971b506b28de60832b61e724d5e",
-    "public_sha256": "ab71bc49252aadac188e3ce996ba5601a7fe9971b506b28de60832b61e724d5e"
+    "public_sha256": "6f9546984d039df60e8f41c97c547b0625a090c6552bd54b9267819aa22854b9"
   },
   {
     "path": "scripts/load-test/repeated_gpu_review.py",
     "source_sha256": "9155ac9679d25240ba8c171c61ad6ec8c0400c3c1272ef5a2d5d8786dc496e3e",
-    "public_sha256": "9155ac9679d25240ba8c171c61ad6ec8c0400c3c1272ef5a2d5d8786dc496e3e"
+    "public_sha256": "69420c38054bdd82f241caba7ebfe1bbd9d2272e5b946b27846c158c60ddbaa9"
   },
   {
     "path": "scripts/load-test/streaming-readiness-review.py",
     "source_sha256": "8ebe08c727cee158e03011978055ca109f5c4b58f2d297df7417783ca7bd7233",
-    "public_sha256": "8ebe08c727cee158e03011978055ca109f5c4b58f2d297df7417783ca7bd7233"
+    "public_sha256": "912e94c03d741f4c983776836178c1d91a4b074d26c1d4809ba4a309f0311db8"
   },
   {
     "path": "scripts/load-test/supervised-soak.py",
     "source_sha256": "4401652f57c8f7cfa45bb4f142f05d3a916bfcc652bc4cdc09ee174d696be9a8",
-    "public_sha256": "4401652f57c8f7cfa45bb4f142f05d3a916bfcc652bc4cdc09ee174d696be9a8"
+    "public_sha256": "1c2d13595f6eae66e2138e9dddd2e626cc05af0b16de12a5f91c8267618f4e59"
   },
   {
     "path": "scripts/ops/analyze_exp02.py",
     "source_sha256": "05817be50a8d011855a55da55dbbddea00b13866eb4160fab446d2291502348d",
-    "public_sha256": "05817be50a8d011855a55da55dbbddea00b13866eb4160fab446d2291502348d"
+    "public_sha256": "4c093bb57b99a215e41542e702553cf05f32ad0307624a90534b1f92ecf3c5cb"
   },
   {
     "path": "scripts/ops/analyze_exp07_ramp.py",
     "source_sha256": "b77b2add2c2cc6fd2a4a9501e588cd142b3c53df08272a9de6a4057bba51ec71",
-    "public_sha256": "b77b2add2c2cc6fd2a4a9501e588cd142b3c53df08272a9de6a4057bba51ec71"
+    "public_sha256": "1662b3b23d42ed2e277b5b8976409cb10b4b21c56b6be2bd1b760217311e35a6"
   },
   {
     "path": "scripts/ops/bounded_retry.py",
@@ -1122,7 +1122,7 @@
   {
     "path": "scripts/ops/check_demo_endpoint.py",
     "source_sha256": "a88a9df677ce1f78689346d2beeb1fce457872df2521c8ae5158a09aaa10e4b8",
-    "public_sha256": "a88a9df677ce1f78689346d2beeb1fce457872df2521c8ae5158a09aaa10e4b8"
+    "public_sha256": "df42e1efdc5b6d874d053fc2ca591884a3aea4a45fd67aa18b7deb1c9f09263c"
   },
   {
     "path": "scripts/ops/compare_admission.py",
@@ -1142,67 +1142,67 @@
   {
     "path": "scripts/ops/demo.py",
     "source_sha256": "0930d3b38010df78519ea54ada1b0278f139357946c5cab7465a459f8707ae6b",
-    "public_sha256": "0930d3b38010df78519ea54ada1b0278f139357946c5cab7465a459f8707ae6b"
+    "public_sha256": "f3c06f9417978d24e4de7736565dd387e26d3bf7228e46d440fd665f3b0c06c5"
   },
   {
     "path": "scripts/ops/exp01_revision.py",
     "source_sha256": "32fcba52386d6acddd902a2c03f0d64e4e64361533cec541ac821d44457c776b",
-    "public_sha256": "32fcba52386d6acddd902a2c03f0d64e4e64361533cec541ac821d44457c776b"
+    "public_sha256": "0327fd7dc23ccb29fdba4f6967077d2a28582bc63a90fc975fb4abf62c8c9a4e"
   },
   {
     "path": "scripts/ops/exp02_readiness503.py",
     "source_sha256": "b055fd4882d85f84bc994e766cd9daf605c725fd546af2d4f2b827e32a922dbe",
-    "public_sha256": "b055fd4882d85f84bc994e766cd9daf605c725fd546af2d4f2b827e32a922dbe"
+    "public_sha256": "804937b6c3325c10b2f078ad15c2b4425c287580e85ead207554903953111a8f"
   },
   {
     "path": "scripts/ops/exp03a_prometheus_rollback.py",
     "source_sha256": "d298ad50a92b42c7ccc30b92d550f635ab9ba7a719df9b6fff1fd5ad63a4e7b5",
-    "public_sha256": "d298ad50a92b42c7ccc30b92d550f635ab9ba7a719df9b6fff1fd5ad63a4e7b5"
+    "public_sha256": "8cda9bbeaab5ec12565e03a8c2b80bb892fae4e59c0740f5d7d73869e2635ece"
   },
   {
     "path": "scripts/ops/exp03b_receiver.py",
     "source_sha256": "01ff9ffef797b36b18cecac59a10e3ff7543ada1f93bd181ac9b7b4e1a032aea",
-    "public_sha256": "01ff9ffef797b36b18cecac59a10e3ff7543ada1f93bd181ac9b7b4e1a032aea"
+    "public_sha256": "f7f12e8f34ea0e411db73560f2cc448ceab0075883333fec1b88e4e48bfcd27d"
   },
   {
     "path": "scripts/ops/exp03c_am_graceful.py",
     "source_sha256": "f0d833cd42a91d807da346bf996b3c09598af9e131264a713845e6f66c964808",
-    "public_sha256": "f0d833cd42a91d807da346bf996b3c09598af9e131264a713845e6f66c964808"
+    "public_sha256": "b79b46664e4439b87c2e99f085d423b83204b585bd453191b0d1a76d938fb461"
   },
   {
     "path": "scripts/ops/exp04_alert_rules.py",
     "source_sha256": "5117ecc6027adbf3649d364bfd6b6b4a4be5c1019e88d592f3674d827b5fb9a1",
-    "public_sha256": "5117ecc6027adbf3649d364bfd6b6b4a4be5c1019e88d592f3674d827b5fb9a1"
+    "public_sha256": "9e338acb423577743d7abd816861a446a81511b2764386770293f7bf016da533"
   },
   {
     "path": "scripts/ops/exp04b_queue_alert.py",
     "source_sha256": "4ed623fad425f329691f25fcb98c5a41c5d08f6ba462a252bc595854a24dafdd",
-    "public_sha256": "4ed623fad425f329691f25fcb98c5a41c5d08f6ba462a252bc595854a24dafdd"
+    "public_sha256": "dbe096312f03b1ac873c283d0a70ceb73d8fdb603e7b0d89c39c760be481981e"
   },
   {
     "path": "scripts/ops/exp06a_container_restarts.py",
     "source_sha256": "17be9a986501c48f41de9c627e8c43d96088a7b5dd03b685fe6e3b56fd743a18",
-    "public_sha256": "17be9a986501c48f41de9c627e8c43d96088a7b5dd03b685fe6e3b56fd743a18"
+    "public_sha256": "e1ed6c9dbb8f5ce1dd8a09f06b64da1f1bb9e4e4d6c89939e11be17fd72aa0ff"
   },
   {
     "path": "scripts/ops/exp06b_wsl_restart.py",
     "source_sha256": "d2555d66d12bfff6c13ad6317095d4ec4a3a766de5b670d9c0979b8d11960639",
-    "public_sha256": "d2555d66d12bfff6c13ad6317095d4ec4a3a766de5b670d9c0979b8d11960639"
+    "public_sha256": "1fdfea17b152f3ca39c826bebe68927250e3aeaf01e6b7cb102e8d31cc17c0f1"
   },
   {
     "path": "scripts/ops/exp06c_docker_desktop_restart.py",
     "source_sha256": "f995b645f4028c01928eddc95cb32737c5cac4c558b26354a5ae95f795f19db2",
-    "public_sha256": "f995b645f4028c01928eddc95cb32737c5cac4c558b26354a5ae95f795f19db2"
+    "public_sha256": "4c0251f09e10a3a2c58389db53f73761ce73df4c89ff11d92fb5ba5a91d7fdbf"
   },
   {
     "path": "scripts/ops/exp07_load.py",
     "source_sha256": "3ecfd45be011a521cffea44ed099c4bdb6d45dacbe79694492f4416f87d9b0fe",
-    "public_sha256": "3ecfd45be011a521cffea44ed099c4bdb6d45dacbe79694492f4416f87d9b0fe"
+    "public_sha256": "2d0257ba70fc25bdeecc442590d128be97767f8b53ad753ca30af7b2db83d923"
   },
   {
     "path": "scripts/ops/exp08_jit_readiness.py",
     "source_sha256": "b12cf861f307e8ad2eb9acd04b3c300dab117036741d95fe4d83cd503ecd0f08",
-    "public_sha256": "b12cf861f307e8ad2eb9acd04b3c300dab117036741d95fe4d83cd503ecd0f08"
+    "public_sha256": "322bf9b61337b5af88eb81fd8d8da77439c43ca092e0474dfabd759be8b4b16b"
   },
   {
     "path": "scripts/ops/five_module_pipeline.py",
@@ -1232,7 +1232,7 @@
   {
     "path": "scripts/ops/oplib.py",
     "source_sha256": "539a29dfe687edb369d3fbc816e0d6e3b3bd5ec1bc62be7844ca0f96701359bb",
-    "public_sha256": "539a29dfe687edb369d3fbc816e0d6e3b3bd5ec1bc62be7844ca0f96701359bb"
+    "public_sha256": "d7c0195a11bfc986212a9f3c2e21908204a5e8b24fa4b8146dab078838f0d2da"
   },
   {
     "path": "scripts/ops/probe_gpu_cancel.py",
@@ -1242,22 +1242,22 @@
   {
     "path": "scripts/ops/reanalyze_load.py",
     "source_sha256": "836a1a6a6f63ba6dbd127df059632f21548b0e62b08a08bf20d0dd56e16c25b4",
-    "public_sha256": "836a1a6a6f63ba6dbd127df059632f21548b0e62b08a08bf20d0dd56e16c25b4"
+    "public_sha256": "815b5c7f6b9e2450d2ec546218d440b9363ae42728b713617a1053cabdaca529"
   },
   {
     "path": "scripts/ops/rehearsal/prometheus-rehearsal.yml",
     "source_sha256": "bc2ebb2401f248012859cf27a7f10bbf888755190a4c93b7eae8e74d0bff3bd3",
-    "public_sha256": "bc2ebb2401f248012859cf27a7f10bbf888755190a4c93b7eae8e74d0bff3bd3"
+    "public_sha256": "a5ad64b087b16aec52445a3648c6fcbf2600f050826c9345a5fbdd7c61fcd47d"
   },
   {
     "path": "scripts/ops/restore_stack.py",
     "source_sha256": "489467d9965f773edee74aaf6696b72e1ecf37a0320d997ac09bc97e82dcf838",
-    "public_sha256": "489467d9965f773edee74aaf6696b72e1ecf37a0320d997ac09bc97e82dcf838"
+    "public_sha256": "b02636402d248b84a612537ca2ee03c17404d39731b29f75455bd06ea3454372"
   },
   {
     "path": "scripts/ops/safety_harness.py",
     "source_sha256": "987da627b44085ee7afa68275c73b2a8b730670aa64be4e8d7bd39ca32b514cb",
-    "public_sha256": "987da627b44085ee7afa68275c73b2a8b730670aa64be4e8d7bd39ca32b514cb"
+    "public_sha256": "fc040c9c88d1d2f333089f61c3e88412e0ffe9014c6856f90d5dc6871eb118d2"
   },
   {
     "path": "scripts/ops/scale_preview.py",
@@ -1267,67 +1267,67 @@
   {
     "path": "scripts/ops/verify_safety_harness.py",
     "source_sha256": "0d4947fc4c5d443fa473669fb39510edbd483a88bd5db39fb55559012e813e22",
-    "public_sha256": "0d4947fc4c5d443fa473669fb39510edbd483a88bd5db39fb55559012e813e22"
+    "public_sha256": "a83bc34613e04098ce2a5d270f8648069cb1fceb3c35a0cff5bd7b70776a037f"
   },
   {
     "path": "scripts/vllm-gpu-verify.ps1",
     "source_sha256": "3a4f8316abaf5b596436751816ff17b81a4edee924095ab66efaa50355e297c2",
-    "public_sha256": "8555660c0dec30a8bc28c886a9703641c15b53b0830e19e9089b53748cf397b8"
+    "public_sha256": "ae9207a9e088edcf7a3ab7bbd0d20e330eba31f9996cc4dbae039905e795e53b"
   },
   {
     "path": "slo-guard/HANDOFF.md",
     "source_sha256": "5e9bfcbd5fb6c2769cd7c6301ec6651015ac08a6f6621912d64de71b311d9ceb",
-    "public_sha256": "b245fa43fbca1fea31cdf1eb60bd45e452a020a50d07ea02b74e998f4f621bb0"
+    "public_sha256": "35337fb49b9c56638373a3b2726f921f3afcdf90d62620ad61453bc40292cd11"
   },
   {
     "path": "slo-guard/README.md",
     "source_sha256": "f84d82f0065defec5748da5dd1a090d419666306c8d9a0cd05bad50aea15e03b",
-    "public_sha256": "f84d82f0065defec5748da5dd1a090d419666306c8d9a0cd05bad50aea15e03b"
+    "public_sha256": "f1a764a38b89ebc78c2796f73e966658e5c15d09053c10ec32ada56cf089b383"
   },
   {
     "path": "slo-guard/prompts/home-gpu-capacity.md",
     "source_sha256": "889540d4a29caeb86ab6fd9efe399516670e5d8b51fb0e8488ad623552476404",
-    "public_sha256": "889540d4a29caeb86ab6fd9efe399516670e5d8b51fb0e8488ad623552476404"
+    "public_sha256": "31942bcf67635dc1e34c2da44116a8f4e1d8f1112c58cdb433a17a2552fca8dd"
   },
   {
     "path": "slo-guard/tasks/home-low-rate-progression-plan.md",
     "source_sha256": "b7bc2f608a8d78de6139df5467e9179d04caa5ce2d57b1563bd5dcf48acef81a",
-    "public_sha256": "b7bc2f608a8d78de6139df5467e9179d04caa5ce2d57b1563bd5dcf48acef81a"
+    "public_sha256": "f7c5aa79c8c2a650956d634d188a0477479fdd635a3639c9cdb430e732bbf85c"
   },
   {
     "path": "slo-guard/tasks/home-pilot-followup-plan.md",
     "source_sha256": "b165efa98b9789fb227206eaf192171f6529d64f6243aace295cc7582b2fd391",
-    "public_sha256": "b165efa98b9789fb227206eaf192171f6529d64f6243aace295cc7582b2fd391"
+    "public_sha256": "ff68d41bcdde787f6a67ee04622840f23f86cbb696debbe8ea49044cefdd3c6e"
   },
   {
     "path": "slo-guard/tasks/home-streaming-validation-20261021.md",
     "source_sha256": "c270afd5a9d72a595507d3835f0fde9313c033ab689a7ed5eeaeb846f9f15ba2",
-    "public_sha256": "c270afd5a9d72a595507d3835f0fde9313c033ab689a7ed5eeaeb846f9f15ba2"
+    "public_sha256": "91034aa6f1e903975c22ebee6428ce86e9a6a1f8aff3a5e15b2cfe6e0e601417"
   },
   {
     "path": "slo-guard/tasks/task-01-streaming.md",
     "source_sha256": "4673665b02a0c4dbdac720d86d830c4e2b194db31896e05e9f2a012418aa4b4b",
-    "public_sha256": "4673665b02a0c4dbdac720d86d830c4e2b194db31896e05e9f2a012418aa4b4b"
+    "public_sha256": "9c8bed89f023eed04ff173afe60dc7d63c368b1d3292dc5374bdcb2d1d14e5dd"
   },
   {
     "path": "slo-guard/tasks/task-01b-stream-metrics.md",
     "source_sha256": "60f62cd3bee5779b5b64082e8537d06791340dbf11cf6524eac666ed5149d60e",
-    "public_sha256": "60f62cd3bee5779b5b64082e8537d06791340dbf11cf6524eac666ed5149d60e"
+    "public_sha256": "f6d5848276d676bee1e67df42deef599c1637f09f495fd967dafb82ee39f989c"
   },
   {
     "path": "slo-guard/tasks/task-02-open-loop-load.md",
     "source_sha256": "8f43b2eab324ad46a5308a6eba9e55cc2d4d8b2065c6cb2cc1f29595d9c36f13",
-    "public_sha256": "8f43b2eab324ad46a5308a6eba9e55cc2d4d8b2065c6cb2cc1f29595d9c36f13"
+    "public_sha256": "f3e0700ca962c3765bb92a8b19b33a4600f4be9990baee6ccf2b5481cf73981b"
   },
   {
     "path": "slo-guard/test-image/Dockerfile",
     "source_sha256": "236a30c86e7d08664f96bc38213492b78ce835b6c055397fd00dfb4de3f4efad",
-    "public_sha256": "236a30c86e7d08664f96bc38213492b78ce835b6c055397fd00dfb4de3f4efad"
+    "public_sha256": "75c603f167753821e5965623fb0ba610a5b23f6b903914d47eded75978cb56ed"
   },
   {
     "path": "slo-guard/test-image/requirements-test.txt",
     "source_sha256": "823556200d5cbb5e2628ab7259d56ab0cb7a55049b269d71d66d90006853dfab",
-    "public_sha256": "823556200d5cbb5e2628ab7259d56ab0cb7a55049b269d71d66d90006853dfab"
+    "public_sha256": "df011dd2211c234e4515177d16a91e5079b5ff93deab2050aa068d94c5291e21"
   },
   {
     "path": "tests/__init__.py",
@@ -1337,7 +1337,7 @@
   {
     "path": "tests/conftest.py",
     "source_sha256": "7a886e4d130bd4aa3b9428f2c2346c475b043bfb21e77af248ecf2b89933a2e5",
-    "public_sha256": "7a886e4d130bd4aa3b9428f2c2346c475b043bfb21e77af248ecf2b89933a2e5"
+    "public_sha256": "e5deb08b1dc30d8d37c901c09d6dd5782cac77fe2c48f225f9f638cd5aff6153"
   },
   {
     "path": "tests/test_admission_followup.py",
@@ -1347,12 +1347,12 @@
   {
     "path": "tests/test_alert_receiver.py",
     "source_sha256": "b56539604fd7624548eb983be876b87262d890302ee1db9d4769c54a1f6764f5",
-    "public_sha256": "b56539604fd7624548eb983be876b87262d890302ee1db9d4769c54a1f6764f5"
+    "public_sha256": "ec5e5f10132f61418108efa689d0331885851b7c37856bd5caaff29d5bb87a03"
   },
   {
     "path": "tests/test_archived_analysis_preservation.py",
     "source_sha256": "f8a834a29a6e95ae3dedffd7b8fcee39199941efb8c754a4ee5ef0528a111260",
-    "public_sha256": "f8a834a29a6e95ae3dedffd7b8fcee39199941efb8c754a4ee5ef0528a111260"
+    "public_sha256": "985dc1811c31ede74d36a146c3cc0d010a56f3a12b40ac8857fb4c972f8fb361"
   },
   {
     "path": "tests/test_five_module_pipeline.py",
@@ -1362,37 +1362,37 @@
   {
     "path": "tests/test_gateway_backend_failures.py",
     "source_sha256": "35efe24e23a2cc383450eb0341b7076df6d97184f64380bc8b18943cba839ca0",
-    "public_sha256": "35efe24e23a2cc383450eb0341b7076df6d97184f64380bc8b18943cba839ca0"
+    "public_sha256": "4894af60ea344b718101153e8895a7e3470c1741dbd989dedda09e14ed7b89ff"
   },
   {
     "path": "tests/test_gateway_chat.py",
     "source_sha256": "2600c7832a2ba119e3c27970b46ce6765a43c5c72a12dec588fe9710937eea0e",
-    "public_sha256": "2600c7832a2ba119e3c27970b46ce6765a43c5c72a12dec588fe9710937eea0e"
+    "public_sha256": "735fdefe9cfac90a6efd20279144ec0b1a04028e1fe75ff312823f58a7418e99"
   },
   {
     "path": "tests/test_gateway_health.py",
     "source_sha256": "26486a24a1d6d5256dd0c7fea21f272ab0d7c487dc4b4469b43c9654e134c8a9",
-    "public_sha256": "26486a24a1d6d5256dd0c7fea21f272ab0d7c487dc4b4469b43c9654e134c8a9"
+    "public_sha256": "ec597ed4305b81b76244c40ac3c10b6d8b2faad6f642d04e42a957d3451d27f4"
   },
   {
     "path": "tests/test_gateway_metrics.py",
     "source_sha256": "d0585767fc4e2bc28c9a7c260bc4633d23108b12c103c08db61eefd8b5ed3374",
-    "public_sha256": "d0585767fc4e2bc28c9a7c260bc4633d23108b12c103c08db61eefd8b5ed3374"
+    "public_sha256": "fb824928a5240b466ba4223e838d6fb66b84f73d425350e71db0bc071c964bfc"
   },
   {
     "path": "tests/test_gateway_readiness.py",
     "source_sha256": "201f1b96c93218bc589fcf226f0f6a1322012af0ac0a00794992d0deabd35a7d",
-    "public_sha256": "201f1b96c93218bc589fcf226f0f6a1322012af0ac0a00794992d0deabd35a7d"
+    "public_sha256": "e5d355ca517cf80d634e60a3124321cd67fde70918be7d890b0efc124ba99bbd"
   },
   {
     "path": "tests/test_gateway_streaming.py",
     "source_sha256": "f89f5679f79931100e873bf56bd5aa45cfb3d9cf08d6d9d3174849161df899d1",
-    "public_sha256": "f89f5679f79931100e873bf56bd5aa45cfb3d9cf08d6d9d3174849161df899d1"
+    "public_sha256": "e5277a0c107bf5fc707360a845a8b1796c3c052299c68a0b1a5d33698b11c6ae"
   },
   {
     "path": "tests/test_harden_rollback.py",
     "source_sha256": "7c76004b277bf564b5e895937b9177cf47ca060344cb1ca5f0a0063502b2f777",
-    "public_sha256": "7c76004b277bf564b5e895937b9177cf47ca060344cb1ca5f0a0063502b2f777"
+    "public_sha256": "cdd5033e2494424c029ff21c2aaeefd7937ddf31babaaf2d40882638817c1f99"
   },
   {
     "path": "tests/test_http_admission.py",
@@ -1407,22 +1407,22 @@
   {
     "path": "tests/test_jit_diagnostic.py",
     "source_sha256": "0beb061f0923d469a6a5a1ff9bf747c04d7502c03995fd2b94c92e0d22ce8ce0",
-    "public_sha256": "0beb061f0923d469a6a5a1ff9bf747c04d7502c03995fd2b94c92e0d22ce8ce0"
+    "public_sha256": "20a91be7312d72fe32e4a11a310523c27aaccd0bfa32041b8a3f942a4f8e0241"
   },
   {
     "path": "tests/test_kubernetes_ops.py",
     "source_sha256": "59bb85aad7b96904126c4409323d61f31341ba1bc478bc36b8db6720375dc017",
-    "public_sha256": "59bb85aad7b96904126c4409323d61f31341ba1bc478bc36b8db6720375dc017"
+    "public_sha256": "97db54a9bb0a8578d5d8a3f6b4c6eb7465bc476ff02a83faa82998207dfaa7b9"
   },
   {
     "path": "tests/test_load_harness.py",
     "source_sha256": "00c1b5156f0300c0d8b87914192c70ba24a4e4132b37e1a159f0f81c37201566",
-    "public_sha256": "35c2d8d2ffc0b20457ce0ae0a2f5dafcf18556d8973eb447110f0faabacab6fe"
+    "public_sha256": "5db895fc47b73a60bef20c920d8f5d9910ef4158347a4465fa6c58289e82641e"
   },
   {
     "path": "tests/test_load_reanalysis.py",
     "source_sha256": "42f71e8ae14a50bd7ffeb333baf8c958ce75ae5be2d39f3f6cf04a7cbf7eebdb",
-    "public_sha256": "42f71e8ae14a50bd7ffeb333baf8c958ce75ae5be2d39f3f6cf04a7cbf7eebdb"
+    "public_sha256": "e427ab31ed8c311f215fda999472899739c5c48120cc6b6c4ed9846e0e55dedd"
   },
   {
     "path": "tests/test_local_runbooks.py",
@@ -1432,47 +1432,47 @@
   {
     "path": "tests/test_mock_backend.py",
     "source_sha256": "857c6759f78956a50b21384a7c26a443bdc3d1858b0b6fa859b2b2285813cde8",
-    "public_sha256": "857c6759f78956a50b21384a7c26a443bdc3d1858b0b6fa859b2b2285813cde8"
+    "public_sha256": "8cb015f182ebf98f98c950e82dc4a8d23ecde29461105b6fdc1d4c1ec9721930"
   },
   {
     "path": "tests/test_monitoring_static.py",
     "source_sha256": "4c759fc52a8ba5a2fc7537691a0bb762adb8836c457792ec1f903ad2858ad65f",
-    "public_sha256": "4c759fc52a8ba5a2fc7537691a0bb762adb8836c457792ec1f903ad2858ad65f"
+    "public_sha256": "b3edb670d0c21ed10e3e25ca195db78287db499d8e3fab3bf26844f79c0a17c4"
   },
   {
     "path": "tests/test_open_loop.py",
     "source_sha256": "133bfae3db2dfea0ca2967e4731dac64d83445d9ffee114a86979a2e2dab3844",
-    "public_sha256": "133bfae3db2dfea0ca2967e4731dac64d83445d9ffee114a86979a2e2dab3844"
+    "public_sha256": "d5bd682a617518cc24fa5df657bad105d8762a74129e216ca8030201c10639e1"
   },
   {
     "path": "tests/test_operational_closure.py",
     "source_sha256": "f4fc47c919a6521a5c3a8042934a16c3316430d0a382b0114fd6f61548165d76",
-    "public_sha256": "f4fc47c919a6521a5c3a8042934a16c3316430d0a382b0114fd6f61548165d76"
+    "public_sha256": "eba3c7efc7327d6cf8651e72c42e735655a2794cba158d66a9a70e3391e3213d"
   },
   {
     "path": "tests/test_operations_dry_run.py",
     "source_sha256": "fedb81dec13323eb157311d135251079a10ef96ffbbbd1f5c6611662629bccbb",
-    "public_sha256": "fedb81dec13323eb157311d135251079a10ef96ffbbbd1f5c6611662629bccbb"
+    "public_sha256": "d821dccf33c1ff93f0e6c4f1ef401084b5e78c03932e003417c344d758d3da96"
   },
   {
     "path": "tests/test_ops_safety_harness.py",
     "source_sha256": "9a974d633587ef1dbb3fe0bc6fa48c16435dc19ea3e4082ec343a2b75e0d6abb",
-    "public_sha256": "9a974d633587ef1dbb3fe0bc6fa48c16435dc19ea3e4082ec343a2b75e0d6abb"
+    "public_sha256": "e7d9d391f0204063450987e0745d34b63b88dd172e545e2954b174f6a6e37bf8"
   },
   {
     "path": "tests/test_queue_restore_helper.py",
     "source_sha256": "63d20a4a3d7c502c64e034e3c75d505134d3322955cc282e260615a26198ae72",
-    "public_sha256": "63d20a4a3d7c502c64e034e3c75d505134d3322955cc282e260615a26198ae72"
+    "public_sha256": "d07c81e2e9793d614b35ab60bcc08a3f667615c4b02ef3ba994527a0185a5001"
   },
   {
     "path": "tests/test_readiness_observability.py",
     "source_sha256": "108dac8e210ab240e0b1d466fef7086a0fa4993fe51d22ec0b5ccf1cb37d2d0c",
-    "public_sha256": "108dac8e210ab240e0b1d466fef7086a0fa4993fe51d22ec0b5ccf1cb37d2d0c"
+    "public_sha256": "acfff1baaa2596b38edcb192ddc3e98fa35f53593d80bb88568f1153f86c9614"
   },
   {
     "path": "tests/test_restore_stack.py",
     "source_sha256": "91aedba35f5e34cb5b8edacca40f12339c3f4c8783747e0efb2c2439b4102cf1",
-    "public_sha256": "91aedba35f5e34cb5b8edacca40f12339c3f4c8783747e0efb2c2439b4102cf1"
+    "public_sha256": "2bf9550cf06b840cea21aec3b36d87f1e10812be19f82cd0b260c2264f79c3ce"
   },
   {
     "path": "tests/test_scale_preview.py",
@@ -1482,11 +1482,11 @@
   {
     "path": "tests/test_slo_evaluation.py",
     "source_sha256": "149ddfa8855b329666e32c484ba0d5f06db4392b656bd09fd15516d94df65379",
-    "public_sha256": "149ddfa8855b329666e32c484ba0d5f06db4392b656bd09fd15516d94df65379"
+    "public_sha256": "ed2905df76500b72bf10f30e7b7d27d34fff74ead0bc27598ceca0f2fbfe3b36"
   },
   {
     "path": "tests/test_soak_safety.py",
     "source_sha256": "2c88cfa1d44c970439c5748472a94e74a1300137238d91ddfe66991835d946d7",
-    "public_sha256": "2c88cfa1d44c970439c5748472a94e74a1300137238d91ddfe66991835d946d7"
+    "public_sha256": "a8178eb1d6741169df080e412cb783745d034ca06f156d19797017657747ce07"
   }
 ]

@@ -1,0 +1,11 @@
+# 노드 drain이나 클러스터 업그레이드 중에도 Gateway Pod가 최소 1개는 남도록 한다.
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gateway
+  namespace: kubellm-ops
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gateway

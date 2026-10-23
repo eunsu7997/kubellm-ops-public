@@ -1,4 +1,4 @@
-"""Local instructor demo launcher; replay never masquerades as live inference."""
+"""Local demo launcher; replay never masquerades as live inference."""
 import argparse
 import html
 import json
@@ -41,7 +41,7 @@ def main():
     ap.add_argument('--no-open', action='store_true')
     args = ap.parse_args()
     stamp = datetime.now(UTC).strftime('%Y%m%dT%H%M%S%fZ')
-    output = ROOT / 'evidence' / 'instructor-demo' / stamp
+    output = ROOT / 'evidence' / 'demo-runs' / stamp
     output.mkdir(parents=True, exist_ok=False)
     code = 0
     source = RECORDED
@@ -52,7 +52,7 @@ def main():
         checks = {'ready': ops.http('GET', '/readyz'), 'chat': ops.chat(), 'sse': ops.sse()}
         (output / 'preflight.json').write_text(json.dumps(checks, ensure_ascii=False, indent=2), encoding='utf-8')
         if checks['ready']['status'] != 200 or not checks['chat']['ok'] or not checks['sse']['ok']:
-            print('Preflight failed. Evidence preserved. See docs/DEMO-TOMORROW.md; replay is explicit only.')
+            print('Preflight failed. Evidence preserved. See docs/RUN-LOCAL.md; replay is explicit only.')
             return 2
         source = output / 'pipeline'
         code = subprocess.call([sys.executable, str(ROOT / 'scripts/ops/five_module_pipeline.py'),

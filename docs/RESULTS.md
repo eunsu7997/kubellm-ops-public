@@ -1,4 +1,4 @@
-# 5개 프로젝트 통합 실행 — 실측과 남은 범위
+# 최신 통합 실행 결과
 
 RTX 4060 한 장에서 기존 Qwen vLLM 서빙을 보존하고 배포 전 검사·batch 점유 조회·실제 SSE·SLO 판정·제한 재시도·Copilot 검증을 한 실행으로 연결했다. 이는 5개 프로젝트의 일부 실제 코드를 호출하는 **로컬 통합 실험**이다. 5개 production 서비스를 배포하거나 다중 GPU 확장을 달성한 것은 아니다.
 
@@ -36,14 +36,14 @@ Copilot 초안은 unknowns 조건 미달로 채택하지 않았다. 근거 리�
 
 ## 이전 실험과의 관계
 
-Docker/WSL k3s GPU 추론·복구의 이전 검증은 [야간 보고서](OVERNIGHT-REPORT-20261022.md)에 보존했다. 120분 관측의 strict FAIL, readiness 503 원인 PARTIAL은 이번 짧은 시연 성공으로 덮지 않는다. 이번 라운드는 Kubernetes GPU 실험을 실행하지 않았다.
+Docker/WSL k3s GPU 추론·복구의 이전 검증은 [야간 보고서](reports/2026-10-22-overnight-observation.md)에 보존했다. 120분 관측의 strict FAIL, readiness 503 원인 PARTIAL은 이번 짧은 시연 성공으로 덮지 않는다. 이번 라운드는 Kubernetes GPU 실험을 실행하지 않았다.
 
 ## 남은 항목
 
 - 장시간 안정성, 다른 trace와 더 큰 표본, 실제 GPU 과부하 보호 및 최대 용량
 - 다른 GPU 호스트의 깨끗한 설치와 전체 재현, 다중 GPU 확장 처리량
 - Copilot 생성 품질 개선. 참조 ID 존재 확인은 의미적 진실성을 보장하지 않음
-- 학원 PC에서 개인 tailnet 접속 검증. 집 PC HTTPS 검증만 완료
+- 다른 PC에서 개인 tailnet 접속 검증. GPU PC 자체의 HTTPS 검증만 완료
 - 공개본은 과거 이력과 사설 환경 식별자를 제외한 선별본이며 비공개 원본을 보존
 
 ## 증거 보존

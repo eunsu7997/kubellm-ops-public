@@ -60,7 +60,7 @@ Before the Stage 3 edits, both secure `config --quiet` variants were reported
 as passing; those results do not validate the current files. Re-checking the
 current secure file, its localhost override, example and mock Compose is
 **NOT VERIFIED — USER VERIFICATION REQUIRED**. The saved
-[audit checks · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/audit-followup-20261011/static-checks.txt) cover
+audit checks (비공개 원본 `evidence/audit-followup-20261011/static-checks.txt`) cover
 only earlier mock/example versions, also edited in Stage 3. Rendered configuration
 was checked in memory (not printed or saved): the GPU count normalizes to -1,
 all four services use the backend bridge, base vLLM has no published port, and

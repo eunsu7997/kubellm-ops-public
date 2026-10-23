@@ -1,6 +1,6 @@
 # SLO-Guard · 현재는 평가 기반 단계
 
-**2026-10-22 사용자 재개 지시 후:** 실패와 미전송을 포함하는 오프라인 SLO 평가기를 구현하고, 실제 저율 혼합 요청12건으로 회계 경로를 확인했습니다. **Gateway 차단·우선순위 보호 정책은 아직 구현/적용하지 않았습니다.** 취업용 KubeLLM-Ops 마감은 [기존 최종본](../docs/FINAL-DELIVERY-20261022.md)으로 보존합니다.
+**2026-10-22 사용자 재개 지시 후:** 실패와 미전송을 포함하는 오프라인 SLO 평가기를 구현하고, 실제 저율 혼합 요청12건으로 회계 경로를 확인했습니다. **Gateway 차단·우선순위 보호 정책은 아직 구현/적용하지 않았습니다.** 취업용 KubeLLM-Ops 마감은 기존 최종본 (비공개 원본 `docs/FINAL-DELIVERY-20261022.md`)으로 보존합니다.
 
 GPU 요청이 몰렸을 때 저우선 요청을 제한해 고우선 요청의 지연을 보호하는 것이 향후 목표입니다. 지금은 정책의 성과를 평가할 때 실패한 요청을 분모에서 빼는 오류부터 막았습니다.
 
@@ -34,7 +34,7 @@ GPU 요청이 몰렸을 때 저우선 요청을 제한해 고우선 요청의 �
 
 과거 CSV의 `success`가 DONE을 필수로 하지 않았으면 기본 거부합니다. `--allow-legacy-success`는 탐색용 opt-in이며 `LEGACY_UNVERIFIED`와 null attainment/p95/rate를 유지합니다. 계산 가능한 legacy 수치는 `exploratory_classifier_metrics`에만 분리합니다. 원래 CSV에는 SSE event 원문이 없으므로 이 계약은 recorder 선언·알려진 설명·행 일관성을 신뢰하는 것이며 위조 방지나 과거 SSE 복원이 아닙니다.
 
-Claude 읽기 전용 검수의 legacy 지표·summary 불일치·send lag 지적을 반영했습니다. 수정 전 분석은 보존했고 [현재 수정 후 재분석](../evidence/slo-foundation-20261022/reanalysis-v2/priority-baseline.json)을 최신으로 사용합니다. 쓰기 중 디스크 오류가 발생하면 부분 파일이 남을 수 있으며 자동 삭제/덮어쓰기는 하지 않습니다.
+Claude 읽기 전용 검수의 legacy 지표·summary 불일치·send lag 지적을 반영했습니다. 수정 전 분석은 보존했고 현재 수정 후 재분석 (비공개 원본 `evidence/slo-foundation-20261022/reanalysis-v2/priority-baseline.json`)을 최신으로 사용합니다. 쓰기 중 디스크 오류가 발생하면 부분 파일이 남을 수 있으며 자동 삭제/덮어쓰기는 하지 않습니다.
 
 ## 실제 결과
 
@@ -49,7 +49,7 @@ Claude 읽기 전용 검수의 legacy 지표·summary 불일치·send lag 지적
 새 기준선은 예시1초 기준을 **실행 전에** 명시했으며 자동 임계값 탐색·재시도·부하 확대를 하지 않았습니다.
 설정 warmup은2초지만 해당 seed의 실제 warmup 요청은0개였습니다. 기존 safety harness가 GPU80°C/여유512MiB/센서 오류/연속 전송 실패3회/65초 hard wall을 감시했고, 실제 소스 hash·CSV·journal 일치·Ready/chat/SSE·stock 구성을 확인했습니다. 모델·Gateway·관측 컨테이너를 재생성하지 않았습니다.
 
-[원자료·실제 명령·검증](../evidence/slo-foundation-20261022/README.md) · [구현](../scripts/load-test/evaluate_slo.py) · [테스트](../tests/test_slo_evaluation.py)
+원자료·실제 명령·검증 (비공개 원본 `evidence/slo-foundation-20261022/README.md`) · [구현](../scripts/load-test/evaluate_slo.py) · [테스트](../tests/test_slo_evaluation.py)
 
 ## 남은 단계
 
@@ -61,4 +61,4 @@ Claude 읽기 전용 검수의 legacy 지표·summary 불일치·send lag 지적
 
 **NOT VERIFIED:** 우선순위 강제, 고우선 보호 효과, 정책별 개선, 용량 C, 포화/최대 처리량, production readiness.
 
-최종 보완 후 로컬 전체 테스트는 **280 passed·1 skipped·206 warnings**, 평가기 테스트는43개입니다. [최신 quality-03](../evidence/slo-foundation-20261022/quality-03/verification.json)의 Ruff·diff도 통과했습니다. 야간237개·최초263개·중간279개 및 quality-01/02는 당시 snapshot입니다.
+최종 보완 후 로컬 전체 테스트는 **280 passed·1 skipped·206 warnings**, 평가기 테스트는43개입니다. 최신 quality-03 (비공개 원본 `evidence/slo-foundation-20261022/quality-03/verification.json`)의 Ruff·diff도 통과했습니다. 야간237개·최초263개·중간279개 및 quality-01/02는 당시 snapshot입니다.

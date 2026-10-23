@@ -19,20 +19,24 @@ import anyio
 import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse, Response, StreamingResponse
+from starlette.background import BackgroundTask
 
 from .config import settings
 from .metrics import (
+    ADMISSION_REJECTED,
     BACKEND_FAILURE_COUNT,
     BACKEND_READY,
     CLIENT_DISCONNECT_COUNT,
     CONTENT_TYPE_LATEST,
     ERROR_COUNT,
+    INFLIGHT,
     READINESS_CACHE_HITS,
     READINESS_CHECKS,
     READINESS_DURATION,
     READINESS_ENABLED,
     READINESS_FAILURES,
     REQUEST_COUNT,
+    REQUEST_DURATION,
     REQUEST_LATENCY,
     SUCCESS_COUNT,
     TIME_TO_FIRST_CHUNK,
@@ -47,6 +51,40 @@ _ready = False
 _readiness_lock: asyncio.Lock | None = None
 _readiness_until = 0.0
 _backend_ready = False
+_inflight = 0
+
+
+class _Slot:
+    """One admitted request. release() is idempotent so every exit path can call it safely."""
+
+    __slots__ = ("_released",)
+
+    def __init__(self):
+        self._released = False
+
+    def release(self):
+        global _inflight
+        if not self._released:
+            self._released = True
+            _inflight -= 1
+            INFLIGHT.set(_inflight)
+
+
+def _try_admit() -> _Slot | None:
+    """Single event loop, so a plain counter is enough. Returns None when the opt-in limit is full."""
+    global _inflight
+    if settings.max_inflight > 0 and _inflight >= settings.max_inflight:
+        return None
+    _inflight += 1
+    INFLIGHT.set(_inflight)
+    return _Slot()
+
+
+def _observe(start: float, outcome: str, stream: bool, *, legacy: bool = True):
+    elapsed = time.perf_counter() - start
+    if legacy:
+        REQUEST_LATENCY.observe(elapsed)
+    REQUEST_DURATION.labels(outcome=outcome, stream=str(stream).lower()).observe(elapsed)
 
 
 @asynccontextmanager
@@ -153,31 +191,59 @@ async def chat_completions(request: Request):
         ERROR_COUNT.labels(status="400").inc()
         raise HTTPException(status_code=400, detail="invalid JSON body")
 
+    if not isinstance(body, dict):
+        ERROR_COUNT.labels(status="400").inc()
+        raise HTTPException(status_code=400, detail="request body must be a JSON object")
+
     if _http_client is None:
         ERROR_COUNT.labels(status="503").inc()
         raise HTTPException(status_code=503, detail="gateway not ready")
 
+    stream = body.get("stream") is True
+    slot = _try_admit()
+    if slot is None:
+        ADMISSION_REJECTED.inc()
+        ERROR_COUNT.labels(status="429").inc()
+        _observe(start, "rejected", stream, legacy=False)
+        return JSONResponse(
+            status_code=429,
+            content={"detail": "gateway at capacity, retry later"},
+            headers={"Retry-After": str(settings.retry_after_seconds)},
+        )
+
     body.setdefault("model", settings.model_name)
     url = f"{settings.vllm_base_url}/v1/chat/completions"
 
-    if body.get("stream") is True:
-        return await _stream_chat_completions(_http_client, body, url, start)
+    if stream:
+        try:
+            response = await _stream_chat_completions(_http_client, body, url, start, slot)
+        except BaseException:
+            slot.release()
+            raise
+        if not isinstance(response, StreamingResponse):
+            slot.release()
+        return response
 
     try:
-        resp = await _http_client.post(url, json=body)
-    except httpx.HTTPError as exc:
-        raise _backend_call_failed(exc, url, start)
+        try:
+            resp = await _http_client.post(url, json=body)
+        except httpx.HTTPError as exc:
+            raise _backend_call_failed(exc, url, start)
 
-    REQUEST_LATENCY.observe(time.perf_counter() - start)
+        if resp.status_code >= 400:
+            _observe(start, "backend_error" if resp.status_code >= 500 else "client_error", False)
+            return _backend_error_response(resp, url)
 
-    if resp.status_code >= 400:
-        return _backend_error_response(resp, url)
+        _observe(start, "success", False)
+        SUCCESS_COUNT.inc()
+        return JSONResponse(status_code=resp.status_code, content=_safe_json(resp))
+    finally:
+        slot.release()
 
-    SUCCESS_COUNT.inc()
-    return JSONResponse(status_code=resp.status_code, content=_safe_json(resp))
 
-
-async def _stream_chat_completions(client: httpx.AsyncClient, body: dict, url: str, start: float):
+async def _stream_chat_completions(
+    client: httpx.AsyncClient, body: dict, url: str, start: float, slot: _Slot | None = None,
+):
     """stream=true 요청: 백엔드의 SSE 응답을 받는 즉시 클라이언트로 그대로 흘려보낸다.
 
     응답 헤더를 받기 전까지의 실패(연결 실패/타임아웃/4xx/5xx)는 비스트리밍 요청과 같은
@@ -188,7 +254,7 @@ async def _stream_chat_completions(client: httpx.AsyncClient, body: dict, url: s
     try:
         resp = await client.send(request, stream=True)
     except httpx.HTTPError as exc:
-        raise _backend_call_failed(exc, url, start)
+        raise _backend_call_failed(exc, url, start, stream=True)
 
     if resp.status_code >= 400:
         try:
@@ -198,18 +264,21 @@ async def _stream_chat_completions(client: httpx.AsyncClient, body: dict, url: s
                 await resp.aread()
         except httpx.HTTPError as exc:
             await resp.aclose()
-            raise _backend_call_failed(exc, url, start)
-        REQUEST_LATENCY.observe(time.perf_counter() - start)
+            raise _backend_call_failed(exc, url, start, stream=True)
+        _observe(start, "backend_error" if resp.status_code >= 500 else "client_error", True)
         return _backend_error_response(resp, url)
 
+    # The slot is released when the relay finishes; the background task covers a response
+    # that is never iterated (client gone before the body starts). release() is idempotent.
     return StreamingResponse(
-        _relay_stream(resp, url, start),
+        _relay_stream(resp, url, start, slot),
         status_code=resp.status_code,
         media_type="text/event-stream",
+        background=BackgroundTask(slot.release) if slot is not None else None,
     )
 
 
-async def _relay_stream(resp: httpx.Response, url: str, start: float):
+async def _relay_stream(resp: httpx.Response, url: str, start: float, slot: _Slot | None = None):
     """백엔드 청크를 받은 순서대로 내보낸다.
 
     결과는 정확히 한 번 집계한다. 끝까지 전달하면 성공, 백엔드 쪽에서 끊기면(httpx.HTTPError)
@@ -242,7 +311,9 @@ async def _relay_stream(resp: httpx.Response, url: str, start: float):
         logger.exception("unexpected error while relaying stream url=%s", url)
         raise
     finally:
-        REQUEST_LATENCY.observe(time.perf_counter() - start)
+        _observe(start, outcome or "stream_error", True)
+        if slot is not None:
+            slot.release()
         if outcome == "success":
             SUCCESS_COUNT.inc()
         elif outcome == "stream_error":
@@ -254,9 +325,9 @@ async def _relay_stream(resp: httpx.Response, url: str, start: float):
             await resp.aclose()
 
 
-def _backend_call_failed(exc: httpx.HTTPError, url: str, start: float) -> HTTPException:
+def _backend_call_failed(exc: httpx.HTTPError, url: str, start: float, *, stream: bool = False) -> HTTPException:
     """백엔드 호출 자체가 실패했을 때 지표/로그를 남기고 클라이언트에 돌려줄 예외를 만든다."""
-    REQUEST_LATENCY.observe(time.perf_counter() - start)
+    _observe(start, "backend_error", stream)
     # 민감한 내부 정보(백엔드 URL, 원본 예외 메시지)는 응답에 넣지 않는다 — 로그에만 남긴다.
     if isinstance(exc, httpx.ConnectError):
         BACKEND_FAILURE_COUNT.labels(reason="connection_error").inc()

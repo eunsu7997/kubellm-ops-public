@@ -1,7 +1,8 @@
 # 주의(NOT VERIFIED): 이 YAML은 실제 GPU가 달린 Kubernetes 클러스터에 배포해서 확인하지
 # 못했다. 현재 kind 노드의 GPU Allocatable은 확인하지 않았다. NVIDIA device plugin이
 # 설치돼 있고 nvidia.com/gpu 리소스를 스케줄링할 수 있는 클러스터를 전제로 작성했다.
-# Source-only sizing, prerequisites and approval-gated rollback: docs/kubernetes-gpu-readiness.md
+# 실제로 WSL k3s에 적용해 검증한 매니페스트는 k8s/validation/wsl-vllm-trial.yaml 이다
+# (docs/KUBERNETES-LIVE-VALIDATION.md).
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -77,10 +78,12 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
+          # 과부하 중 /health 응답이 잠깐 늦어져도 Pod가 재시작되지 않도록 liveness는 readiness보다
+          # 느슨하게 둔다. GPU가 한 장이라 재시작은 수 분의 모델 재로딩과 전체 중단을 뜻한다.
           livenessProbe:
             httpGet:
               path: /health
               port: 8000
             periodSeconds: 20
-            timeoutSeconds: 5
-            failureThreshold: 3
+            timeoutSeconds: 10
+            failureThreshold: 6

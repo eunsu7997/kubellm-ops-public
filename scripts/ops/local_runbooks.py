@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 ALLOWLIST = ("docs/SAFETY-HARNESS-CLOSURE.md", "docs/OPERATIONAL-CLOSURE.md",
-             "docs/INTEGRATION-FOLLOWUP-20261022.md")
+             "docs/reports/2026-10-22-integration-followup.md")
 
 
 def terms(text):

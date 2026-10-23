@@ -21,6 +21,10 @@ class Settings:
     readiness_mode: str = os.environ.get("READINESS_MODE", "local")
     readiness_timeout: float = float(os.environ.get("READINESS_TIMEOUT", "2"))
     readiness_cache_seconds: float = float(os.environ.get("READINESS_CACHE_SECONDS", "5"))
+    # Opt-in admission: 0 disables the limit. When set, requests beyond this many in-flight
+    # chat completions get 429 with Retry-After instead of queueing inside vLLM.
+    max_inflight: int = int(os.environ.get("GATEWAY_MAX_INFLIGHT", "0"))
+    retry_after_seconds: int = int(os.environ.get("GATEWAY_RETRY_AFTER_SECONDS", "1"))
 
     def __post_init__(self):
         if self.readiness_mode not in {"local", "backend", "inference"}:
@@ -29,6 +33,10 @@ class Settings:
             raise ValueError("READINESS_TIMEOUT must be in (0, 10]")
         if not math.isfinite(self.readiness_cache_seconds) or not 0 < self.readiness_cache_seconds <= 60:
             raise ValueError("READINESS_CACHE_SECONDS must be in (0, 60]")
+        if self.max_inflight < 0:
+            raise ValueError("GATEWAY_MAX_INFLIGHT must be >= 0 (0 disables the limit)")
+        if not 1 <= self.retry_after_seconds <= 60:
+            raise ValueError("GATEWAY_RETRY_AFTER_SECONDS must be in [1, 60]")
 
 
 settings = Settings()

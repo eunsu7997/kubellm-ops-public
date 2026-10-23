@@ -1,0 +1,72 @@
+# 네임스페이스 안의 Pod는 기본적으로 들어오는 연결을 막고, 필요한 경로만 연다.
+#   외부 → Gateway:8000 / Gateway → vLLM:8000, mock:8001 / Prometheus → 각 /metrics
+# NetworkPolicy는 CNI가 지원해야 적용된다(k3s 기본 구성은 지원, Docker Desktop Kubernetes는 무시).
+# 클러스터에 아직 적용·검증하지 않았다.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: kubellm-ops
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress"]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: gateway-ingress
+  namespace: kubellm-ops
+spec:
+  podSelector:
+    matchLabels:
+      app: gateway
+  policyTypes: ["Ingress"]
+  ingress:
+    - ports:
+        - port: 8000
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backends-from-gateway
+  namespace: kubellm-ops
+spec:
+  podSelector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: ["vllm", "mock-backend"]
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: gateway
+        - podSelector:
+            matchLabels:
+              app: prometheus
+      ports:
+        - port: 8000
+          protocol: TCP
+        - port: 8001
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: dcgm-from-prometheus
+  namespace: kubellm-ops
+spec:
+  podSelector:
+    matchLabels:
+      app: dcgm-exporter
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: prometheus
+      ports:
+        - port: 9400
+          protocol: TCP

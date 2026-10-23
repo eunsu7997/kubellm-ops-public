@@ -39,7 +39,7 @@ flowchart LR
 | --- | --- | --- |
 | Gateway | `gateway/` | OpenAI 호환 프록시. SSE 중계, 오류 분류, 지표, 선택적 동시성 제한(429 + `Retry-After`) |
 | Mock backend | `mock-backend/` | GPU 없이 API·장애 경로를 시험하는 CPU echo 서버 |
-| Kubernetes 매니페스트 | `k8s/` | Gateway·vLLM·DCGM. `k8s/validation/`은 WSL k3s에서 실제로 적용한 버전 |
+| Kubernetes 매니페스트 | `k8s/` | Kustomize. 기본(mock)과 `overlays/gpu`(vLLM·DCGM), NetworkPolicy. [설명](k8s/README.md) |
 | 모니터링 | `monitoring/` | Prometheus 규칙(단위 테스트 포함), Alertmanager, Grafana 대시보드 |
 | 부하·SLO 도구 | `scripts/load-test/` | open-loop 부하, 동시성 sweep, SLO 평가기 |
 | 운영 실험 | `scripts/ops/`, `scripts/failure-tests/` | 장애 주입·복구·안전 하네스(GPU 온도·VRAM 감시) |

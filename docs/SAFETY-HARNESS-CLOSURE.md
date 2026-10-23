@@ -1,7 +1,7 @@
 # 운영 실험 도구 안전 검수 · 2026-10-22
 
 상태: **마감(2026-10-22 KST)**. 모든 실제 부하·진단을 마치고 stock으로 복원했습니다.
-종합 판정·12개 항목 대응은 [야간 최종 보고](OVERNIGHT-REPORT-20261022.md)를 따릅니다.
+종합 판정·12개 항목 대응은 [야간 최종 보고](reports/2026-10-22-overnight-observation.md)를 따릅니다.
 
 ## 기존 결과에서 정정한 해석
 
@@ -19,7 +19,7 @@
 
 과거 success는 SSE `[DONE]` 필수가 아니었습니다. 기존 raw CSV만으로 각 스트림의 DONE을 소급 증명할 수 없습니다.
 새 결과에는 `success_requires_sse_done=true`를 기록하며 content와 DONE을 모두 요구합니다.
-[분석 결과·각 원본 SHA256 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/historical-load-reanalysis.json).
+분석 결과·각 원본 SHA256 (비공개 원본 `evidence/ops-safety-closure-20261021/historical-load-reanalysis.json`).
 
 ## 안전 하네스
 
@@ -35,7 +35,7 @@
 
 하네스의 센서 장애·heartbeat·deadline·연속 실패 검증은 **합성 센서 + 실제 격리 Python 프로세스**입니다.
 GPU 자체 고장이나 서비스 장애를 발생시킨 증거로 분류하지 않습니다.
-[현재 소스 hash 포함 검증 7종 · Windows worker 시작·트리 종료 포함 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/harness-source-hashed-final/verification.json).
+현재 소스 hash 포함 검증 7종 · Windows worker 시작·트리 종료 포함 (비공개 원본 `evidence/ops-safety-closure-20261021/harness-source-hashed-final/verification.json`).
 
 ## 실제 90초 회귀 관측
 
@@ -50,18 +50,18 @@ readiness 200×1,263·503×1, `GatewayInferenceNotReady` pending 1표본, GPU un
 CSV/JSONL/summary/guard의 ID·범주·상태는 일치했습니다.
 이 실행의 시작 이벤트에는 소스 hash가 빠져 있어 실행 코드 버전의 동일성은 **NOT VERIFIED**이며,
 raw CSV·summary·supervisor result·복구 이벤트를 대조해 현재의 명시적 기준으로 별도 판정했습니다.
-[독립 판정 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/long-soak-independent-verdict.json).
+독립 판정 (비공개 원본 `evidence/ops-safety-closure-20261021/long-soak-independent-verdict.json`).
 이후 실행부터는 시작 이벤트에 Python 버전과 하네스/생성기/관측 helper의 phase 시작 시 디스크 SHA256을 기록합니다.
 실행 도중 소스를 편집하지 않고 해당 bytes와 Git의 줄바꿈 정규화를 대조해야 코드 대응을 설명할 수 있습니다.
 
 회귀 시각의 실제 vLLM 로그에는 추론 중 Triton JIT 컴파일 경고 4건이 있습니다. 지연 단서이며 503의 인과 원인으로 확정하지 않습니다.
 503은 경고 이전과 이후에도 있었습니다. 이 회귀 시점에는 통제 실험이 없었고, 이후 진단 결과는 아래 "JIT 진단 결과와 계속 남는 한계" 절에 있습니다.
-[선별 로그·실제 조회 명령/exit · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/warmup-observed-log-excerpts.json).
+선별 로그·실제 조회 명령/exit (비공개 원본 `evidence/ops-safety-closure-20261021/warmup-observed-log-excerpts.json`).
 설치된 고정 이미지 소스에서는 이 경고가 `jit_post_compile_hook`에서 호출되고,
 실제 경고 줄141은 `warning_once`입니다. 따라서 경고 시각은 컴파일 시작 시각이 아니며
 경고가 없는 구간을 컴파일 없음으로 해석할 수도 없습니다.
-[실제 구현 발췌/hash · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/vllm-jit-warning-source.json) ·
-[호출부 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/vllm-jit-warning-callsites.json).
+실제 구현 발췌/hash (비공개 원본 `evidence/ops-safety-closure-20261021/vllm-jit-warning-source.json`) ·
+호출부 (비공개 원본 `evidence/ops-safety-closure-20261021/vllm-jit-warning-callsites.json`).
 
 ## 복구 스크립트
 
@@ -69,7 +69,7 @@ raw CSV·summary·supervisor result·복구 이벤트를 대조해 현재의 명
 paused/restarting 상태와 외부 인터페이스 포트 게시도 차단합니다. 완료 후 ready/chat/SSE와 관측 서비스의 실제 응답을 확인합니다.
 현재 모두 running 상태에서 이 검증은 통과했습니다. 새 conflict 차단 분기는 offline fixture 테스트이며,
 이번에 실제 GPU 중복 점유를 만들거나 Docker Desktop 재시작을 반복하지 않았습니다.
-[실제 실행 중 상태 검증 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/restore-running-verification.txt).
+실제 실행 중 상태 검증 (비공개 원본 `evidence/ops-safety-closure-20261021/restore-running-verification.txt`).
 이 파일은 추가 host-network/legacy gate 이전 버전의 실행 기록입니다. 현재 cold-start 차단 gate를 실제 발동한 증거로 사용하지 않습니다.
 
 추가 차단은 host network·vLLM host port·실행 중인 legacy 모델·GPU 센서 실패도 포함합니다.
@@ -121,26 +121,26 @@ Docker Desktop 자동 실행이나 컨테이너 restart 정책은 설정하지 �
 
 Claude Code는 Read/Glob/Grep만 허용한 읽기 전용 모드로 6차례 검토했습니다(5·6차는 아래 JIT 진단 준비 검수).
 코드 실행·수정·개인 파일 조회를 맡기지 않았으며, Claude의 정적 의견을 실제 실험 성공으로 대체하지 않았습니다.
-[1차 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/claude-review-01.json) ·
-[2차 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/claude-review-02.json) ·
-[3차 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/claude-review-03.json) ·
-[delta 검수 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/claude-review-04.json).
+1차 (비공개 원본 `evidence/ops-safety-closure-20261021/claude-review-01.json`) ·
+2차 (비공개 원본 `evidence/ops-safety-closure-20261021/claude-review-02.json`) ·
+3차 (비공개 원본 `evidence/ops-safety-closure-20261021/claude-review-03.json`) ·
+delta 검수 (비공개 원본 `evidence/ops-safety-closure-20261021/claude-review-04.json`).
 
 주요 반영: 관측 thread 실패 전파, 전송 성공 0/미전송 pass 방지, 생성기 트리 종료, helper armed/cancel 확인,
 오래된 서버측 실패·처리량 해석 정정, 코드 provenance 한계 공개와 이후 실행의 hash 기록입니다.
-코드 동결 시점(당시) 로컬 223 passed·1 skipped였습니다([기록 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/quality-code-freeze/verification.json)).
+코드 동결 시점(당시) 로컬 223 passed·1 skipped였습니다(기록 (비공개 원본 `evidence/ops-safety-closure-20261021/quality-code-freeze/verification.json`)).
 진단/lease 보완 후 **모든 부하 종료 뒤 최종 로컬 품질은 237 passed·1 skipped(Windows POSIX mode 시험)·206 deprecation warnings**,
 Ruff·`git diff --check` exit0입니다. Linux CI(commit `00ded7d`, run 39641353623)는 237 passed·1 skipped입니다.
-[최종 명령·exit·검증 소스 hash · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/quality-final/verification.json).
+최종 명령·exit·검증 소스 hash (비공개 원본 `evidence/ops-safety-closure-20261021/quality-final/verification.json`).
 
 처음의 전체 staged `git diff --check`는 새 Windows 원문 CRLF를 trailing whitespace로 분류해 exit2였습니다.
 소스/문서의 표준 검사는 exit0이고 원문은 재작성하지 않았습니다. 새 evidence 경로에만 `.gitattributes`로
 CR-at-EOL을 유효하게 처리하는 whitespace 정책을 명시했습니다. 나머지 trailing blank/EOF/space-before-tab 검사는 유지합니다.
-[정책 변경 전 검토·별도 검사 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/staged-whitespace-review.json).
+정책 변경 전 검토·별도 검사 (비공개 원본 `evidence/ops-safety-closure-20261021/staged-whitespace-review.json`).
 
 자체 재검수에서 과거 one-off 분석기 두 개가 기존 파생 요약을 덮어쓸 수 있던 경로도 차단했습니다.
 기존 report가 있으면 분석/네트워크 호출 전에 거부하며 최종 생성은 exclusive 모드입니다.
-[실제 기존 경로 거부·전후 hash 일치 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/archived-analysis-refusal.json).
+실제 기존 경로 거부·전후 hash 일치 (비공개 원본 `evidence/ops-safety-closure-20261021/archived-analysis-refusal.json`).
 새 보고에는 과거 분석기의 명목 비율을 재사용하지 말고 `reanalyze_load.py --output NEW_PATH`를 사용합니다.
 
 ## JIT 진단 결과와 계속 남는 한계
@@ -159,17 +159,17 @@ controller는 실행 중인 부하 프로세스 조회·최신 run 종료 기록
 수집/복원 CLI는 exit0입니다. 복원 시 stock image/args/GPU Count=-1을 helper 취소 전에 확인했고, 실제 ready/chat/SSE 성공,
 helper 취소 acknowledgement exit0, ignored `.runtime/gpu-diagnostic.lock` 제거를 확인했습니다. 지연된 helper는 남아 있지 않습니다.
 11개 소스 snapshot/hash는 디스크·Git과 CRLF 정규화만 허용한 비교에서 일치했고 실행 중 소스는 동결 상태였습니다.
-[독립 비교 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/jit-diagnostic-independent-comparison.json).
+독립 비교 (비공개 원본 `evidence/ops-safety-closure-20261021/jit-diagnostic-independent-comparison.json`).
 
 stock(상세 로그 없음) 복원 직후 별도 source-hash 기록 90초 회귀는 89 성공·13 미전송·503 3표본·CLI exit1이었고,
 사전 선언한 1회 warm 대조(재생성 없음)는 102 성공·0 미전송·17/17×200·CLI exit0이었습니다. 이후 부하는 모두 중단했습니다.
-[stock 비교 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/stock-cold-warm-independent-comparison.json).
+stock 비교 (비공개 원본 `evidence/ops-safety-closure-20261021/stock-cold-warm-independent-comparison.json`).
 새 프로세스 첫 부하와 JIT의 상관을 관측했지만 모든 503의 원인 확정·일반 warmup 해결책 증명은 아닙니다.
 상세 로그가 지연에 영향을 줄 수 있고, 최소 ready 확인 이후의 새 프로세스를 cold로 부르므로 fresh host/cold cache나 인과 증명으로 확대하지 않습니다.
-[사전 계획 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/jit-diagnostic-plan.json) ·
+사전 계획 (비공개 원본 `evidence/ops-safety-closure-20261021/jit-diagnostic-plan.json`) ·
 [진단 controller](../scripts/ops/exp08_jit_readiness.py) ·
-[5차 검수 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/claude-review-05-jit.json) ·
-[6차 검수 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/claude-review-06-jit.json).
+5차 검수 (비공개 원본 `evidence/ops-safety-closure-20261021/claude-review-05-jit.json`) ·
+6차 검수 (비공개 원본 `evidence/ops-safety-closure-20261021/claude-review-06-jit.json`).
 
 readiness timeout의 구성 요소 원인(PARTIAL), 120분 관측의 실행 코드 provenance, 장기 안정성, 통제된 포화·최대 용량, fresh GPU 호스트 재현,
 off-host 백업, Windows 재부팅, multi-node, WSL 전력 측정, production readiness는 미검증입니다.

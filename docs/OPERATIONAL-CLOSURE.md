@@ -1,10 +1,10 @@
 # KubeLLM-Ops — 실제 적용·운영 빈틈 보완 결과
 
-**후속 현재 결과:** [지속 관측·TSDB/설정 복원·로컬 경보·k3s 권한 제한 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/EXTENDED-OPERATIONS.md).
+**후속 현재 결과:** 지속 관측·TSDB/설정 복원·로컬 경보·k3s 권한 제한 (비공개 원본 `docs/EXTENDED-OPERATIONS.md`).
 이 보고서의 134 tests 및 kubeconfig 0644/미수정 설명은 해당 검증 시점 snapshot이다.
 후속 승인 실행에서 163 tests, root:eunsu 0640과 재시작 후 접근 통제를 확인했다.
 
-기준일: 2026-10-21, [후보 검증 보고 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/FINAL-REVIEW.md) 이후의 승인된 후속 실행이다.
+기준일: 2026-10-21, 후보 검증 보고 (비공개 원본 `docs/FINAL-REVIEW.md`) 이후의 승인된 후속 실행이다.
 실제 서비스 중지·교체·롤백과 격리 namespace의 GPU 전환 실험을 명시 승인받아 진행했다.
 기존 클러스터 삭제, 드라이버/WSL/runtime/plugin 변경, 공개 전환, AWS 생성은 하지 않았다.
 
@@ -34,10 +34,10 @@ WSL k3s에서도 새 이미지·readiness 설정을 적용해 **EndpointSlice Re
 [전용 실행 스크립트](../scripts/kubernetes/close-docker-gap.py)는 기본 dry-run이며,
 `--execute` 때만 고정된 Gateway 두 개를 전환한다. vLLM·Prometheus·Grafana를 재생성하지 않는다.
 
-- [Compose config 검증 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/docker-cutover/00-compose-valid.txt)
-- [새 Gateway 채팅/SSE · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/docker-cutover/04-new.json)
-- [실제 이전 Gateway 롤백 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/docker-cutover/07-rollback.json)
-- [최종 새 Gateway 복귀 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/docker-cutover/10-final.json)
+- Compose config 검증 (비공개 원본 `evidence/operational-closure-20261021/docker-cutover/00-compose-valid.txt`)
+- 새 Gateway 채팅/SSE (비공개 원본 `evidence/operational-closure-20261021/docker-cutover/04-new.json`)
+- 실제 이전 Gateway 롤백 (비공개 원본 `evidence/operational-closure-20261021/docker-cutover/07-rollback.json`)
+- 최종 새 Gateway 복귀 (비공개 원본 `evidence/operational-closure-20261021/docker-cutover/10-final.json`)
 
 최종 활성 컨테이너는 `kubellm-gpu-secure-gateway-1`이다. 이전
 `kubellm-gateway-streaming-candidate-20261021`는 중지·보존한다.
@@ -70,7 +70,7 @@ liveness는 `/healthz`다. GPU vLLM의 digest/model revision은 기존 검증값
 
 [실행 스크립트](../scripts/kubernetes/close-kubernetes-gap.py)는 trial Deployment가 모두 0 replicas일 때만 진행한다.
 Docker vLLM을 중지하고 전용 namespace만 시작한다. 다른 프로젝트의 GPU 점유/클러스터 설정은 바꾸지 않는다.
-[전체 실행 결과 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/kubernetes-readiness/result.json):
+전체 실행 결과 (비공개 원본 `evidence/operational-closure-20261021/kubernetes-readiness/result.json`):
 
 1. 정상 Gateway endpoint Ready=true를 확인했다.
 2. EngineCore PID/start time을 확인하고 detached SIGCONT helper를 먼저 생성했다.
@@ -104,8 +104,8 @@ Docker vLLM을 중지하고 전용 namespace만 시작한다. 다른 프로젝�
 p95는 프로필당 성공 24건을 합친 nearest rank다. TTFT는 클라이언트가 첫 content를 읽은 시각이고
 worker 대기는 제외한다. TPOT 추정은 첫/마지막 content 도착 간격을 서버 usage의 `completion_tokens-1`로
 나눈 값이다. SSE chunk 개수를 토큰 수로 취급하지 않았다. vLLM 서버 histogram이나 모델 커널 시간을 뜻하지 않는다.
-[원문 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/streaming-load/result.json) ·
-[독립 집계 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/10-streaming-analysis.json).
+원문 (비공개 원본 `evidence/operational-closure-20261021/streaming-load/result.json`) ·
+독립 집계 (비공개 원본 `evidence/operational-closure-20261021/10-streaming-analysis.json`).
 
 readiness 23회 관측은 모두 200이었다. GPU 23표본 최고 64°C, 최소 여유 VRAM 2667MiB.
 표본 사이 상태·다른 부하·다른 모델에서의 오탐과 장기간 안정성을 보장하지 않는다.
@@ -119,9 +119,9 @@ readiness 23회 관측은 모두 200이었다. GPU 23표본 최고 64°C, 최소
 이는 버전 snapshot이며 hash-verified 패키지 공급망 인증/취약점 검사나 multi-architecture 호환 보장이 아니다.
 
 별도 임시 디렉터리에 Dockerfile·requirements·app Python 소스만 복사해
-`docker build --no-cache`를 실행했다. 빌드 결과는 [raw 출력 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/05-clean-context-build-retry.txt),
-네트워크 없는 일회성 컨테이너에서 import/config 확인은 [실행 출력 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/06-clean-context-import.txt)이다.
-[현재 서비스와 clean 이미지 비교 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/11-repro-equivalence.json)에서
+`docker build --no-cache`를 실행했다. 빌드 결과는 raw 출력 (비공개 원본 `evidence/operational-closure-20261021/05-clean-context-build-retry.txt`),
+네트워크 없는 일회성 컨테이너에서 import/config 확인은 실행 출력 (비공개 원본 `evidence/operational-closure-20261021/06-clean-context-import.txt`)이다.
+현재 서비스와 clean 이미지 비교 (비공개 원본 `evidence/operational-closure-20261021/11-repro-equivalence.json`)에서
 앱 파일의 줄바꿈 정규화 SHA256과 설치 패키지 목록이 같았다.
 활성 표준 빌드 이미지와 clean 고정 빌드 이미지는 패키징 metadata/이미지 ID가 다르며 동일 OCI byte라고 주장하지 않는다.
 
@@ -132,7 +132,7 @@ readiness 23회 관측은 모두 200이었다. GPU 23표본 최고 64°C, 최소
 
 1. Docker GPU access, WSL k3s·NVIDIA runtime/plugin, 모델 캐시가 먼저 필요하다. 설치/드라이버 설정 변경을 자동 수행하지 않는다.
 2. `docker build -t kubellm-ops-gateway:readiness-20261021 gateway`로 새 Gateway를 만든다.
-3. 모델 digest·Qwen revision·weights SHA256·VRAM 여유를 [기존 재현 가이드 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/wsl-k3s-gpu-validation.md)와 대조한다.
+3. 모델 digest·Qwen revision·weights SHA256·VRAM 여유를 기존 재현 가이드 (비공개 원본 `docs/wsl-k3s-gpu-validation.md`)와 대조한다.
 4. Docker와 k3s 모델을 동시에 시작하지 않는다. k3s에는 새 Gateway 이미지도 먼저 import한다.
 5. `k8s/validation/` 전체 apply를 하지 않는다. GPU 부족/fault용 Pod가 섞여 있다.
    정상 vLLM/Gateway manifests만 선택하고 rollout → endpoints → 실제 채팅/SSE 순서로 검사한다.
@@ -141,7 +141,7 @@ readiness 23회 관측은 모두 200이었다. GPU 23표본 최고 64°C, 최소
 
 ## 5. 보안·제출 경계와 남은 외부 결정
 
-[실제 바인딩/권한 metadata · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/09-security-boundary-review.json):
+실제 바인딩/권한 metadata (비공개 원본 `evidence/operational-closure-20261021/09-security-boundary-review.json`):
 vLLM host port 없음, Gateway/Prometheus/Grafana는 127.0.0.1만 게시한다.
 API 인증·TLS·사용자별 rate limit은 없다. 로컬 사용자/Docker·k3s 관리자와 bridge 내 프로세스를 신뢰하는 개발 환경이다.
 외부 서비스로 공개하려면 인증/접근 제어를 별도로 설계·검증해야 한다.
@@ -157,12 +157,12 @@ SLO-Guard 정책 연구는 기존 결정대로 보류이며 이번 운영 빈틈
 
 ## 최종 판정
 
-[최종 실제 실행 상태 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/12-final-runtime.json),
-[전체 테스트 134 passed · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/07-pytest.txt),
-[추가 재검수 결과 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/final-audit.json)를 함께 확인한다.
+최종 실제 실행 상태 (비공개 원본 `evidence/operational-closure-20261021/12-final-runtime.json`),
+전체 테스트 134 passed (비공개 원본 `evidence/operational-closure-20261021/07-pytest.txt`),
+추가 재검수 결과 (비공개 원본 `evidence/operational-closure-20261021/final-audit.json`)를 함께 확인한다.
 정적·오프라인 테스트와 GPU 런타임 성공은 서로 다른 근거다.
 소스·문서 whitespace 검사는 통과하되 raw evidence CRLF 경고는 원문 보존을 위해 남긴다.
-최종 추가 [저장소 credential 패턴 검사 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/operational-closure-20261021/repository-credential-scan.json)는
+최종 추가 저장소 credential 패턴 검사 (비공개 원본 `evidence/operational-closure-20261021/repository-credential-scan.json`)는
 해당 commit의 추적 텍스트 491개에서 고특이도 material 패턴 검출 0건이었다. 비밀정보가 절대 없다는 보증은 아니다.
 마지막 CI에서 발견한 Node 20 종료·ubuntu-latest 전환 경고는 공식
 [checkout](https://github.com/actions/checkout)·[setup-python](https://github.com/actions/setup-python) 문서를 확인해

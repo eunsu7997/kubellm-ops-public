@@ -2,7 +2,7 @@
 
 **현재 판정:** 제한된 실제 HTTP admission·토큰 예산·취소·증거 리포트 연결을 확인했다. 과부하 보호/성능 개선, 안정적인 모집단 P99, 완성된5모듈 통합 또는 자동 복구는 검증하지 않았다.
 
-이 문서는 [P0 조사 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/INTEGRATION-P0-20261022.md)와 [첫 P1 비교 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/INTEGRATION-P1-20261022.md)의 후속이다. 기존 결과는 수정하지 않았다. 원격 후속6개 커밋은 문서 변경이며 실행 코드 기준선은14e2488, 추가 실험 코드는 현재 미커밋 작업으로 보존한다.
+이 문서는 P0 조사 (비공개 원본 `docs/INTEGRATION-P0-20261022.md`)와 첫 P1 비교 (비공개 원본 `docs/INTEGRATION-P1-20261022.md`)의 후속이다. 기존 결과는 수정하지 않았다. 원격 후속6개 커밋은 문서 변경이며 실행 코드 기준선은14e2488, 추가 실험 코드는 현재 미커밋 작업으로 보존한다.
 
 ## 추가한 연결과 경계
 

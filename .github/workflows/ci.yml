@@ -47,8 +47,6 @@ jobs:
           sys.exit(0 if ok else 1)
           "
 
-  # GPU/Kubernetes가 필요한 검증(Docker build, docker compose, kubectl apply, vLLM 실행 등)은
-  # 일반 GitHub-hosted runner에는 GPU가 없고 Kubernetes 클러스터도 없으므로 여기서 억지로
-  # 돌리지 않는다. 그 항목들은 README의 VERIFIED/NOT VERIFIED 표에 명시하고,
-  # docs/gpu-verification.md 및 scripts/failure-tests/scenario{1,3,4}_*.sh 로 사용자가
-  # 실제 클러스터에서 직접 검증하도록 안내한다.
+  # GPU/Kubernetes가 필요한 검증(Docker build, kubectl apply, vLLM 실행 등)은 GitHub-hosted
+  # runner에 GPU와 클러스터가 없어 여기서 돌리지 않는다. 검증 범위는 README의 "검증 범위" 표에,
+  # 실제 실행 기록은 docs/KUBERNETES-LIVE-VALIDATION.md와 scripts/failure-tests/ 에 있다.

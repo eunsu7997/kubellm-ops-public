@@ -4,7 +4,7 @@
 Evidence 폴더 이름의 `20261021`은 작업 시작 UTC 날짜입니다. GitHub와 Notion은 Private/기존 권한을 유지합니다.
 개인 파일과 다른 프로젝트는 변경하지 않았습니다.
 
-**최종 전달 검수:** [GitHub·Notion 실제 반영 및 원본 bytes 보존 보완 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/FINAL-DELIVERY-20261022.md).
+**최종 전달 검수:** GitHub·Notion 실제 반영 및 원본 bytes 보존 보완 (비공개 원본 `docs/FINAL-DELIVERY-20261022.md`).
 기존 Notion 두 페이지를 실제 갱신·재조회했고, 과거 Git의 LF 정규화 문제는 원문을 바꾸지 않은 별도 ZIP으로 보완했습니다.
 
 **한 줄 판정:** 실제 GPU 서빙·관측·복구 경로는 반복 측정으로 확인했지만, 120분 관측의 엄격 phase 판정은 **FAIL**이고
@@ -30,19 +30,19 @@ Gateway/관측 서비스·원본 TSDB·모델 캐시·기존 증거와 다른 �
 
 | 빈틈 | 반영 내용 | 근거와 한계 |
 |---|---|---|
-| 센서 멈춤·NaN이 안전으로 통과 가능 | 3초 센서 timeout·유효성·독립 heartbeat·중단 | [안전 하네스](../scripts/ops/safety_harness.py), [테스트](../tests/test_ops_safety_harness.py) |
+| 센서 멈춤·NaN이 안전으로 통과 가능 | 3초 센서 timeout·유효성·독립 heartbeat·중단 | [안전 하네스](../../scripts/ops/safety_harness.py), [테스트](../../tests/test_ops_safety_harness.py) |
 | 종료 기한·실패 전파 부족 | hard wall·전송 완료 순서 연속 실패 3회·자식 정리·실패 exit | 실제 GPU 장애가 아닌 격리 프로세스로 중단 분기 검사 |
-| Windows venv 실행기만 종료 가능 | 생성기 프로세스 트리 종료, 실패 cleanup도 실패 처리 | [소스 hash 포함 7종 실제 격리 검증 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/harness-source-hashed-final/verification.json) |
+| Windows venv 실행기만 종료 가능 | 생성기 프로세스 트리 종료, 실패 cleanup도 실패 처리 | 소스 hash 포함 7종 실제 격리 검증 (비공개 원본 `evidence/ops-safety-closure-20261021/harness-source-hashed-final/verification.json`) |
 | 관측 thread가 조용히 멈춤 | vLLM 표본 누락/파싱 실패를 supervisor로 전파 | GPU 센서와 HTTP 관측은 독립. 단일 관측 실패에도 안전하게 중단 |
 | 미전송·성공 0건도 통과 가능 | success>0, 전송 실패0·미전송0, 유효 표본·E2E 복구 요구 | readiness/경보는 별도 공개하며 phase pass와 가용성 보장은 다름 |
 | SSE EOF만으로 success | content와 `[DONE]` 모두 필수, 새 summary에 계약 표시 | 과거 CSV의 DONE 여부를 소급 보증하지 않음 |
 | 프로세스 중단 시 요청 결과 소실 | 각 요청 metadata JSONL flush, 부분/중복/수 불일치 검사 | 전원 장애 fsync 영속성 보장 아님 |
 | 복구 중 k3s GPU 중복 가능 | stopped 모델은 k3s GPU Pod/조회 불명·legacy·센서 이상 차단 | 차단 분기는 오프라인 fixture. 실제 cold conflict를 재현하지 않음 |
 | 부정확한 helper armed/cancel 표현 | 실제 helper 대기 진입 JSON, 취소 acknowledgement | 격리 검사 + 실제 진단 1회에서 취소 ack exit0 |
-| 진단과 다른 부하의 중첩 | 실제 부하 프로세스 조회·exclusive lease, lease 중 일반 load CLI 거부 | 120분 실행 중 실제 부하 프로세스 4개 감지·변경 없음([positive control · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/jit-overlap-positive-control.json)). lease 거부 분기는 테스트 |
-| drain을 포함한 성능 수치·서버 오류 단정 | 창 안 완료와 cohort/drain을 분리, timeout 관측 주체 정정 | [15개 원본 CSV 재분석 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/historical-load-reanalysis.json) |
+| 진단과 다른 부하의 중첩 | 실제 부하 프로세스 조회·exclusive lease, lease 중 일반 load CLI 거부 | 120분 실행 중 실제 부하 프로세스 4개 감지·변경 없음(positive control (비공개 원본 `evidence/ops-safety-closure-20261021/jit-overlap-positive-control.json`)). lease 거부 분기는 테스트 |
+| drain을 포함한 성능 수치·서버 오류 단정 | 창 안 완료와 cohort/drain을 분리, timeout 관측 주체 정정 | 15개 원본 CSV 재분석 (비공개 원본 `evidence/ops-safety-closure-20261021/historical-load-reanalysis.json`) |
 
-소스·사용법·stop/go 기준은 [상세 검수/운영 절차](SAFETY-HARNESS-CLOSURE.md)에 있습니다.
+소스·사용법·stop/go 기준은 [상세 검수/운영 절차](../SAFETY-HARNESS-CLOSURE.md)에 있습니다.
 
 ## 실제 관측
 
@@ -67,8 +67,8 @@ success는 content와 SSE `[DONE]`을 모두 받은 요청입니다. 미전송�
 자식 정리와 실제 E2E 복구를 확인했습니다. usage 기반 client TPOT 추정 p95는 0.01613초/토큰입니다.
 **미전송 7건 때문에 CLI exit1, 엄격 phase 및 깨끗한 관측 판정은 FAIL**입니다. 전송 성공만 세어 무실패 soak라고 쓰지 않습니다.
 시작 시 소스 hash를 기록하지 않아 이 장시간 실행의 정확한 로드 코드 동일성은 **NOT VERIFIED**입니다.
-[독립 판정 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/long-soak-independent-verdict.json) ·
-[TPOT/분모별 통계 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/long-soak-extra-statistics.json).
+독립 판정 (비공개 원본 `evidence/ops-safety-closure-20261021/long-soak-independent-verdict.json`) ·
+TPOT/분모별 통계 (비공개 원본 `evidence/ops-safety-closure-20261021/long-soak-extra-statistics.json`).
 
 ### JIT 상세 진단
 
@@ -78,18 +78,18 @@ success는 content와 SSE `[DONE]`을 모두 받은 요청입니다. 미전송�
 `_topp_sb_mask/stats/step_kernel` 5종)이 있었습니다. warm 구간은 timeout 증가 0·JIT 경고 0이었습니다.
 진단 controller는 stock identity·E2E 복원, helper 취소 acknowledgement exit0을 기록했고 ignored lease 파일도 제거됐습니다.
 사용한 11개 소스 snapshot/hash는 디스크·Git `00ded7d` 내용과 CRLF 정규화만 허용한 비교에서 불일치 0입니다.
-[독립 비교·복구/취소 확인 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/jit-diagnostic-independent-comparison.json) ·
-[raw · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/jit-readiness-20261021T172031705825Z).
+독립 비교·복구/취소 확인 (비공개 원본 `evidence/ops-safety-closure-20261021/jit-diagnostic-independent-comparison.json`) ·
+raw (비공개 원본 `evidence/ops-safety-closure-20261021/jit-readiness-20261021T172031705825Z`).
 
 ### stock 복원 후 cold/warm
 
 stock(상세 로그 없음) 복원 직후 source-hash를 기록한 90초 회귀는 89 성공·13 미전송·503 3표본, CLI exit1로 보존했습니다.
 사전 선언한 단 1회의 warm 대조(재생성 없음)는 102 성공·0 미전송·readiness 17/17×200, CLI exit0이었습니다.
 두 기록의 소스 hash는 디스크·Git과 CRLF 정규화 비교에서 일치합니다. 이후 통과를 만들기 위한 재시도는 하지 않았습니다.
-[stock 비교 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/stock-cold-warm-independent-comparison.json) ·
-[cold raw · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/safety-fixed-warmup-20261021T172919386329Z) ·
-[warm raw · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/safety-fixed-warmup-20261021T173139094469Z) ·
-[사전 계획 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/stock-warm-control-plan.json).
+stock 비교 (비공개 원본 `evidence/ops-safety-closure-20261021/stock-cold-warm-independent-comparison.json`) ·
+cold raw (비공개 원본 `evidence/ops-safety-closure-20261021/safety-fixed-warmup-20261021T172919386329Z`) ·
+warm raw (비공개 원본 `evidence/ops-safety-closure-20261021/safety-fixed-warmup-20261021T173139094469Z`) ·
+사전 계획 (비공개 원본 `evidence/ops-safety-closure-20261021/stock-warm-control-plan.json`).
 
 **해석:** 상세 로그 유무와 관계없이 새 vLLM 프로세스의 첫 부하에서 미전송·503이 나타나고, 같은 프로세스의 다음 구간에서는 사라졌습니다.
 추론 중 JIT와 첫 부하 지연의 관측 근거를 좁혔지만 **모든 503의 원인 확정이나 일반적 warmup 해결책을 증명하지 않습니다.**
@@ -98,7 +98,7 @@ stock(상세 로그 없음) 복원 직후 source-hash를 기록한 90초 회귀�
 
 ### 최종 runtime
 
-[최종 상태 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-runtime.json): 프로젝트 부하 프로세스 0, 진단 lease 없음, stock identity true.
+최종 상태 (비공개 원본 `evidence/ops-safety-closure-20261021/final-runtime.json`): 프로젝트 부하 프로세스 0, 진단 lease 없음, stock identity true.
 ready 200·실제 채팅 200(assistant 응답)·SSE 200+DONE. 프로젝트 컨테이너 6개 running, vLLM host port 없음,
 Gateway `127.0.0.1:18003`, Prometheus 19091·Grafana 13001·Alertmanager 19093·receiver 19094(모두 loopback).
 Prometheus gateway/vLLM target UP, 활성 경보 없음. 과거 같은 timestamp의 `sum(gateway_requests_total)=1705` 유지, 원본 TSDB volume 존재.
@@ -129,30 +129,30 @@ kubeconfig는 메타데이터(`root:eunsu 640`)만 확인했고 내용은 읽지
 | 9 | DCGM/GPU 전력 포함 시각화 | PARTIAL: 사용률·VRAM·온도. WSL power N/A, 전력 NOT VERIFIED |
 | 10 | GPU 부족·모델 실패·장애 복구 | VERIFIED: 공유 4슬롯에 5요청 Pending, offline 모델 실패, API liveness·Pod 삭제 복구. 모든 장애 자동 복구 보장 아님 |
 | 11 | 버전·재현·증거·공유 점검 | PARTIAL: digest/revision·같은 호스트 캐시 재현·원본 hash 재검증. fresh GPU host·캐시 없는 설치·외부 공유 미검증/미실행 |
-| 12 | README·아키텍처·면접·최종본 | VERIFIED(이번 문서 마감 범위): README·이 보고·기존 Notion 두 페이지 실제 반영과 재조회·GitHub 게시. [최종 전달 검수 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/FINAL-DELIVERY-20261022.md). 실제 외부 검토자 공유는 미실행 |
+| 12 | README·아키텍처·면접·최종본 | VERIFIED(이번 문서 마감 범위): README·이 보고·기존 Notion 두 페이지 실제 반영과 재조회·GitHub 게시. 최종 전달 검수 (비공개 원본 `docs/FINAL-DELIVERY-20261022.md`). 실제 외부 검토자 공유는 미실행 |
 
-[Kubernetes 원문 인덱스](KUBERNETES-LIVE-VALIDATION.md) · [실제 적용/롤백](OPERATIONAL-CLOSURE.md) ·
-[TSDB/설정 복원·권한 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/EXTENDED-OPERATIONS.md) · [후속 경보·재시작 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/docs/LOCAL-OPS-EXPERIMENTS.md).
+[Kubernetes 원문 인덱스](../KUBERNETES-LIVE-VALIDATION.md) · [실제 적용/롤백](../OPERATIONAL-CLOSURE.md) ·
+TSDB/설정 복원·권한 (비공개 원본 `docs/EXTENDED-OPERATIONS.md`) · 후속 경보·재시작 (비공개 원본 `docs/LOCAL-OPS-EXPERIMENTS.md`).
 물리 GPU는 RTX4060 **1장**이고, k3s 광고 4는 time-slicing 공유 슬롯입니다. 전용 GPU/VRAM 4개로 해석하지 않습니다.
 현재 k3s 실험 Deployment 5개는 0 replicas로 보존하고 Docker가 serving합니다. kind와 다른 프로젝트는 건드리지 않았습니다.
 
 ## 독립 검수와 검증 상태
 
-- Claude Code 읽기 전용 검수 6회(01–04, 05-jit, 06-jit)와 자체 재검수. 지적·반영의 경계는 [상세 문서](SAFETY-HARNESS-CLOSURE.md)에 있습니다.
+- Claude Code 읽기 전용 검수 6회(01–04, 05-jit, 06-jit)와 자체 재검수. 지적·반영의 경계는 [상세 문서](../SAFETY-HARNESS-CLOSURE.md)에 있습니다.
 - **최종 로컬 품질(모든 부하 종료 후):** 237 passed·1 skipped(Windows POSIX mode 시험)·206 deprecation warnings, Ruff·`git diff --check` exit0.
-  [명령·exit·소스 hash · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/quality-final/verification.json).
+  명령·exit·소스 hash (비공개 원본 `evidence/ops-safety-closure-20261021/quality-final/verification.json`).
 - 과거 기록: 코드 commit `0be7919`의 CI 39628031385는 당시 223 passed·1 skipped.
   진단 준비 commit `00ded7d`의 [CI 39641353623 SUCCESS](https://github.com/eunsu7997/kubellm-ops-public/actions/runs/39641353623)는
   Linux 237 passed·1 skipped·1 warning(Windows 트리 종료 시험 skip, POSIX 시험 실행), Ruff·YAML 성공입니다.
-  [CI 수신 기록 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/jit-preparation-ci.json).
+  CI 수신 기록 (비공개 원본 `evidence/ops-safety-closure-20261021/jit-preparation-ci.json`).
 - 이번 문서 마감 commit 이후 제품 코드·테스트는 변경하지 않았습니다. 이 commit의 CI 결과는 별도 수신 기록
   `evidence/ops-safety-closure-20261021/publication-ci-receipt.json`에 남깁니다.
 
 ### 최종 감사
 
-[감사 결과 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-publication-audit-03/audit.json) ·
-[새 evidence SHA256 manifest · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-publication-audit-03/evidence-sha256.json) ·
-[감사 스크립트 사본 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-publication-audit-03/audit-script.py.txt).
+감사 결과 (비공개 원본 `evidence/ops-safety-closure-20261021/final-publication-audit-03/audit.json`) ·
+새 evidence SHA256 manifest (비공개 원본 `evidence/ops-safety-closure-20261021/final-publication-audit-03/evidence-sha256.json`) ·
+감사 스크립트 사본 (비공개 원본 `evidence/ops-safety-closure-20261021/final-publication-audit-03/audit-script.py.txt`).
 
 - 기존 5개 manifest hash 항목 151+28+7+43+174=403개(고유 경로 403개)를 실제 파일로 재계산: 불일치 0.
 - Claude 원본 baseline 134개 hash: 불일치 0.
@@ -160,9 +160,9 @@ kubeconfig는 메타데이터(`root:eunsu 640`)만 확인했고 내용은 읽지
   CRLF 정규화는 Git 소스 동일성 비교에만 사용했고 raw 파일에는 적용하지 않았습니다.
 - 공개해 둘 기존 한계: `local-ops-experiments-20261021`의 raw 110개는 `-text` 규칙(`0be7919`)보다 먼저(`806920d`) commit돼
   Git 이력에는 LF 정규화 blob으로 저장돼 있습니다. 디스크의 원본 CRLF bytes는 Claude 원본 baseline SHA256과 정확히 일치합니다.
-  기존 commit evidence는 바꾸지 않았습니다. 최종 전달에서 원본134개를 [별도 ZIP · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-delivery/README.md)에 byte 그대로 복사하고 각 entry hash를 baseline과 대조했습니다. 그 밖의 과거 text 파일 61개는 Windows checkout의 CRLF 차이뿐입니다.
-- Claude 게시 감사는 3회 실행했고 최종 전달 감사04를 별도로 추가했습니다. 앞선 두 결과([01 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-publication-audit/audit.json),
-  [02 · 비공개 원본](https://github.com/eunsu7997/kubellm-ops/blob/master/evidence/ops-safety-closure-20261021/final-publication-audit-02/audit.json))는 수정하지 않았습니다.
+  기존 commit evidence는 바꾸지 않았습니다. 최종 전달에서 원본134개를 별도 ZIP (비공개 원본 `evidence/ops-safety-closure-20261021/final-delivery/README.md`)에 byte 그대로 복사하고 각 entry hash를 baseline과 대조했습니다. 그 밖의 과거 text 파일 61개는 Windows checkout의 CRLF 차이뿐입니다.
+- Claude 게시 감사는 3회 실행했고 최종 전달 감사04를 별도로 추가했습니다. 앞선 두 결과(01 (비공개 원본 `evidence/ops-safety-closure-20261021/final-publication-audit/audit.json`),
+  02 (비공개 원본 `evidence/ops-safety-closure-20261021/final-publication-audit-02/audit.json`))는 수정하지 않았습니다.
   01은 checkout CRLF 차이를, 02는 위 110개와 01 스크립트 사본의 정규식 문자열을 실패로 분류했고, 03에서 명시적으로 구분했습니다.
 - 동결 소스 50개: quality-final hash·HEAD 대비 불일치 0. staged 변경은 README/HANDOFF/docs/새 evidence 경로뿐입니다.
 - 로컬 Markdown 링크 555개 대상 존재(누락 0, 디렉터리 링크 허용), YAML 48개 파싱 실패 0.

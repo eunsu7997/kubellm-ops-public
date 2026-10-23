@@ -14,5 +14,5 @@ dist/
 results/offline-harness-test-*/
 .runtime/
 # Generated captures can contain local paths and private access details.
-/evidence/instructor-demo/
+/evidence/demo-runs/
 /slo-guard/capacity/

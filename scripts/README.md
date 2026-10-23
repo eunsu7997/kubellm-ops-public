@@ -7,6 +7,7 @@
 | 스크립트 | 하는 일 |
 | --- | --- |
 | `load-test/concurrency_sweep.py` | 동시성을 올리며 처리량–지연 곡선과 꺾이는 지점을 찾음. Gateway 동시성 제한값의 근거 |
+| `load-test/mock_rehearsal.py` | GPU 없이 mock(합성 용량 모델)과 Gateway를 띄워 sweep과 동시성 제한을 리허설 |
 | `load-test/open_loop.py` | 도착률을 고정한 SSE 부하 생성 (open-loop) |
 | `load-test/evaluate_slo.py` | 실패·미전송을 분모에 넣은 SLO 판정 (오프라인) |
 | `ops/safety_harness.py` | GPU 온도·여유 VRAM·진행 상태를 감시하다 위험하면 부하를 멈추는 감독기 |

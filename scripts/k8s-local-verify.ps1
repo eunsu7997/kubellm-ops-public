@@ -87,6 +87,20 @@ Write-Section "05_gateway-describe.txt" "kubectl describe pod (gateway) - probe 
     kubectl describe pod -n $ns -l app=gateway
 }
 
+Write-Section "05b_security-pdb-netpol.txt" "securityContext / PDB / NetworkPolicy as applied" {
+    Write-Output "--- gateway pod securityContext (pod, container) ---"
+    kubectl get pods -n $ns -l app=gateway -o jsonpath="{range .items[*]}{.metadata.name}{' pod='}{.spec.securityContext}{' container='}{.spec.containers[0].securityContext}{'\n'}{end}"
+    Write-Output "`n--- uid inside the gateway container ---"
+    $gw = (kubectl get pods -n $ns -l app=gateway -o jsonpath="{.items[0].metadata.name}")
+    kubectl exec -n $ns $gw -- id
+    Write-Output "`n--- write to root filesystem must fail (read-only) ---"
+    kubectl exec -n $ns $gw -- sh -c "touch /app/probe 2>&1 || true"
+    Write-Output "`n--- PodDisruptionBudget ---"
+    kubectl get pdb -n $ns
+    Write-Output "`n--- NetworkPolicy (Docker Desktop CNI may not enforce these) ---"
+    kubectl get networkpolicy -n $ns
+}
+
 Write-Host "`n=== Step 5: In-cluster E2E check (port-forward) ===`n"
 # Docker Compose gateway may already be using local port 8000, so use a different
 # local port (18080) for the Kubernetes check to avoid ambiguity about which stack answered.

@@ -47,6 +47,11 @@ jobs:
           sys.exit(0 if ok else 1)
           "
 
+      - name: Render Kustomize manifests (default and GPU overlay)
+        run: |
+          kubectl kustomize k8s/ > /dev/null
+          kubectl kustomize k8s/overlays/gpu > /dev/null
+
   # GPU/Kubernetes가 필요한 검증(Docker build, kubectl apply, vLLM 실행 등)은 GitHub-hosted
   # runner에 GPU와 클러스터가 없어 여기서 돌리지 않는다. 검증 범위는 README의 "검증 범위" 표에,
   # 실제 실행 기록은 docs/KUBERNETES-LIVE-VALIDATION.md와 scripts/failure-tests/ 에 있다.

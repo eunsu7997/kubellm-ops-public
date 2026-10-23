@@ -68,9 +68,8 @@ docker build -t kubellm-ops-mock-backend:local .\mock-backend
 if ($LASTEXITCODE -ne 0) { Write-Host "[ABORT] mock-backend image build failed" -ForegroundColor Red; exit 1 }
 
 Write-Host "`n=== Step 3: Deploy to Kubernetes (vLLM/GPU/DCGM excluded) ===`n"
-kubectl apply -f k8s/base/
-kubectl apply -f k8s/gateway/
-kubectl apply -f k8s/mock/
+# k8s/kustomization.yaml = base + gateway + mock + NetworkPolicy
+kubectl apply -k k8s/
 
 Write-Host "`n=== Step 4: Wait for pods to be Ready ===`n"
 kubectl wait --for=condition=Ready pod -l app=gateway -n $ns --timeout=120s

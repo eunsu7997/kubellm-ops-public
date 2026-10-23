@@ -1,0 +1,25 @@
+# GPU 구성: Gateway → vLLM(Qwen2.5-0.5B) + DCGM (kubectl apply -k k8s/overlays/gpu)
+# 실제로 WSL k3s에 적용한 기록은 k8s/validation/ 과 docs/KUBERNETES-LIVE-VALIDATION.md.
+# 이 overlay 자체는 아직 클러스터에 적용해 보지 않았다.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - ../../gateway
+  - ../../vllm
+  - ../../monitoring
+  - ../../network
+patches:
+  - target:
+      kind: ConfigMap
+      name: gateway-config
+    patch: |-
+      - op: replace
+        path: /data/VLLM_BASE_URL
+        value: "http://vllm:8000"
+      - op: replace
+        path: /data/MODEL_NAME
+        value: "Qwen/Qwen2.5-0.5B-Instruct"
+      - op: replace
+        path: /data/REQUEST_TIMEOUT
+        value: "120"

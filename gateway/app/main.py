@@ -1,14 +1,9 @@
-"""KubeLLM-Ops Gateway.
+"""KubeLLM-Ops Gateway: OpenAI 호환 프록시 (vLLM 또는 mock-backend 앞단).
 
-이 서비스는 얇은 프록시(gateway)다 — 직접 LLM을 실행하지 않고, vLLM(또는 로컬 검증용
-mock-backend)의 OpenAI 호환 API로 요청을 그대로 전달한 뒤 응답을 돌려준다.
-
-용어 설명(입문자용):
-- FastAPI: Python으로 웹 API를 빠르게 만드는 프레임워크.
-- Liveness Probe(라이브니스 프로브): "이 프로세스가 죽지 않고 살아있는가"를 확인하는 신호.
-  실패하면 Kubernetes가 컨테이너를 재시작한다. 여기서는 /healthz가 그 역할을 한다.
-- Readiness Probe(레디니스 프로브): "지금 요청을 받아도 되는 상태인가"를 확인하는 신호.
-  실패하면 Kubernetes가 이 Pod로 트래픽을 보내지 않는다(재시작은 안 함). /readyz가 이 역할이다.
+- /healthz: liveness. 백엔드 상태와 무관하게 프로세스만 확인한다.
+- /readyz: readiness. 기본은 로컬 확인, READINESS_MODE로 백엔드·실제 추론 확인을 켤 수 있다.
+- /v1/chat/completions: 비스트리밍·SSE 중계, 선택적 동시성 제한(GATEWAY_MAX_INFLIGHT).
+- /metrics: Prometheus 지표.
 """
 import asyncio
 import logging

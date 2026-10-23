@@ -38,3 +38,32 @@ def test_mock_backend_error500_mode_returns_500():
         headers={"x-mock-mode": "error500"},
     )
     assert resp.status_code == 500
+
+
+def _sse_lines(resp):
+    return [line[6:] for line in resp.text.splitlines() if line.startswith("data: ")]
+
+
+def test_mock_backend_streams_openai_sse_with_done():
+    client = TestClient(_load_mock_app())
+    resp = client.post(
+        "/v1/chat/completions",
+        json={"model": "m", "stream": True, "max_tokens": 5, "messages": [{"role": "user", "content": "hi"}]},
+    )
+    assert resp.status_code == 200
+    assert resp.headers["content-type"].startswith("text/event-stream")
+    events = _sse_lines(resp)
+    assert events[-1] == "[DONE]"
+    import json
+    deltas = [json.loads(e)["choices"][0]["delta"].get("content") for e in events[:-1]]
+    assert len([d for d in deltas if d]) == 5
+
+
+def test_mock_backend_capacity_model_is_off_by_default():
+    import importlib.util as iu
+    spec = iu.spec_from_file_location("mock_cap_check", _MOCK_MAIN_PATH)
+    module = iu.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.TOKEN_DELAY_SECONDS == 0
+    assert module.MAX_CONCURRENCY == 0
+    assert module._slot() is None

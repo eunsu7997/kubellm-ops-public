@@ -10,7 +10,7 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class Settings:
-    # vLLM(브이엘엘엠, LLM 추론 서버)의 OpenAI 호환 API 주소. 로컬 검증에서는 mock-backend를 가리킨다.
+    # OpenAI 호환 백엔드 주소. 로컬 검증에서는 mock-backend를 가리킨다.
     vllm_base_url: str = os.environ.get("VLLM_BASE_URL", "http://localhost:8001")
     # 실제로 호출할 모델 이름 (vLLM/mock 양쪽에 전달됨)
     model_name: str = os.environ.get("MODEL_NAME", "mock-model")

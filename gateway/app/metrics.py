@@ -1,8 +1,4 @@
-"""Prometheus(프로메테우스, 오픈소스 모니터링/시계열 수집 시스템) metric 정의.
-
-여기서 정의한 지표를 /metrics 엔드포인트에서 텍스트로 노출하면, Prometheus 서버가
-주기적으로 이 엔드포인트를 긁어가서(scrape) 시계열 데이터로 쌓는다.
-"""
+"""Gateway Prometheus 지표. /metrics에서 노출한다."""
 from prometheus_client import CONTENT_TYPE_LATEST, Counter, Gauge, Histogram, generate_latest
 
 REQUEST_COUNT = Counter(

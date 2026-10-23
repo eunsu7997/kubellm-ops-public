@@ -11,3 +11,7 @@ data:
   VLLM_BASE_URL: "http://mock-backend:8001"
   MODEL_NAME: "mock-model"
   REQUEST_TIMEOUT: "30"
+  # Opt-in admission. "0" keeps the historical behaviour (no limit). Pick a value from the
+  # knee of scripts/load-test/concurrency_sweep.py on the real GPU before enabling it.
+  GATEWAY_MAX_INFLIGHT: "0"
+  GATEWAY_RETRY_AFTER_SECONDS: "1"

@@ -43,6 +43,22 @@ REQUEST_LATENCY = Histogram(
     buckets=LATENCY_BUCKETS,
 )
 
+# 결과(outcome)와 stream 여부로 나눈 처리 시간. 성공 요청만의 지연 SLO를 PromQL로 계산할 수 있다.
+# outcome: success | client_error | backend_error | stream_error | client_disconnect | rejected
+REQUEST_DURATION = Histogram(
+    "gateway_request_duration_seconds",
+    "Chat completion duration split by outcome and stream mode",
+    ["outcome", "stream"],
+    buckets=LATENCY_BUCKETS,
+)
+
+INFLIGHT = Gauge(
+    "gateway_inflight_requests", "Chat completions currently being processed or streamed by this Gateway",
+)
+ADMISSION_REJECTED = Counter(
+    "gateway_admission_rejected_total", "Requests rejected with 429 because GATEWAY_MAX_INFLIGHT was reached",
+)
+
 # stream=true 요청에서 요청 수신부터 백엔드의 첫 청크가 도착할 때까지 걸린 시간(TTFT 근사치).
 TIME_TO_FIRST_CHUNK = Histogram(
     "gateway_time_to_first_chunk_seconds",
@@ -83,6 +99,9 @@ __all__ = [
     "CLIENT_DISCONNECT_COUNT",
     "REQUEST_LATENCY",
     "TIME_TO_FIRST_CHUNK",
+    "REQUEST_DURATION",
+    "INFLIGHT",
+    "ADMISSION_REJECTED",
     "READINESS_ENABLED",
     "BACKEND_READY",
     "READINESS_CHECKS",

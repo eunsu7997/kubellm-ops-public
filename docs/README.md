@@ -36,8 +36,12 @@
 **[reports/2026-10-23-publication-review.md](reports/2026-10-23-publication-review.md), [public-snapshot](reports/2026-10-23-public-snapshot.md)**
 비공개 원본에서 공개본을 만들 때 개인정보를 어떻게 걸렀는지 기록합니다.
 
+## 공개본의 출처
+
+[snapshot 출처](reports/2026-10-23-public-snapshot.md)의 source manifest는 선별 시작 시점의 소스 기록입니다. [실행 증거](../evidence/public-integration-20261023/README.md)의 manifest는 비식별 파생본 기록입니다. 현재 코드의 후속 개선은 Git 이력에서 확인합니다.
+
 ## 가이드
 
 - [RUN-LOCAL.md](RUN-LOCAL.md): GPU PC에서 채팅·통합 실행·복구
-- [docker-gpu-security-migration.md](docker-gpu-security-migration.md): Docker GPU 구성 보안 강화 절차 (준비만, 미적용)
+- [docker-gpu-security-migration.md](docker-gpu-security-migration.md): Docker GPU 구성 보안 강화 절차 (당시 준비 절차; 실제 적용·롤백 결과는 [OPERATIONAL-CLOSURE.md](OPERATIONAL-CLOSURE.md) 참조)
 - [../k8s/README.md](../k8s/README.md), [../scripts/README.md](../scripts/README.md)

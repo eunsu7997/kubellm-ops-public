@@ -31,7 +31,7 @@ PROMPT = "Explain in three sentences why GPU memory limits LLM batch size."
 class Result:
     level: int
     index: int
-    status: str  # success | http_<code> | transport_error | incomplete
+    status: str  # success | http_<code> | transport_error | incomplete | invalid_sse
     ttft_s: float | None
     e2e_s: float
     chunks: int
@@ -70,19 +70,21 @@ def summarize(level: int, results: list[Result], wall_s: float) -> dict:
 def find_knee(levels: list[dict], *, min_gain: float = 0.10, latency_factor: float = 2.0) -> int | None:
     """Last level worth using: before throughput gain drops under min_gain while p99 TTFT
     grows by latency_factor over the lowest level, or before errors appear."""
-    usable = [s for s in levels if s["throughput_rps"] is not None and s["ttft_p99_s"] is not None]
-    if not usable:
-        return None
-    base_ttft = usable[0]["ttft_p99_s"]
-    best = usable[0]["concurrency"]
-    for prev, cur in zip(usable, usable[1:]):
-        if cur["error_rate"]:
-            return prev["concurrency"]
-        prev_rps = prev["throughput_rps"]
-        gain = (cur["throughput_rps"] - prev_rps) / prev_rps if prev_rps else 0
-        if gain < min_gain and cur["ttft_p99_s"] >= latency_factor * base_ttft:
-            return prev["concurrency"]
+    best, prev, base_ttft = None, None, None
+    for cur in levels:
+        # A failed or unmeasured level cannot support a capacity recommendation.
+        # Keep its position: filtering it out would bridge across a failed run.
+        if (cur["error_rate"] != 0 or cur["throughput_rps"] is None or cur["throughput_rps"] <= 0
+                or cur["ttft_p99_s"] is None):
+            return best
+        if prev is None:
+            base_ttft = cur["ttft_p99_s"]
+        else:
+            gain = (cur["throughput_rps"] - prev["throughput_rps"]) / prev["throughput_rps"]
+            if gain < min_gain and cur["ttft_p99_s"] >= latency_factor * base_ttft:
+                return best
         best = cur["concurrency"]
+        prev = cur
     return best
 
 
@@ -105,6 +107,16 @@ async def _one(client, url: str, body: dict, level: int, index: int, timeout: fl
                 if payload == "[DONE]":
                     done = True
                     break
+                try:
+                    event = json.loads(payload)
+                    choices = event["choices"]
+                    if not isinstance(choices, list):
+                        raise ValueError("choices must be a list")
+                    contents = [choice["delta"].get("content") for choice in choices]
+                except (ValueError, KeyError, TypeError, AttributeError):
+                    return Result(level, index, "invalid_sse", ttft, time.perf_counter() - start, chunks)
+                if not any(isinstance(content, str) and content for content in contents):
+                    continue  # Role, finish and usage events are not generated text.
                 if ttft is None:
                     ttft = time.perf_counter() - start
                 chunks += 1
@@ -154,6 +166,12 @@ def main(argv=None) -> int:
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--execute", action="store_true", help="actually send requests")
     args = ap.parse_args(argv)
+    if args.requests_per_level < 1 or args.max_tokens < 1:
+        ap.error("requests-per-level and max-tokens must be positive")
+    if not math.isfinite(args.timeout) or args.timeout <= 0:
+        ap.error("timeout must be finite and positive")
+    if not math.isfinite(args.cooldown) or args.cooldown < 0:
+        ap.error("cooldown must be finite and non-negative")
 
     plan = {"base_url": args.base_url, "model": args.model, "levels": args.levels,
             "requests_per_level": args.requests_per_level, "max_tokens": args.max_tokens}
@@ -161,6 +179,12 @@ def main(argv=None) -> int:
     if not args.execute:
         print("dry run: add --execute to send requests")
         return 0
+
+    if args.out:
+        try:
+            args.out.mkdir(parents=True, exist_ok=False)
+        except FileExistsError:
+            ap.error(f"output already exists: {args.out}")
 
     summaries, rows = [], []
     for i, level in enumerate(args.levels):
@@ -179,7 +203,6 @@ def main(argv=None) -> int:
     report = {"plan": plan, "levels": summaries, "knee_concurrency": find_knee(summaries)}
     print(json.dumps({"knee_concurrency": report["knee_concurrency"]}))
     if args.out:
-        args.out.mkdir(parents=True, exist_ok=False)
         (args.out / "summary.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
         with (args.out / "requests.csv").open("w", newline="", encoding="utf-8") as fh:
             writer = csv.DictWriter(fh, fieldnames=list(Result.__dataclass_fields__))

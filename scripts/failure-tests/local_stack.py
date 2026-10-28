@@ -26,8 +26,13 @@ class ManagedProcess:
         self.env = env
         self.process: subprocess.Popen | None = None
         self._log_file = None
+        self._output = ""
 
     def start(self) -> None:
+        if self.is_running():
+            raise RuntimeError(f"{self.name} is already running")
+        self.stop()
+        self._output = ""
         # stdout=PIPE인 채로 아무도 읽지 않으면, 요청이 많아 로그가 쌓일 때 OS 파이프 버퍼가
         # 가득 차서 자식 프로세스(uvicorn)의 쓰기가 막히고 결국 요청 처리 자체가 멈춘다.
         # 부하 테스트처럼 요청이 많은 시나리오에서 실제로 이 문제가 재현됐기 때문에,
@@ -35,14 +40,21 @@ class ManagedProcess:
         self._log_file = tempfile.NamedTemporaryFile(
             mode="w", suffix=f"_{self.name}.log", delete=False
         )
-        self.process = subprocess.Popen(
-            self.cmd,
-            cwd=str(self.cwd),
-            env=self.env,
-            stdout=self._log_file,
-            stderr=subprocess.STDOUT,
-            text=True,
-        )
+        try:
+            self.process = subprocess.Popen(
+                self.cmd,
+                cwd=str(self.cwd),
+                env=self.env,
+                stdout=self._log_file,
+                stderr=subprocess.STDOUT,
+                text=True,
+            )
+        except BaseException:
+            path = Path(self._log_file.name)
+            self._log_file.close()
+            self._log_file = None
+            path.unlink(missing_ok=True)
+            raise
 
     def is_running(self) -> bool:
         return self.process is not None and self.process.poll() is None
@@ -56,11 +68,15 @@ class ManagedProcess:
                 self.process.kill()
                 self.process.wait(timeout=5)
         if self._log_file is not None:
+            path = Path(self._log_file.name)
+            self._output = self.read_output()
             self._log_file.close()
+            self._log_file = None
+            path.unlink(missing_ok=True)
 
     def read_output(self) -> str:
         if self._log_file is None:
-            return ""
+            return self._output
         with open(self._log_file.name, encoding="utf-8", errors="replace") as f:
             return f.read()
 

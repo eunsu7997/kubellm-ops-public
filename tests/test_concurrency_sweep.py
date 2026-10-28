@@ -1,3 +1,4 @@
+import asyncio
 import importlib.util
 import sys
 from pathlib import Path
@@ -54,3 +55,74 @@ def test_level_bounds_and_dry_run(capsys):
         sweep.parse_levels("1,128")
     assert sweep.main(["--base-url", "http://127.0.0.1:9", "--model", "m"]) == 0
     assert "dry run" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("levels,expected", [
+    ([_level(1, 0, None, err=1)], None),
+    ([_level(1, 1, 0.1, err=0.1)], None),
+    ([_level(1, 1, 0.1), _level(2, 0, None, err=1), _level(4, 4, 0.1)], 1),
+    ([_level(1, 1, 0.1), _level(2, 2, None)], 1),
+    ([_level(1, 1, 0.1, err=None)], None),
+])
+def test_knee_does_not_recommend_failed_or_unmeasured_levels(levels, expected):
+    assert sweep.find_knee(levels) == expected
+
+
+@pytest.mark.parametrize("events,status,chunks", [
+    ([{"choices": [{"delta": {"role": "assistant"}}]},
+      {"choices": [{"delta": {"content": "hello"}}]},
+      {"choices": [{"delta": {}, "finish_reason": "stop"}]}], "success", 1),
+    ([{"choices": [{"delta": {"role": "assistant"}}]}], "incomplete", 0),
+    ([{"choices": []}], "incomplete", 0),
+    ([{"choices": [{"delta": {"content": ""}}]}], "incomplete", 0),
+    ([{"error": {"message": "backend failed"}}], "invalid_sse", 0),
+    ([{"choices": None}], "invalid_sse", 0),
+    ([[]], "invalid_sse", 0),
+])
+def test_stream_counts_generated_text_only(events, status, chunks):
+    import json
+
+    import httpx
+
+    body = "".join(f"data: {json.dumps(event)}\n\n" for event in events) + "data: [DONE]\n\n"
+
+    async def run():
+        transport = httpx.MockTransport(lambda request: httpx.Response(200, text=body))
+        async with httpx.AsyncClient(transport=transport) as client:
+            return await sweep._one(client, "http://mock/v1/chat/completions", {}, 1, 0, 1)
+
+    result = asyncio.run(run())
+    assert (result.status, result.chunks) == (status, chunks)
+    assert (result.ttft_s is not None) == (chunks > 0)
+
+
+def test_malformed_sse_is_not_a_success():
+    import httpx
+
+    async def run():
+        transport = httpx.MockTransport(lambda request: httpx.Response(200, text="data: not-json\n\ndata: [DONE]\n\n"))
+        async with httpx.AsyncClient(transport=transport) as client:
+            return await sweep._one(client, "http://mock/v1/chat/completions", {}, 1, 0, 1)
+
+    assert asyncio.run(run()).status == "invalid_sse"
+
+
+def test_existing_output_is_rejected_before_sending_requests(tmp_path, monkeypatch):
+    async def unexpected_request(*args, **kwargs):
+        pytest.fail("load must not start when output already exists")
+
+    monkeypatch.setattr(sweep, "run_level", unexpected_request)
+    with pytest.raises(SystemExit) as exc:
+        sweep.main(["--base-url", "http://127.0.0.1:9", "--model", "m", "--execute", "--out", str(tmp_path)])
+    assert exc.value.code == 2
+    assert list(tmp_path.iterdir()) == []
+
+
+@pytest.mark.parametrize("flag,value", [
+    ("--requests-per-level", "0"), ("--max-tokens", "-1"),
+    ("--timeout", "0"), ("--timeout", "nan"), ("--cooldown", "-1"), ("--cooldown", "inf"),
+])
+def test_invalid_limits_are_rejected(flag, value):
+    with pytest.raises(SystemExit) as exc:
+        sweep.main(["--base-url", "http://127.0.0.1:9", "--model", "m", flag, value])
+    assert exc.value.code == 2
